@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { MoonLoader } from "react-spinners";
 import styles from "./styles.module.css";
+import Header from "../../components/Header/Header";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -35,7 +39,7 @@ const Login = () => {
       }
     } catch (err) {
       console.error("Login failed:", err);
-      setError("An unexpected error occurred. Please try again.");
+      setError("로그인에 실패하였습니다.");
     } finally {
       setIsLoading(false);
     }
@@ -43,6 +47,7 @@ const Login = () => {
 
   return (
     <div className={styles.loginPage}>
+      <Header title="로그인"></Header>
       <div className={styles.logo}></div>
       <form onSubmit={handleLogin} className={styles.loginForm}>
         <div>

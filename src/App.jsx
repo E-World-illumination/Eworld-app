@@ -33,7 +33,7 @@ const App = () => {
     <AuthContext.Provider
       value={{ user, login, logout, isLoading, setIsLoading }}
     >
-      <Router>
+      {/*<Router>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -51,6 +51,19 @@ const App = () => {
             path="/mypage"
             element={user ? <MyPage /> : <Navigate to="/login" />}
           />
+        </Routes>
+      </Router>
+      */}
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/stamp" element={<Stamp />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       </Router>
     </AuthContext.Provider>
