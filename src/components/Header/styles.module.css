@@ -1,0 +1,18 @@
+.title {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title div:nth-child(1) {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.title div:nth-child(3) {
+  width: 30px;
+  visibility: hidden;
+  margin-left: 10px;
+}

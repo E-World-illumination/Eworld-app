@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App";
 import { MoonLoader } from "react-spinners";
 import styles from "./styles.module.css";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -53,9 +55,7 @@ const SignUp = () => {
   return (
     <>
       <div className={styles.SignInPage}>
-        <div className={styles.Title}>
-          <h2>회원가입</h2>
-        </div>
+        <Header title="회원가입"></Header>
         <form onSubmit={handleSignUp} className={styles.SignUpForm}>
           <div>
             <p>
@@ -149,6 +149,7 @@ const SignUp = () => {
             <button type="submit">회원가입</button>
           )}
         </form>
+        <Footer></Footer>
       </div>
     </>
   );

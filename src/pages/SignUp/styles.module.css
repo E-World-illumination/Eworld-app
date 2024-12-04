@@ -22,15 +22,24 @@
   width: 300px;
   height: 36px;
   font-size: 14px;
-  border-radius: 10px;
+  border-width: 0 0 1px;
+  border-color: #808080;
 }
 
 .SignInPage input:focus {
   outline: 2px solid lightblue;
 }
 
-.SignInPage input {
+.SignInPage button {
+  background-color: #ffae1e;
+  color: white;
+}
+
+.SignInPage button {
   width: 300px;
+  font-size: 14px;
+  border-width: 0 0 1px;
+  border-color: #808080;
 }
 
 .SignInPage .idInput {
@@ -55,6 +64,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .SignInPage .clause input {
