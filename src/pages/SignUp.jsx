@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
-import Footer from "../components/Footer/Footer";
+import Footer from "../components/Footer";
 
 const SignUp = () => {
   const inputBaseClass =
