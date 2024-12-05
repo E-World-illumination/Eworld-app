@@ -6,11 +6,11 @@ import {
   Navigate,
 } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
-import SignUp from "./pages/SignUp/SignUp";
-import Map from "./pages/Map/Map";
-import Stamp from "./pages/Stamp/Stamp";
-import MyPage from "./pages/MyPage/MyPage";
+import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
+import Map from "./pages/Map";
+import Stamp from "./pages/Stamp";
+import MyPage from "./pages/MyPage";
 
 // Context for user authentication
 export const AuthContext = createContext();

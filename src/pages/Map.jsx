@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
-import styles from "./styles.module.css";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import { AuthContext } from "../App";
+
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 import { Map } from "react-kakao-maps-sdk";
 
 const kakaoMap = () => {
