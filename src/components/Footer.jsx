@@ -4,6 +4,7 @@ import asset2 from "/asset2.png";
 import asset3 from "/asset3.png"; // QR code in the center
 import asset4 from "/asset4.png";
 import asset5 from "/asset5.png";
+
 const Footer = () => {
   const menuClass = "flex flex-col items-center text-white";
   const iconClass = "h-24 w-24";
