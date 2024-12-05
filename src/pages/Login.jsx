@@ -1,8 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../App";
+import { AuthContext } from "../App";
 import { MoonLoader } from "react-spinners";
-import styles from "./styles.module.css";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -42,15 +41,17 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.loginPage}>
-      <div className={styles.logo}></div>
-      <form onSubmit={handleLogin} className={styles.loginForm}>
+    <div className="flex flex-col items-center">
+      <div className="h-150 w-200 bg-[url('/logo.png')] bg-contain bg-no-repeat"></div>
+
+      <form onSubmit={handleLogin} className="flex flex-col items-center">
         <div>
           <input
             type="text"
             value={userId}
             onChange={(e) => setUserId(e.target.value)}
             placeholder="아이디를 입력해주세요"
+            className="w-300 mb-28 h-36 border-b border-gray-500 text-sm focus:outline-none"
             required
           />
         </div>
@@ -60,17 +61,22 @@ const Login = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="비밀번호를 입력해주세요"
+            className="w-300 mb-20 h-36 border-b border-gray-500 text-sm focus:outline-none"
             required
           />
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <p className={styles.find}>
+        {error && <p className="text-red-500">{error}</p>}
+        <p className="w-300 mb-36 flex items-center justify-end text-sm">
           <span>
-            <a href="#">아이디 찾기</a>
+            <a href="#" className="text-black">
+              아이디 찾기
+            </a>
           </span>
-          <span>|</span>
+          <span className="px-5">|</span>
           <span>
-            <a href="#">비밀번호 찾기</a>
+            <a href="#" className="text-black">
+              비밀번호 찾기
+            </a>
           </span>
         </p>
         {isLoading ? (
@@ -78,20 +84,23 @@ const Login = () => {
             <MoonLoader size={15}></MoonLoader>
           </div>
         ) : (
-          <button className={styles.loginButton} type="submit">
+          <button className="bg-eworld w-300 text-white" type="submit">
             로그인
           </button>
         )}
       </form>
 
-      <div className={styles.socialLogin}>
-        <button className={styles.kakao}>카카오 로그인</button>
-        <button className={styles.naver}>네이버 로그인</button>
-        <button className={styles.google}>구글 로그인</button>
+      <div className="w-300 mt-10 flex flex-col text-base">
+        <button className="bg-kakao mb-10 text-black">카카오 로그인</button>
+        <button className="bg-naver mb-10 text-black">네이버 로그인</button>
+        <button className="bg-google mb-10 text-black">구글 로그인</button>
       </div>
 
       <p>
-        계정이 없으신가요? <a href="/signup">회원가입</a>
+        계정이 없으신가요?{" "}
+        <a href="/signup" className="text-eworld">
+          회원가입
+        </a>
       </p>
     </div>
   );

@@ -2,14 +2,13 @@ import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
 import { MoonLoader } from "react-spinners";
-import Header from "../components/Header/Header";
+import Header from "../components/Header";
 import Footer from "../components/Footer/Footer";
 
 const SignUp = () => {
   const inputBaseClass =
-    "text-sm border-b border-gray-500 focus:outline-none focus:outline-2 focus:outline-lightblue mb-18  p-10";
-  const buttonClass =
-    "bg-[#ffae1e] text-white border-b border-gray-500 text-sm";
+    "text-13 border-b border-gray-500 focus:outline-none focus:outline-2 focus:outline-lightblue mb-18 p-10 font-bold";
+  const buttonClass = "bg-[#ffae1e] text-white border-none border-gray-500";
 
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
@@ -73,7 +72,7 @@ const SignUp = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               placeholder="이름을 입력해주세요"
-              className={`w-330 h-36 ${inputBaseClass}`}
+              className={`h-36 w-330 ${inputBaseClass}`}
               required
             />
           </div>
@@ -88,12 +87,12 @@ const SignUp = () => {
                 value={userId}
                 onChange={(e) => setUserId(e.target.value)}
                 placeholder="5자리 이상의 영문자, 숫자 조합"
-                className={`w-235 mr-8 h-36 ${inputBaseClass}`}
+                className={`mr-8 h-36 w-235 ${inputBaseClass}`}
                 required
               />
               <button
                 onClick={(e) => checkDuplicate(e, "idInput")}
-                className={`w-87 h-45 p-0 ${buttonClass}`}
+                className={`h-45 w-87 -translate-y-8 p-0 ${buttonClass}`}
               >
                 중복확인
               </button>
@@ -109,7 +108,7 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="8자리 이상의 영문자, 숫자 조합"
-              className={`w-330 h-36 ${inputBaseClass}`}
+              className={`h-36 w-330 ${inputBaseClass}`}
               required
             />
           </div>
@@ -122,7 +121,7 @@ const SignUp = () => {
               value={passwordCheck}
               onChange={(e) => setPasswordCheck(e.target.value)}
               placeholder="비밀번호와 동일하게 입력해주세요"
-              className={`w-330 h-36 ${inputBaseClass}`}
+              className={`h-36 w-330 ${inputBaseClass}`}
               required
             />
           </div>
@@ -135,11 +134,11 @@ const SignUp = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="이메일"
-              className={`w-330 h-36 ${inputBaseClass}`}
+              className={`h-36 w-330 ${inputBaseClass}`}
             />
           </div>
 
-          <div className="mb-40">
+          <div className="mb-37">
             <p className="m-0">
               <b>휴대전화 *</b>
             </p>
@@ -148,12 +147,12 @@ const SignUp = () => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="- 문자 없이 숫자만 입력해주세요"
-              className={`w-330 h-36 ${inputBaseClass}`}
+              className={`h-36 w-330 ${inputBaseClass}`}
               required
             />
           </div>
 
-          <div className="mb-5 flex items-center justify-between">
+          <div className="mb-40 flex items-center justify-center">
             <p>회원가입 약관에 모두 동의합니다.</p>
             <input type="checkbox" className="w-20 focus:outline-none" />
           </div>
@@ -164,7 +163,10 @@ const SignUp = () => {
               <MoonLoader size={15} />
             </div>
           ) : (
-            <button type="submit" className={`w-330 ${buttonClass}`}>
+            <button
+              type="submit"
+              className={`h-50 w-330 text-16 ${buttonClass}`}
+            >
               회원가입
             </button>
           )}
