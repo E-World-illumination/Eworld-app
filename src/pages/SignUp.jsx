@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
+import MenuBar from "../components/MenuBar";
 
 const SignUp = () => {
   const inputBaseClass =
@@ -171,7 +171,7 @@ const SignUp = () => {
             </button>
           )}
         </form>
-        <Footer />
+        <MenuBar />
       </div>
     </>
   );

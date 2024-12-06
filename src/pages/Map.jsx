@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../App";
 
 import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Map } from "react-kakao-maps-sdk";
+import MenuBar from "../components/MenuBar";
 
 const kakaoMap = () => {
   const { login } = useContext(AuthContext);
@@ -20,7 +20,7 @@ const kakaoMap = () => {
           style={{ width: "100%", flex: "1 0 auto" }}
           level={3}
         />
-        <Footer></Footer>
+        <MenuBar />
       </div>
     </>
   );

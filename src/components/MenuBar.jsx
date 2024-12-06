@@ -1,17 +1,17 @@
 import React from "react";
-import asset1 from "/asset1.png"; // Replace with actual path
-import asset2 from "/asset2.png";
-import asset3 from "/asset3.png"; // QR code in the center
-import asset4 from "/asset4.png";
-import asset5 from "/asset5.png";
+import asset1 from "/home.png"; // Replace with actual path
+import asset2 from "/map.png";
+import asset3 from "/QR.png"; // QR code in the center
+import asset4 from "/stamp.png";
+import asset5 from "/user.png";
 
-const Footer = () => {
+const MenuBar = () => {
   const menuClass = "flex flex-col items-center text-white";
   const iconClass = "h-24 w-24";
   const labelClass = "text-10 mt-4";
 
   return (
-    <footer className="fixed bottom-0 flex h-70 w-full items-center justify-around bg-eworld p-10">
+    <div className="fixed bottom-0 flex h-70 w-full items-center justify-around bg-eworld p-10">
       <div className={menuClass}>
         <img src={asset1} alt="Home" className={iconClass} />
         <span className={labelClass}>HOME</span>
@@ -33,8 +33,8 @@ const Footer = () => {
         <img src={asset5} alt="My" className={iconClass} />
         <span className={labelClass}>MY</span>
       </div>
-    </footer>
+    </div>
   );
 };
 
-export default Footer;
+export default MenuBar;
