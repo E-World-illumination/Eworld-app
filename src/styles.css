@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.input-base {
+  @apply mb-28 h-36 w-300 border-b border-gray-300 p-10 text-sm focus:outline-none;
+}

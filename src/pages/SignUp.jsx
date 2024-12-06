@@ -7,8 +7,9 @@ import MenuBar from "../components/MenuBar";
 
 const SignUp = () => {
   const inputBaseClass =
-    "text-13 border-b border-gray-500 focus:outline-none focus:outline-2 focus:outline-lightblue mb-18 p-10 font-bold";
-  const buttonClass = "bg-[#ffae1e] text-white border-none border-gray-500";
+    "mb-18 border-b border-gray-500 p-10 text-13 focus:outline-none";
+
+  const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
 
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
@@ -61,7 +62,7 @@ const SignUp = () => {
         <Header title="회원가입" />
         <form
           onSubmit={handleSignUp}
-          className="mt-80 flex flex-col justify-center"
+          className="mt-80 flex flex-col items-center"
         >
           <div className="mb-5">
             <p className="m-0">
@@ -92,7 +93,7 @@ const SignUp = () => {
               />
               <button
                 onClick={(e) => checkDuplicate(e, "idInput")}
-                className={`h-45 w-87 -translate-y-8 p-0 ${buttonClass}`}
+                className={`h-45 w-87 -translate-y-8 p-0 text-14 font-bold focus:outline-none ${buttonClass}`}
               >
                 중복확인
               </button>
@@ -152,9 +153,9 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="mb-40 flex items-center justify-center">
-            <p>회원가입 약관에 모두 동의합니다.</p>
-            <input type="checkbox" className="w-20 focus:outline-none" />
+          <div className="mb-40 flex w-330 items-center font-bold">
+            <p className="mr-75">회원가입 약관에 모두 동의합니다.</p>
+            <input type="checkbox" className="h-20 w-20" />
           </div>
 
           {error && <p className="text-red-500">{error}</p>}
@@ -171,7 +172,6 @@ const SignUp = () => {
             </button>
           )}
         </form>
-        <MenuBar />
       </div>
     </>
   );

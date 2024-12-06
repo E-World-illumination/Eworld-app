@@ -5,12 +5,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        eworld: "#FFAE1E",
+        eworldRed: "#ff6f00",
+        eworld: "#f49e16",
         kakao: "#fde500",
         naver: "#03c759",
         google: "#4285f4",
+        test: "#000000",
       },
     },
   },
+  safelist: [
+    {
+      pattern: /bg-.*/, // 모든 bg-로 시작하는 클래스
+    },
+  ],
   plugins: [],
 };
