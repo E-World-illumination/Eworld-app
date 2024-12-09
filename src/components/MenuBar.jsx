@@ -16,9 +16,7 @@ const MenuBar = ({ color }) => {
 
   return (
     <>
-      <div
-        className={`bg-${color} fixed bottom-0 flex h-70 w-full items-center justify-around p-10`}
-      >
+      <div className={`bg-${color} fixed bottom-0 flex h-70 w-full items-center justify-around`}>
         <div className={menuClass}>
           <FontAwesomeIcon icon={faHome} className={iconClass} />
           <span className={labelClass}>HOME</span>
@@ -28,8 +26,8 @@ const MenuBar = ({ color }) => {
           <span className={labelClass}>MAP</span>
         </div>
 
-        <div className="bg-#fff rounded-50% -mt-20 flex h-70 w-70 items-center justify-center first-letter:p-10">
-          <img src={qrcode} alt="QR Code" className="h-60 w-60" />
+        <div className="bg-#fff rounded-50% flex h-70 w-70 items-center justify-center first-letter:p-10">
+          <img src={qrcode} alt="QR Code" className="h-70 w-70" />
         </div>
 
         <div className={menuClass}>

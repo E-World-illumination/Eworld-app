@@ -7,7 +7,7 @@ import MenuBar from "../components/MenuBar";
 
 const SignUp = () => {
   const inputBaseClass =
-    "mb-18 border-b border-gray-500 p-10 text-13 focus:outline-none";
+    "mb-18 border-b border-gray-250 p-10 focus:outline-none";
 
   const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
 
@@ -62,10 +62,10 @@ const SignUp = () => {
         <Header title="회원가입" />
         <form
           onSubmit={handleSignUp}
-          className="mt-80 flex flex-col items-center"
+          className="mt-70 flex flex-col items-center"
         >
           <div className="mb-5">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>이름 *</b>
             </p>
             <input
@@ -79,7 +79,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>아이디 *</b>
             </p>
             <div className="flex">
@@ -93,7 +93,7 @@ const SignUp = () => {
               />
               <button
                 onClick={(e) => checkDuplicate(e, "idInput")}
-                className={`h-45 w-87 -translate-y-8 p-0 text-14 font-bold focus:outline-none ${buttonClass}`}
+                className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
               >
                 중복확인
               </button>
@@ -101,7 +101,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>비밀번호 *</b>
             </p>
             <input
@@ -114,7 +114,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>비밀번호 확인 *</b>
             </p>
             <input
@@ -127,7 +127,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>이메일 (선택)</b>
             </p>
             <input
@@ -140,21 +140,21 @@ const SignUp = () => {
           </div>
 
           <div className="mb-37">
-            <p className="m-0">
+            <p className="m-0 text-14">
               <b>휴대전화 *</b>
             </p>
             <input
               type="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              placeholder="- 문자 없이 숫자만 입력해주세요"
+              placeholder="'-' 문자 없이 숫자만 입력해주세요"
               className={`h-36 w-330 ${inputBaseClass}`}
               required
             />
           </div>
 
-          <div className="mb-40 flex w-330 items-center font-bold">
-            <p className="mr-75">회원가입 약관에 모두 동의합니다.</p>
+          <div className="mb-40 flex w-330 items-center font-bold text-16 text-black">
+            <p className="ml-15 mr-65">회원가입 약관에 모두 동의합니다.</p>
             <input type="checkbox" className="h-20 w-20" />
           </div>
 
@@ -164,10 +164,7 @@ const SignUp = () => {
               <MoonLoader size={15} />
             </div>
           ) : (
-            <button
-              type="submit"
-              className={`h-50 w-330 text-16 ${buttonClass}`}
-            >
+            <button type="submit" className={`h-50 w-330 text-16 ${buttonClass}`}>
               회원가입
             </button>
           )}

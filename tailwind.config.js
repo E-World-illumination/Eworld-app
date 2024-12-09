@@ -10,7 +10,10 @@ export default {
         kakao: "#fde500",
         naver: "#03c759",
         google: "#4285f4",
-        test: "#000000",
+        home: "#0E4D3C",
+      },
+      fontFamily: {
+        pretendard: ["Pretendard-Regular", "sans-serif"],
       },
     },
   },
