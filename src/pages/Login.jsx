@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <>
-      <Header title="로그인" />
+      <Header title="로그인" isBack="true" />
       <div className="mt-50 flex flex-col items-center">
         <div className="h-150 w-200 bg-[url('/logo.png')] bg-contain bg-no-repeat"></div>
 
@@ -89,21 +89,29 @@ const Login = () => {
               <MoonLoader size={15}></MoonLoader>
             </div>
           ) : (
-            <button className="py-5 px-0 bg-white" type="submit"><img src="/login/login.png" alt="로그인" width="300" /></button>
+            <button className="bg-white px-0 py-5" type="submit">
+              <img src="/login/login.png" alt="로그인" width="300" />
+            </button>
             // w-300 h-50 bg-eworldRed font-bold text-white
           )}
         </form>
 
         <div className="flex w-300 flex-col text-base">
-          <button className="py-5 px-0 bg-white"><img src="/login/login_kakao.png" alt="카카오 로그인" width="300" /></button>
-          <button className="py-5 px-0 bg-white"><img src="/login/login_naver.png" alt="네이버 로그인" width="300" /></button>
-          <button className="py-5 px-0 bg-white"><img src="/login/login_google.png" alt="구글 로그인" width="300" /></button>
+          <button className="bg-white px-0 py-5">
+            <img src="/login/login_kakao.png" alt="카카오 로그인" width="300" />
+          </button>
+          <button className="bg-white px-0 py-5">
+            <img src="/login/login_naver.png" alt="네이버 로그인" width="300" />
+          </button>
+          <button className="bg-white px-0 py-5">
+            <img src="/login/login_google.png" alt="구글 로그인" width="300" />
+          </button>
           {/* mb-10 bg-kakao text-black 
           mb-10 bg-naver text-black
           mb-10 bg-google text-black*/}
         </div>
 
-        <p className="font-bold text-16 pt-20">
+        <p className="pt-20 text-16 font-bold">
           아직 회원이 아니신가요?{" "}
           <a href="/signup" className="text-eworldRed">
             회원가입

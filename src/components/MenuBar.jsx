@@ -16,28 +16,40 @@ const MenuBar = ({ color }) => {
 
   return (
     <>
-      <div className={`bg-${color} fixed bottom-0 flex h-70 w-full items-center justify-around`}>
-        <div className={menuClass}>
-          <FontAwesomeIcon icon={faHome} className={iconClass} />
-          <span className={labelClass}>HOME</span>
-        </div>
-        <div className={menuClass}>
-          <FontAwesomeIcon icon={faLocationDot} className={iconClass} />
-          <span className={labelClass}>MAP</span>
-        </div>
+      <div
+        className={`bg-${color} fixed bottom-0 flex h-70 w-full items-center justify-around`}
+      >
+        <a href="/home">
+          <div className={menuClass}>
+            <FontAwesomeIcon icon={faHome} className={iconClass} />
+            <span className={labelClass}>HOME</span>
+          </div>
+        </a>
+        <a href="/map">
+          <div className={menuClass}>
+            <FontAwesomeIcon icon={faLocationDot} className={iconClass} />
+            <span className={labelClass}>MAP</span>
+          </div>
+        </a>
 
-        <div className="bg-#fff rounded-50% flex h-70 w-70 items-center justify-center first-letter:p-10">
-          <img src={qrcode} alt="QR Code" className="h-70 w-70" />
-        </div>
+        <a href="/">
+          <div className="bg-#fff rounded-50% flex h-70 w-70 items-center justify-center first-letter:p-10">
+            <img src={qrcode} alt="QR Code" className="h-70 w-70" />
+          </div>
+        </a>
 
-        <div className={menuClass}>
-          <FontAwesomeIcon icon={faStamp} className={iconClass} />
-          <span className={labelClass}>STAMP</span>
-        </div>
-        <div className={menuClass}>
-          <FontAwesomeIcon icon={faUser} className={iconClass} />
-          <span className={labelClass}>MY</span>
-        </div>
+        <a href="/stamp">
+          <div className={menuClass}>
+            <FontAwesomeIcon icon={faStamp} className={iconClass} />
+            <span className={labelClass}>STAMP</span>
+          </div>
+        </a>
+        <a href="/mypage">
+          <div className={menuClass}>
+            <FontAwesomeIcon icon={faUser} className={iconClass} />
+            <span className={labelClass}>MY</span>
+          </div>
+        </a>
       </div>
     </>
   );

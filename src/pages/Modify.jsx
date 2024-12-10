@@ -5,14 +5,12 @@ import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 
-const SignUp = () => {
+const Modify = () => {
   const inputBaseClass =
     "mb-18 border-b border-gray-250 p-10 focus:outline-none";
 
   const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
 
-  const [username, setUsername] = useState("");
-  const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [email, setEmail] = useState("");
@@ -25,12 +23,12 @@ const SignUp = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/signup", {
+      const response = await fetch("http://localhost:5000/api/modify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, userId, password, email, phone }),
+        body: JSON.stringify({ password, email, phone }),
       });
 
       if (response.ok) {
@@ -39,7 +37,7 @@ const SignUp = () => {
         navigate("/"); // Navigate to map page
       } else {
         const errorData = await response.json();
-        setError(errorData.message || "회원가입 에러");
+        setError(errorData.message || "정보수정 에러");
       }
     } catch (err) {
       console.log(err);
@@ -48,18 +46,10 @@ const SignUp = () => {
     }
   };
 
-  //중복체크
-  const checkDuplicate = async (e, data) => {
-    e.preventDefault();
-    console.log(data);
-    const className = document.getElementsByClassName(data);
-    console.log(className[0].value);
-  };
-
   return (
     <>
       <div className="flex flex-col items-center">
-        <Header title="회원가입" isBack="true" />
+        <Header title="회원정보수정" isBack="true" />
         <form
           onSubmit={handleSignUp}
           className="mt-40 flex flex-col items-center"
@@ -70,11 +60,11 @@ const SignUp = () => {
             </p>
             <input
               type="text"
-              value={username}
+              value="권혜진"
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="이름을 입력해주세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required
+              disabled
             />
           </div>
 
@@ -85,18 +75,12 @@ const SignUp = () => {
             <div className="flex">
               <input
                 type="text"
-                value={userId}
+                value="zinee"
                 onChange={(e) => setUserId(e.target.value)}
-                placeholder="5자리 이상의 영문자, 숫자 조합"
-                className={`mr-8 h-36 w-205 ${inputBaseClass}`}
+                className={`h-36 w-300 ${inputBaseClass}`}
                 required
+                disabled
               />
-              <button
-                onClick={(e) => checkDuplicate(e, "idInput")}
-                className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
-              >
-                중복확인
-              </button>
             </div>
           </div>
 
@@ -132,30 +116,25 @@ const SignUp = () => {
             </p>
             <input
               type="email"
-              value={email}
+              value="test@test.com"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="이메일"
               className={`h-36 w-300 ${inputBaseClass}`}
             />
           </div>
 
-          <div className="mb-20">
+          <div className="mb-25">
             <p className="m-0 text-14">
               <b>휴대전화 *</b>
             </p>
             <input
               type="phone"
-              value={phone}
+              value="01011112222"
               onChange={(e) => setPhone(e.target.value)}
               placeholder="'-' 문자 없이 숫자만 입력해주세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required
             />
-          </div>
-
-          <div className="mb-20 flex w-300 items-center text-16 font-bold text-black">
-            <p className="ml-15 mr-40">회원가입 약관에 모두 동의합니다.</p>
-            <input type="checkbox" className="h-20 w-20" />
           </div>
 
           {error && <p className="text-red-500">{error}</p>}
@@ -168,13 +147,14 @@ const SignUp = () => {
               type="submit"
               className={`h-50 w-300 text-16 ${buttonClass}`}
             >
-              회원가입
+              수정 완료
             </button>
           )}
         </form>
       </div>
+      <MenuBar color="eworld" />
     </>
   );
 };
 
-export default SignUp;
+export default Modify;

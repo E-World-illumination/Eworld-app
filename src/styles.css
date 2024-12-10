@@ -8,3 +8,12 @@
 input::placeholder {
   font-size: 13px;
 }
+
+.shadow {
+  @apply shadow-lg; /* 기본 그림자 클래스 */
+  box-shadow:
+    /* 위쪽, 왼쪽 그림자 */
+    -5px -5px 5px rgba(0, 0, 0, 0.1),
+    /* 위쪽, 오른쪽 그림자 */ 5px -5px 5px rgba(0, 0, 0, 0.1),
+    /* 아래쪽 그림자 없음 */ 0 0 0 rgba(0, 0, 0, 0);
+}
