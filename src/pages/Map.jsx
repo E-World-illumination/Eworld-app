@@ -14,15 +14,17 @@ const kakaoMap = () => {
     <>
       <Header title="Map" isBack="false"></Header>
       <div className="mt-30 flex h-[86%] flex-col items-center">
-        <div className="h-3/6">
-          {/* <Map
+        <div className="h-full w-full">
+          <Map
             center={{ lat: 35.85336, lng: 128.563916 }}
-            style={{ width: "100%", flex: "1 0 auto" }}
+            style={{ width: "100%", height: "100%", flex: "1 0 auto" }}
             level={3}
-          /> */}
+          />
         </div>
         <div className="flex h-3/6 items-end">
-          <div className={`h-260 w-330 rounded-t-[10px] bg-white p-20 shadow`}>
+          <div
+            className={`shadow-customShadow h-260 w-330 rounded-t-[10px] bg-white p-20`}
+          >
             <img
               src="/map/giant_toyfriends.png"
               alt="자이언트 토이프렌즈 광장"
