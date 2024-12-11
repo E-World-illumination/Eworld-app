@@ -65,9 +65,7 @@ const SignUp = () => {
           className="mt-40 flex flex-col items-center"
         >
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이름 *</b>
-            </p>
+            <p className="m-0 text-14">이름 *</p>
             <input
               type="text"
               value={username}
@@ -79,9 +77,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>아이디 *</b>
-            </p>
+            <p className="m-0 text-14">아이디 *</p>
             <div className="flex">
               <input
                 type="text"
@@ -101,9 +97,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>비밀번호 *</b>
-            </p>
+            <p className="m-0 text-14">비밀번호 *</p>
             <input
               type="password"
               value={password}
@@ -114,9 +108,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>비밀번호 확인 *</b>
-            </p>
+            <p className="m-0 text-14">비밀번호 확인 *</p>
             <input
               type="passwordCheck"
               value={passwordCheck}
@@ -127,9 +119,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이메일 (선택)</b>
-            </p>
+            <p className="m-0 text-14">이메일 (선택)</p>
             <input
               type="email"
               value={email}
@@ -140,9 +130,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-20">
-            <p className="m-0 text-14">
-              <b>휴대전화 *</b>
-            </p>
+            <p className="m-0 text-14">휴대전화 *</p>
             <input
               type="phone"
               value={phone}
@@ -153,8 +141,8 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="mb-20 flex w-300 items-center text-16 font-bold text-black">
-            <p className="ml-15 mr-40">회원가입 약관에 모두 동의합니다.</p>
+          <div className="mb-20 flex w-300 items-center text-14">
+            <p className="ml-5 mr-40">회원가입 약관에 모두 동의합니다.</p>
             <input type="checkbox" className="h-20 w-20" />
           </div>
 
