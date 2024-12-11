@@ -9,7 +9,7 @@ const SignUp = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-200 p-10 focus:outline-none";
 
-  const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
+  const buttonClass = "border-none border-neutral-500 bg-eworldRed text-white";
 
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");

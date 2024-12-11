@@ -1,6 +1,6 @@
 const Coupon = ({ data }) => {
   return (
-    <div className="mt-50">
+    <div className="mt-40">
       <div className="titleClass">쿠폰 내역</div>
       {data.content && !data.is_used ? (
         <div className="listGrayClass">ㆍ{data.content}</div>

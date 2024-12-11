@@ -52,7 +52,7 @@ const Modify = () => {
         <Header title="회원정보수정" isBack="true" />
         <form
           onSubmit={handleSignUp}
-          className="mt-40 flex flex-col items-center"
+          className="mt-70 flex flex-col items-center"
         >
           <div className="mb-5">
             <p className="m-0 text-14">이름</p>
