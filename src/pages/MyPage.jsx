@@ -10,15 +10,15 @@ import { useAuth } from "../provider/AuthProvider";
 const MyPage = () => {
   const [social, setSocial] = useState(null);
   const [couponData, setCouponData] = useState(null);
-  const [applyData, setApplyData] = useState(null);
-
+  const [applyData, setApplyData] = useState(null); // api 연동후 coupon applyData 받아오기
+  const [userName, setUserName] = useState("손근영"); // api 연동후 username 받아오기
   const { logout } = useAuth();
   return (
     <>
       <Header title="MY PAGE" isBack="false" />
       <div className="mt-50 flex h-5/6 flex-col items-center">
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
-        <Info social={social} />
+        <Info social={social} name={userName} />
         <Coupon data={couponData} />
         <Apply data={applyData} />
         {/* 로그아웃 버튼 div */}
