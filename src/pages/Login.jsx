@@ -46,7 +46,7 @@ const Login = () => {
   return (
     <>
       <Header title="로그인" isBack="true" />
-      <div className="mt-50 flex flex-col items-center">
+      <div className="mt-30 flex flex-col items-center">
         <div className="h-150 w-200 bg-[url('/logo.png')] bg-contain bg-no-repeat"></div>
 
         <form onSubmit={handleLogin} className="flex flex-col items-center">
@@ -56,7 +56,7 @@ const Login = () => {
               value={userId}
               onChange={(e) => setUserId(e.target.value)}
               placeholder="아이디를 입력해주세요"
-              className="input-base mb-28"
+              className="input-base mb-20"
               required
             />
           </div>
@@ -89,29 +89,41 @@ const Login = () => {
               <MoonLoader size={15}></MoonLoader>
             </div>
           ) : (
-            <button className="bg-white px-0 py-5" type="submit">
-              <img src="/login/login.png" alt="로그인" width="300" />
+            <button
+              className="h-50 w-300 bg-eworldRed px-0 py-5 text-18 text-white"
+              type="submit"
+            >
+              로그인
             </button>
-            // w-300 h-50 bg-eworldRed font-bold text-white
           )}
         </form>
 
-        <div className="mt-30 flex w-300 flex-col text-base">
-          <button className="bg-white px-0 py-5">
-            <img src="/login/login_kakao.png" alt="카카오 로그인" width="300" />
-          </button>
-          <button className="bg-white px-0 py-5">
-            <img src="/login/login_naver.png" alt="네이버 로그인" width="300" />
-          </button>
-          <button className="bg-white px-0 py-5">
-            <img src="/login/login_google.png" alt="구글 로그인" width="300" />
-          </button>
-          {/* mb-10 bg-kakao text-black 
-          mb-10 bg-naver text-black
-          mb-10 bg-google text-black*/}
+        <div className="mt-30 w-300 bg-white text-base">
+          <div className="py-20">
+            <img src="/login/social_title.png" alt="" />
+          </div>
+          <div className="text-center">
+            <button className="bg-white py-5">
+              <img
+                src="/login/login_kakao.png"
+                alt="카카오 로그인"
+                width="46"
+              />
+            </button>
+            <button className="bg-white py-5">
+              <img
+                src="/login/login_naver.png"
+                alt="네이버 로그인"
+                width="46"
+              />
+            </button>
+            <button className="bg-white py-5">
+              <img src="/login/login_google.png" alt="구글 로그인" width="46" />
+            </button>
+          </div>
         </div>
 
-        <p className="pt-20 text-16 font-bold">
+        <p className="pt-40 text-16 font-bold">
           아직 회원이 아니신가요?{" "}
           <a href="/signup" className="text-eworldRed">
             회원가입

@@ -5,7 +5,7 @@ import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 
-const Modify = () => {
+const ModifyPw = () => {
   const inputBaseClass =
     "mb-18 border-b border-gray-250 p-10 focus:outline-none";
 
@@ -98,7 +98,7 @@ const Modify = () => {
           </div>
 
           <div>
-            <p className="text-14">
+            <p className="m-0 text-14">
               <b>휴대전화 *</b>
             </p>
             <input
@@ -106,11 +106,11 @@ const Modify = () => {
               value="01011112222"
               onChange={(e) => setPhone(e.target.value)}
               placeholder="'-' 문자 없이 숫자만 입력해주세요"
-              className={`h-36 w-300 ${inputBaseClass}`}
+              className={`mb-0 h-36 w-300 ${inputBaseClass}`}
               required
             />
           </div>
-          <div className="mb-40 w-full px-15 text-right text-14 font-bold text-eworldRed underline underline-offset-2">
+          <div className="mb-20 w-full p-15 text-right text-14 font-bold text-eworldRed underline-offset-2">
             비밀번호 변경
           </div>
 
@@ -133,4 +133,4 @@ const Modify = () => {
   );
 };
 
-export default Modify;
+export default ModifyPw;

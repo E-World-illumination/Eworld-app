@@ -19,7 +19,7 @@ const MenuBar = ({ color }) => {
       <div
         className={`bg-${color} fixed bottom-0 flex h-71 w-full items-center justify-around`}
       >
-        <a href="/home">
+        <a href="/">
           <div className={menuClass}>
             <FontAwesomeIcon icon={faHome} className={iconClass} />
             <span className={labelClass}>HOME</span>

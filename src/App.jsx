@@ -12,6 +12,7 @@ import Map from "./pages/Map";
 import Stamp from "./pages/Stamp";
 import MyPage from "./pages/MyPage";
 import Modify from "./pages/Modify";
+import ModifyPw from "./pages/ModifyPw";
 
 // Context for user authentication
 export const AuthContext = createContext();
@@ -65,6 +66,7 @@ const App = () => {
           <Route path="/stamp" element={<Stamp />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/modify" element={<Modify />} />
+          <Route path="/modify/password" element={<ModifyPw />} />
         </Routes>
       </Router>
     </AuthContext.Provider>
