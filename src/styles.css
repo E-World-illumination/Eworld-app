@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 .input-base {
-  @apply h-36 w-300 border-b border-gray-300 p-10 text-sm focus:outline-none;
+  @apply h-36 w-300 border-b border-neutral-300 p-10 text-sm focus:outline-none;
 }
 input::placeholder {
   font-size: 13px;
+  color: #cccccc;
 }
 
 .shadow {
@@ -23,11 +24,11 @@ input::placeholder {
 }
 
 .titleClass {
-  @apply w-330 border-b border-gray-300 p-10 text-20 font-bold text-black;
+  @apply w-330 border-b border-neutral-300 p-10 text-20 font-bold;
 }
 
 .listGrayClass {
-  @apply px-10 pt-10 text-16 text-gray-500;
+  @apply px-10 pt-10 text-16 text-neutral-500;
 }
 
 .listRedClass {

@@ -23,7 +23,7 @@ const kakaoMap = () => {
         </div>
         <div className="flex h-3/6 items-end">
           <div
-            className={`h-260 w-330 rounded-t-[10px] bg-white p-20 shadow-customShadow`}
+            className={`shadow-customShadow h-260 w-330 rounded-t-[10px] bg-white p-20`}
           >
             <img
               src="/map/giant_toyfriends.png"
@@ -32,10 +32,10 @@ const kakaoMap = () => {
               className="rounded-[10px]"
             />
             <div className="flex justify-between">
-              <div className="px-10 pt-20 text-20 font-bold leading-5 text-black">
+              <div className="px-10 pt-20 text-20 font-bold leading-5">
                 자이언트 토이프렌즈 광장
                 <br />
-                <span className="text-14 font-medium text-neutral-600">
+                <span className="text-14 font-medium text-neutral-500">
                   고스트하우스 앞 판타지 광장
                 </span>
               </div>
@@ -46,7 +46,7 @@ const kakaoMap = () => {
           </div>
         </div>
       </div>
-      <MenuBar color="eworld" />
+      <MenuBar color="eworld" menu="map" />
     </>
   );
 };

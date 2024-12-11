@@ -33,7 +33,7 @@ const MyPage = () => {
           </div>
         </div>
       </div>
-      <MenuBar color="eworld" />
+      <MenuBar color="eworld" menu="mypage" />
     </>
   );
 };
