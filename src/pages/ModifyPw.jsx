@@ -1,10 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../App";
+import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
-import MenuBar from "../components/MenuBar";
-
 const ModifyPw = () => {
   const inputBaseClass =
     "mb-18 border-b border-gray-250 p-10 focus:outline-none";
@@ -16,7 +14,7 @@ const ModifyPw = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-  const { login, setIsLoading, isLoading } = useContext(AuthContext);
+  const { login, setIsLoading, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
