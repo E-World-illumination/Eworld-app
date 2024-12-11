@@ -7,7 +7,7 @@ import MenuBar from "../components/MenuBar";
 
 const SignUp = () => {
   const inputBaseClass =
-    "mb-18 border-b border-gray-250 p-10 focus:outline-none";
+    "mb-18 border-b border-neutral-200 p-10 focus:outline-none";
 
   const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
 
@@ -141,9 +141,9 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="mb-20 flex w-300 items-center text-14">
-            <p className="ml-5 mr-40">회원가입 약관에 모두 동의합니다.</p>
-            <input type="checkbox" className="h-20 w-20" />
+          <div className="mb-20 flex w-300 items-center justify-center text-13">
+            <p className="mr-10">회원가입 약관에 모두 동의합니다.</p>
+            <input type="checkbox" className="h-13 w-13" />
           </div>
 
           {error && <p className="text-red-500">{error}</p>}

@@ -9,10 +9,14 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MenuBar = ({ color }) => {
+const MenuBar = (props) => {
+  const color = props.color;
+  const menu = props.menu;
+
   const menuClass = "flex flex-col items-center text-white";
   const iconClass = "h-24 w-24";
   const labelClass = "text-10 mt-4";
+  const onClass = "text-[#7A4F0B]";
 
   return (
     <>
@@ -26,7 +30,7 @@ const MenuBar = ({ color }) => {
           </div>
         </a>
         <a href="/map">
-          <div className={menuClass}>
+          <div className={`${menu === "map" ? onClass : ""} ${menuClass}`}>
             <FontAwesomeIcon icon={faLocationDot} className={iconClass} />
             <span className={labelClass}>MAP</span>
           </div>
@@ -39,13 +43,13 @@ const MenuBar = ({ color }) => {
         </a>
 
         <a href="/stamp">
-          <div className={menuClass}>
+          <div className={`${menu === "stamp" ? onClass : ""} ${menuClass}`}>
             <FontAwesomeIcon icon={faStamp} className={iconClass} />
             <span className={labelClass}>STAMP</span>
           </div>
         </a>
         <a href="/mypage">
-          <div className={menuClass}>
+          <div className={`${menu === "mypage" ? onClass : ""} ${menuClass}`}>
             <FontAwesomeIcon icon={faUser} className={iconClass} />
             <span className={labelClass}>MY</span>
           </div>

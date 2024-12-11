@@ -5,9 +5,9 @@ import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 const ModifyPw = () => {
   const inputBaseClass =
-    "mb-18 border-b border-gray-250 p-10 focus:outline-none";
+    "mb-18 border-b border-neutral-250 p-10 focus:outline-none text-neutral-500";
 
-  const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
+  const buttonClass = "border-none bg-eworldRed text-white";
 
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -47,69 +47,47 @@ const ModifyPw = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Header title="회원정보수정" isBack="true" />
+        <Header title="비밀번호변경" isBack="true" />
         <form
           onSubmit={handleSignUp}
           className="mt-40 flex flex-col items-center"
         >
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이름 *</b>
-            </p>
+            <p className="m-0 text-14">현재 비밀번호</p>
             <input
-              type="text"
-              value="권혜진"
-              onChange={(e) => setUsername(e.target.value)}
+              type="password"
+              value=""
+              //   onChange={(e) => setPassword(e.target.value)}
+              placeholder="현재 비밀번호를 입력하세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required
-              disabled
             />
           </div>
 
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>아이디 *</b>
-            </p>
+            <p className="m-0 text-14">변경할 비밀번호</p>
             <div className="flex">
               <input
-                type="text"
-                value="zinee"
-                onChange={(e) => setUserId(e.target.value)}
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="8자리 이상의 영문자, 숫자 조합"
                 className={`h-36 w-300 ${inputBaseClass}`}
                 required
-                disabled
               />
             </div>
           </div>
 
-          <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이메일 (선택)</b>
-            </p>
+          <div className="mb-50">
+            <p className="m-0 text-14">변경할 비밀번호 확인</p>
             <input
-              type="email"
-              value="test@test.com"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="이메일"
+              type="passwordCheck"
+              value={passwordCheck}
+              onChange={(e) => setPasswordCheck(e.target.value)}
+              placeholder="변경할 비밀번호와 동일하게 입력해주세요"
               className={`h-36 w-300 ${inputBaseClass}`}
-            />
-          </div>
-
-          <div>
-            <p className="m-0 text-14">
-              <b>휴대전화 *</b>
-            </p>
-            <input
-              type="phone"
-              value="01011112222"
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="'-' 문자 없이 숫자만 입력해주세요"
-              className={`mb-0 h-36 w-300 ${inputBaseClass}`}
               required
             />
-          </div>
-          <div className="mb-20 w-full p-15 text-right text-14 font-bold text-eworldRed underline-offset-2">
-            비밀번호 변경
           </div>
 
           {error && <p className="text-red-500">{error}</p>}
@@ -122,7 +100,7 @@ const ModifyPw = () => {
               type="submit"
               className={`h-50 w-300 text-16 ${buttonClass}`}
             >
-              수정 완료
+              비밀번호 수정완료
             </button>
           )}
         </form>
