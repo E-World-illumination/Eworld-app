@@ -12,9 +12,8 @@ import Map from "./pages/Map";
 import Stamp from "./pages/Stamp";
 import MyPage from "./pages/MyPage";
 import Modify from "./pages/Modify";
-
-// Context for user authentication
-export const AuthContext = createContext();
+import ModifyPw from "./pages/ModifyPw";
+import { AuthProvider } from "./provider/AuthProvider";
 
 const App = () => {
   return (
@@ -50,6 +49,7 @@ const App = () => {
           <Route path="/stamp" element={<Stamp />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/modify" element={<Modify />} />
+          <Route path="/modify/password" element={<ModifyPw />} />
         </Routes>
       </Router>
     </AuthProvider>
