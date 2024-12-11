@@ -8,8 +8,11 @@ import Apply from "../components/Apply";
 import { useAuth } from "../provider/AuthProvider";
 
 const MyPage = () => {
-  const [social, setSocial] = useState(null);
-  const [couponData, setCouponData] = useState(null);
+  const [social, setSocial] = useState(null); // api 연동 후 social 받아오기
+  const [couponData, setCouponData] = useState({
+    content: "쿠폰",
+    is_used: false,
+  }); // coupon data는 content, is_used 필요함.
   const [applyData, setApplyData] = useState(null); // api 연동후 coupon applyData 받아오기
   const [userName, setUserName] = useState("손근영"); // api 연동후 username 받아오기
   const { logout } = useAuth();

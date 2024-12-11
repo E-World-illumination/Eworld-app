@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
+import { loginUrl } from "../api/apiClient";
 import MenuBar from "../components/MenuBar";
 
 const Login = () => {
@@ -103,21 +104,36 @@ const Login = () => {
             <img src="/login/social_title.png" alt="" />
           </div>
           <div className="text-center">
-            <button className="bg-white py-5">
+            <button
+              className="bg-white py-5"
+              onClick={() => {
+                window.location.href = loginUrl.kakao;
+              }}
+            >
               <img
                 src="/login/login_kakao.png"
                 alt="카카오 로그인"
                 width="46"
               />
             </button>
-            <button className="bg-white py-5">
+            <button
+              className="bg-white py-5"
+              onClick={() => {
+                window.location.href = loginUrl.naver;
+              }}
+            >
               <img
                 src="/login/login_naver.png"
                 alt="네이버 로그인"
                 width="46"
               />
             </button>
-            <button className="bg-white py-5">
+            <button
+              className="bg-white py-5"
+              onClick={() => {
+                window.location.href = loginUrl.google;
+              }}
+            >
               <img src="/login/login_google.png" alt="구글 로그인" width="46" />
             </button>
           </div>

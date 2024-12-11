@@ -1,33 +1,17 @@
 import React, { useState, useContext } from "react";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
+import StampList from "../components/StampList";
 
 const Stamp = () => {
+  const [stampCount, setStampCount] = useState(6); // api 연동후 stampCount 받아오기
   const textClass = "w-280 text-16 font-bold text-gray-500";
   return (
     <>
       <Header title="STAMP" isBack="false" />
       <div className="mt-30 flex flex-col items-center border-t border-gray-300">
-        <div className="mt-40 grid w-280 grid-cols-2 gap-x-40 gap-y-30">
-          <div>
-            <img src="/stamp/stamp_on.png" alt="스탬프on" width="120" />
-          </div>
-          <div>
-            <img src="/stamp/stamp_on.png" alt="스탬프on" width="120" />
-          </div>
-          <div>
-            <img src="/stamp/stamp_on.png" alt="스탬프on" width="120" />
-          </div>
-          <div>
-            <img src="/stamp/stamp_off.png" alt="스탬프off" width="120" />
-          </div>
-          <div>
-            <img src="/stamp/stamp_off.png" alt="스탬프off" width="120" />
-          </div>
-          <div>
-            <img src="/stamp/stamp_off.png" alt="스탬프off" width="120" />
-          </div>
-        </div>
+        <StampList stampCount={stampCount} />
+
         <div className={`mt-30 ${textClass}`}>
           <span className="text-eworldRed">STAMP 3개</span> - 음료수 교환권
         </div>
