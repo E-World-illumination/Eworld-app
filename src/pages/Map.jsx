@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../App";
+import { useAuth } from "../provider/AuthProvider";
 
 import Header from "../components/Header";
 import { Map } from "react-kakao-maps-sdk";
 import MenuBar from "../components/MenuBar";
 
 const kakaoMap = () => {
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   return (
@@ -23,7 +23,7 @@ const kakaoMap = () => {
         </div>
         <div className="flex h-3/6 items-end">
           <div
-            className={`shadow-customShadow h-260 w-330 rounded-t-[10px] bg-white p-20`}
+            className={`h-260 w-330 rounded-t-[10px] bg-white p-20 shadow-customShadow`}
           >
             <img
               src="/map/giant_toyfriends.png"

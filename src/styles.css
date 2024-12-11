@@ -17,3 +17,19 @@ input::placeholder {
     /* 위쪽, 오른쪽 그림자 */ 5px -5px 5px rgba(0, 0, 0, 0.1),
     /* 아래쪽 그림자 없음 */ 0 0 0 rgba(0, 0, 0, 0);
 }
+
+.boldRedClass {
+  @apply text-20 font-bold text-eworldRed;
+}
+
+.titleClass {
+  @apply w-330 border-b border-gray-300 p-10 text-20 font-bold text-black;
+}
+
+.listGrayClass {
+  @apply px-10 pt-10 text-16 text-gray-500;
+}
+
+.listRedClass {
+  @apply px-10 pt-10 text-16 text-eworldRed;
+}

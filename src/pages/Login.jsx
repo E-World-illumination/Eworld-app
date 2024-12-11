@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../App";
+import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [color, setColor] = useState("eworld");
-  const { login, setIsLoading, isLoading } = useContext(AuthContext);
+  const { login, setIsLoading, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
