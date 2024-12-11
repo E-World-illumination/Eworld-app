@@ -3,17 +3,30 @@
 @tailwind utilities;
 
 .input-base {
-  @apply h-36 w-300 border-b border-gray-300 p-10 text-sm focus:outline-none;
+  @apply h-36 w-300 border-b border-neutral-300 p-10 text-sm focus:outline-none;
 }
 input::placeholder {
   font-size: 13px;
+  color: #cccccc;
 }
 
 .shadow {
-  @apply shadow-lg; /* 기본 그림자 클래스 */
+  @apply shadow-sm; /* 기본 그림자 클래스 */
   box-shadow:
     /* 위쪽, 왼쪽 그림자 */
     -5px -5px 5px rgba(0, 0, 0, 0.1),
     /* 위쪽, 오른쪽 그림자 */ 5px -5px 5px rgba(0, 0, 0, 0.1),
     /* 아래쪽 그림자 없음 */ 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.titleClass {
+  @apply w-330 border-b border-neutral-300 p-10 text-20;
+}
+
+.listGrayClass {
+  @apply px-10 pt-10 text-15 text-neutral-500;
+}
+
+.listRedClass {
+  @apply px-10 pt-10 text-15 text-eworldRed;
 }

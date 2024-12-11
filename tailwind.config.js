@@ -15,6 +15,10 @@ export default {
       fontFamily: {
         pretendard: ["Pretendard-Regular", "sans-serif"],
       },
+      boxShadow: {
+        customShadow:
+          "-2px -2px 3px rgba(0, 0, 0, 0.12), 2px 2px 3px rgba(0, 0, 0, 0.12)",
+      },
     },
   },
   safelist: [

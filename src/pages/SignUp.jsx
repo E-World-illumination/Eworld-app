@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../App";
+import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 
 const SignUp = () => {
   const inputBaseClass =
-    "mb-18 border-b border-gray-250 p-10 focus:outline-none";
+    "mb-18 border-b border-neutral-200 p-10 focus:outline-none";
 
-  const buttonClass = "border-none border-gray-500 bg-eworldRed text-white";
+  const buttonClass = "border-none border-neutral-500 bg-eworldRed text-white";
 
   const [username, setUsername] = useState("");
   const [userId, setUserId] = useState("");
@@ -18,7 +18,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
-  const { login, setIsLoading, isLoading } = useContext(AuthContext);
+  const { login, setIsLoading, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -65,9 +65,7 @@ const SignUp = () => {
           className="mt-40 flex flex-col items-center"
         >
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이름 *</b>
-            </p>
+            <p className="m-0 text-14">이름 *</p>
             <input
               type="text"
               value={username}
@@ -79,9 +77,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>아이디 *</b>
-            </p>
+            <p className="m-0 text-14">아이디 *</p>
             <div className="flex">
               <input
                 type="text"
@@ -101,9 +97,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>비밀번호 *</b>
-            </p>
+            <p className="m-0 text-14">비밀번호 *</p>
             <input
               type="password"
               value={password}
@@ -114,9 +108,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>비밀번호 확인 *</b>
-            </p>
+            <p className="m-0 text-14">비밀번호 확인 *</p>
             <input
               type="passwordCheck"
               value={passwordCheck}
@@ -127,9 +119,7 @@ const SignUp = () => {
             />
           </div>
           <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>이메일 (선택)</b>
-            </p>
+            <p className="m-0 text-14">이메일 (선택)</p>
             <input
               type="email"
               value={email}
@@ -140,9 +130,7 @@ const SignUp = () => {
           </div>
 
           <div className="mb-20">
-            <p className="m-0 text-14">
-              <b>휴대전화 *</b>
-            </p>
+            <p className="m-0 text-14">휴대전화 *</p>
             <input
               type="phone"
               value={phone}
@@ -153,9 +141,9 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="mb-20 flex w-300 items-center text-16 font-bold text-black">
-            <p className="ml-15 mr-40">회원가입 약관에 모두 동의합니다.</p>
-            <input type="checkbox" className="h-20 w-20" />
+          <div className="mb-20 flex w-300 items-center justify-center text-13">
+            <p className="mr-10">회원가입 약관에 모두 동의합니다.</p>
+            <input type="checkbox" className="h-13 w-13" />
           </div>
 
           {error && <p className="text-red-500">{error}</p>}
