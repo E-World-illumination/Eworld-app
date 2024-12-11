@@ -123,7 +123,7 @@ const Login = () => {
           </div>
         </div>
 
-        <p className="pt-40 text-16 font-bold">
+        <p className="pt-40 text-14">
           아직 회원이 아니신가요?{" "}
           <a href="/signup" className="text-eworldRed">
             회원가입
