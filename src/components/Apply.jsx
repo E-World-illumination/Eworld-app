@@ -1,6 +1,6 @@
 const Apply = ({ data }) => {
   return (
-    <div className="mt-50">
+    <div className="mt-40">
       {data ? (
         <>
           <div className="titleClass">응모 내역</div>

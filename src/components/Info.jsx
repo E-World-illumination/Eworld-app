@@ -13,13 +13,16 @@ const Info = ({ social, name }) => {
         }
       }}
     >
-      <div className="flex h-120 w-330 justify-between rounded-[10px] border border-gray-300 p-20">
-        <div className="flex flex-col">
-          <div className="mb-3 pl-8 text-26 font-bold text-black">
-            어서오세요!
-          </div>
+      <div className="flex w-330 items-center justify-between rounded-[10px] border border-neutral-300 px-20 py-25">
+        <div className="w-90">
+          <img src="/login/profile.png" alt="프로필사진" width="74" />
+        </div>
+        <div className="flex w-200 flex-col">
+          <div className="font-bol mb-3 pl-8 text-20">어서오세요!</div>
           <div className="flex items-center">
-            <div className={`boldRedClass pl-8`}>{name} 님</div>
+            <div className={`pl-8 text-20 font-bold text-eworldRed`}>
+              {name} 님
+            </div>
             <img
               src={`/login/login_${social}.png`}
               alt="유저 이미지"
@@ -27,7 +30,7 @@ const Info = ({ social, name }) => {
             />
           </div>
         </div>
-        <div className="flex items-center text-black">
+        <div className="flex items-center">
           {isActive ? <></> : <FontAwesomeIcon icon={faAngleRight} />}
         </div>
       </div>

@@ -27,7 +27,7 @@ const MyPage = () => {
         {/* 로그아웃 버튼 div */}
         <div className="flex h-full items-end pb-50">
           <div
-            className={`boldRedClass mt-50 w-330 rounded-[10px] border border-gray-300 p-10 text-center`}
+            className={`mt-50 w-330 rounded-[10px] border border-neutral-300 p-10 text-center text-eworldRed`}
             onClick={() => {
               logout();
             }}

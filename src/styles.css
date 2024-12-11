@@ -19,18 +19,14 @@ input::placeholder {
     /* 아래쪽 그림자 없음 */ 0 0 0 rgba(0, 0, 0, 0);
 }
 
-.boldRedClass {
-  @apply text-20 font-bold text-eworldRed;
-}
-
 .titleClass {
-  @apply w-330 border-b border-neutral-300 p-10 text-20 font-bold;
+  @apply w-330 border-b border-neutral-300 p-10 text-20;
 }
 
 .listGrayClass {
-  @apply px-10 pt-10 text-16 text-neutral-500;
+  @apply px-10 pt-10 text-15 text-neutral-500;
 }
 
 .listRedClass {
-  @apply px-10 pt-10 text-16 text-eworldRed;
+  @apply px-10 pt-10 text-15 text-eworldRed;
 }
