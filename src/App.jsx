@@ -13,7 +13,8 @@ import Stamp from "./pages/Stamp";
 import MyPage from "./pages/MyPage";
 import Modify from "./pages/Modify";
 import ModifyPw from "./pages/ModifyPw";
-import { AuthProvider } from "./context/AuthContext";
+
+import { AuthProvider } from "./provider/AuthProvider";
 
 const App = () => {
   return (
