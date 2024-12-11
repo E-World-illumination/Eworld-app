@@ -17,7 +17,7 @@ const MenuBar = ({ color }) => {
   return (
     <>
       <div
-        className={`bg-${color} fixed bottom-0 flex h-70 w-full items-center justify-around`}
+        className={`bg-${color} fixed bottom-0 flex h-71 w-full items-center justify-around`}
       >
         <a href="/home">
           <div className={menuClass}>
@@ -33,8 +33,8 @@ const MenuBar = ({ color }) => {
         </a>
 
         <a href="/">
-          <div className="bg-#fff rounded-50% flex h-70 w-70 items-center justify-center first-letter:p-10">
-            <img src={qrcode} alt="QR Code" className="h-70 w-70" />
+          <div className="bg-#fff rounded-50% flex h-71 w-71 items-center justify-center first-letter:p-10">
+            <img src={qrcode} alt="QR Code" className="h-71 w-71" />
           </div>
         </a>
 

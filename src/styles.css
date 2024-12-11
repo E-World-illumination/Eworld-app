@@ -10,7 +10,7 @@ input::placeholder {
 }
 
 .shadow {
-  @apply shadow-lg; /* 기본 그림자 클래스 */
+  @apply shadow-sm; /* 기본 그림자 클래스 */
   box-shadow:
     /* 위쪽, 왼쪽 그림자 */
     -5px -5px 5px rgba(0, 0, 0, 0.1),
