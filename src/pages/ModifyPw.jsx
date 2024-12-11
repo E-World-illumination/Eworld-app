@@ -50,14 +50,14 @@ const ModifyPw = () => {
         <Header title="비밀번호변경" isBack="true" />
         <form
           onSubmit={handleSignUp}
-          className="mt-40 flex flex-col items-center"
+          className="mt-70 flex flex-col items-center"
         >
           <div className="mb-5">
             <p className="m-0 text-14">현재 비밀번호</p>
             <input
               type="password"
               value=""
-              //   onChange={(e) => setPassword(e.target.value)}
+              // onChange={(e) => setPassword(e.target.value)}
               placeholder="현재 비밀번호를 입력하세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required
