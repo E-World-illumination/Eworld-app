@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:8080";
+
 export const apiClient = {
   async get(endpoint) {
     const response = await fetch(`${BASE_URL}${endpoint}`);
