@@ -66,12 +66,12 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="비밀번호를 입력해주세요"
-              className="input-base mb-15"
+              className="input-base mb-30"
               required
             />
           </div>
           {error && <p className="text-red-500">{error}</p>}
-          <p className="mb-36 flex w-300 items-center justify-end text-sm">
+          {/* <p className="mb-36 flex w-300 items-center justify-end text-sm">
             <span>
               <a href="#" className="text-12 font-bold text-black">
                 아이디 찾기
@@ -83,7 +83,7 @@ const Login = () => {
                 비밀번호 찾기
               </a>
             </span>
-          </p>
+          </p> */}
           {isLoading ? (
             <div className="spinner mb-10">
               <MoonLoader size={15}></MoonLoader>
@@ -96,7 +96,7 @@ const Login = () => {
           )}
         </form>
 
-        <div className="flex w-300 flex-col text-base">
+        <div className="mt-30 flex w-300 flex-col text-base">
           <button className="bg-white px-0 py-5">
             <img src="/login/login_kakao.png" alt="카카오 로그인" width="300" />
           </button>

@@ -86,32 +86,6 @@ const Modify = () => {
 
           <div className="mb-5">
             <p className="m-0 text-14">
-              <b>비밀번호 *</b>
-            </p>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="8자리 이상의 영문자, 숫자 조합"
-              className={`h-36 w-300 ${inputBaseClass}`}
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <p className="m-0 text-14">
-              <b>비밀번호 확인 *</b>
-            </p>
-            <input
-              type="passwordCheck"
-              value={passwordCheck}
-              onChange={(e) => setPasswordCheck(e.target.value)}
-              placeholder="비밀번호와 동일하게 입력해주세요"
-              className={`h-36 w-300 ${inputBaseClass}`}
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <p className="m-0 text-14">
               <b>이메일 (선택)</b>
             </p>
             <input
@@ -135,6 +109,9 @@ const Modify = () => {
               className={`h-36 w-300 ${inputBaseClass}`}
               required
             />
+          </div>
+          <div className="w-full p-15 text-right text-14 font-bold text-eworldRed underline-offset-2">
+            비밀번호 변경
           </div>
 
           {error && <p className="text-red-500">{error}</p>}
