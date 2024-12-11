@@ -37,7 +37,7 @@ const MenuBar = (props) => {
         </a>
 
         <a href="/">
-          <div className="bg-#fff rounded-50% flex h-71 w-71 items-center justify-center first-letter:p-10">
+          <div className="rounded-50% flex h-71 w-71 items-center justify-center first-letter:p-10">
             <img src={qrcode} alt="QR Code" className="h-71 w-71" />
           </div>
         </a>
