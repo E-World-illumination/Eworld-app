@@ -4,40 +4,25 @@ import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { loginUrl } from "../api/apiClient";
+import { userLogin } from "../api/authApi";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [color, setColor] = useState("eworld");
   const { login, setIsLoading, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-
-    // Example API call to validate user
+    setError("");
     try {
-      const response = await fetch("http://localhost:5000/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ userId, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        login(data); // Update context with user data
-        navigate("/"); // Navigate to map page
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || "로그인 실패");
-      }
+      const response = await userLogin(userId, password);
+      login(response);
+      navigate("/");
     } catch (err) {
-      console.error("Login failed:", err);
-      setError("An unexpected error occurred. Please try again.");
+      setError(err.message || "로그인 실패");
     } finally {
       setIsLoading(false);
     }
@@ -71,19 +56,6 @@ const Login = () => {
             />
           </div>
           {error && <p className="text-red-500">{error}</p>}
-          {/* <p className="mb-36 flex w-300 items-center justify-end text-sm">
-            <span>
-              <a href="#" className="text-12 font-bold text-black">
-                아이디 찾기
-              </a>
-            </span>
-            <span className="px-5">|</span>
-            <span>
-              <a href="#" className="text-12 font-bold text-black">
-                비밀번호 찾기
-              </a>
-            </span>
-          </p> */}
           {isLoading ? (
             <div className="spinner mb-10">
               <MoonLoader size={15}></MoonLoader>
@@ -92,8 +64,9 @@ const Login = () => {
             <button
               className="h-50 w-300 bg-eworldRed px-0 py-5 text-18 text-white"
               type="submit"
+              disabled={isLoading} // 로딩 중 비활성화
             >
-              로그인
+              {isLoading ? <MoonLoader size={15} /> : "로그인"}
             </button>
           )}
         </form>

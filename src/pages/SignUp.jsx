@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
-import { fetchAllIds } from "../api/authApi";
+import { checkDuplicate } from "../api/authApi";
 import { post } from "../api/apiClient";
 
 const SignUp = () => {
@@ -11,7 +11,7 @@ const SignUp = () => {
     "mb-18 border-b border-neutral-200 p-10 focus:outline-none";
   const buttonClass = "border-none border-neutral-500 bg-eworldRed text-white";
 
-  const [duplicateCheck, setDuplicateCheck] = useState(0);
+  const [duplicateStatus, setDuplicateStatus] = useState("error");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [error, setError] = useState("");
   const [userData, setUserData] = useState({
@@ -63,14 +63,11 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     if (!validateInputs()) return;
-    if (duplicateCheck == 0) {
-      setError("아이디 중복확인을 해주세요.");
+    if (duplicateStatus === "error") {
+      setError("ID 중복확인을 다시 한 번 해주세요.");
       return;
     }
-    if (duplicateCheck == 1) {
-      setError("아이디가 이미 존재합니다.");
-      return;
-    }
+
     setIsLoading(true);
     try {
       const response = await post("/auth/signup", userData);
@@ -82,18 +79,6 @@ const SignUp = () => {
       setError("회원가입 중 오류가 발생했습니다.");
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const checkDuplicate = async (e, userId) => {
-    e.preventDefault();
-    const allIds = await fetchAllIds();
-    if (allIds.includes(userId)) {
-      setDuplicateCheck(1);
-      setError(`${userId}가 이미 존재합니다.`);
-    } else {
-      setDuplicateCheck(2);
-      setError(`${userId}는 사용 가능합니다.`);
     }
   };
 
@@ -129,10 +114,26 @@ const SignUp = () => {
               required
             />
             <button
-              onClick={(e) => checkDuplicate(e, "id")}
+              onClick={async (e) => {
+                if (userData.id.length >= 5) {
+                  const isDuplicate = await checkDuplicate(userData.id); // 중복 확인 결과 대기
+                  if (!isDuplicate) {
+                    setDuplicateStatus("error");
+                    console.log(isDuplicate);
+                    alert("이미 존재하는 ID입니다.");
+                    return;
+                  } else {
+                    setDuplicateStatus("success");
+                    alert("사용 가능한 ID입니다.");
+                    return;
+                  }
+                } else {
+                  alert("아이디는 5자 이상 입력해주세요 .");
+                }
+              }}
               className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
             >
-              중복확인
+              중복 확인
             </button>
           </div>
         </div>
@@ -182,7 +183,6 @@ const SignUp = () => {
             required
           />
         </div>
-        {duplicateCheck && <p className="text-red-500">{error}</p>}
         {error && <p className="text-red-500">{error}</p>}
         {isLoading ? (
           <div className="spinner">

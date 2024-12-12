@@ -7,7 +7,7 @@ const StampList = ({ stampCount }) => {
         </div>
       ))}
       {Array.from({ length: 6 - stampCount }).map((_, i) => (
-        <div>
+        <div key={i}>
           <img src="/stamp/stamp_off.png" alt="스탬프off" width="120" />
         </div>
       ))}

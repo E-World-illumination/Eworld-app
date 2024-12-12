@@ -3,29 +3,44 @@ import { createContext, useContext, useState, useEffect } from "react";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(JSON.parse(storedToken).token);
     }
+    setIsLoading(false); // 초기 로딩 완료
   }, []);
 
-  const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = (tokenData) => {
+    if (!tokenData || typeof tokenData !== "object" || !tokenData.token) {
+      console.error("유효하지 않은 토큰 데이터:", tokenData);
+      return;
+    }
+
+    const tokenValue = tokenData.token;
+
+    setToken(tokenValue);
+
+    try {
+      localStorage.setItem("token", JSON.stringify({ token: tokenValue }));
+    } catch (error) {
+      console.error("로컬 스토리지 저장 중 오류 발생:", error);
+    }
   };
 
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
+    setToken(null);
+    localStorage.removeItem("token");
   };
+
+  const isAuthenticated = () => !!token;
 
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, isLoading, setIsLoading }}
+      value={{ token, login, logout, isLoading, isAuthenticated }}
     >
       {children}
     </AuthContext.Provider>
