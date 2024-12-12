@@ -15,6 +15,7 @@ import Modify from "./pages/Modify";
 import ModifyPw from "./pages/ModifyPw";
 
 import { AuthProvider } from "./provider/AuthProvider";
+import Qr from "./pages/Qr";
 
 const App = () => {
   return (
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/qr" element={<Qr />} />
           <Route path="/map" element={<Map />} />
           <Route path="/stamp" element={<Stamp />} />
           <Route path="/mypage" element={<MyPage />} />
