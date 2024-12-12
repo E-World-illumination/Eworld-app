@@ -4,7 +4,6 @@ import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { loginUrl } from "../api/apiClient";
-import MenuBar from "../components/MenuBar";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
