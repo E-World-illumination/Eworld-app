@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <>
-      <Header title="로그인" isBack="true" />
+      <Header title="로그인" isBack={true} />
       <div className="mt-30 flex flex-col items-center">
         <div className="h-150 w-200 bg-[url('/logo.png')] bg-contain bg-no-repeat"></div>
 

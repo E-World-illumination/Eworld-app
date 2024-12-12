@@ -17,7 +17,7 @@ export default function Header(props) {
     <>
       <div className="mt-40 flex w-full items-center justify-between">
         <div className="ml-15 mt-10 h-20 w-20">
-          {isBack == "true" && (
+          {isBack && (
             <FontAwesomeIcon
               icon={faArrowLeft}
               style={{ width: "20px", height: "20px" }}

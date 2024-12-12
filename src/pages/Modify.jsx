@@ -49,7 +49,7 @@ const Modify = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Header title="회원정보수정" isBack="true" />
+        <Header title="회원정보수정" isBack={true} />
         <form
           onSubmit={handleSignUp}
           className="mt-70 flex flex-col items-center"

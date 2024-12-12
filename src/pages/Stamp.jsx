@@ -10,7 +10,7 @@ const Stamp = () => {
 
   return (
     <>
-      <Header title="STAMP" isBack="false" />
+      <Header title="STAMP" isBack={false} />
       <div className="mt-30 flex flex-col items-center border-t border-neutral-300">
         <StampList stampCount={stampCount} />
         <div className={`mt-30 ${textClass} opacity-50`}>

@@ -47,7 +47,7 @@ const ModifyPw = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Header title="비밀번호변경" isBack="true" />
+        <Header title="비밀번호변경" isBack={true} />
         <form
           onSubmit={handleSignUp}
           className="mt-70 flex flex-col items-center"

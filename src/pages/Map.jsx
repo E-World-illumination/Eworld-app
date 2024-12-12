@@ -14,7 +14,6 @@ const kakaoMap = () => {
     <>
       <Header title="Map" isBack="false"></Header>
       <div className="mt-30 flex h-[86%] flex-col items-center">
-<<<<<<< HEAD
         <div className="h-3/6">
           {
             <Map
@@ -23,18 +22,10 @@ const kakaoMap = () => {
               level={3}
             />
           }
-=======
-        <div className="h-full w-full">
-          <Map
-            center={{ lat: 35.85336, lng: 128.563916 }}
-            style={{ width: "100%", height: "100%", flex: "1 0 auto" }}
-            level={3}
-          />
->>>>>>> 8b74250211a092da9f4d5f5252b84318513e1178
         </div>
         <div className="flex h-3/6 items-end">
           <div
-            className={`shadow-customShadow h-260 w-330 rounded-t-[10px] bg-white p-20`}
+            className={`h-260 w-330 rounded-t-[10px] bg-white p-20 shadow-customShadow`}
           >
             <img
               src="/map/giant_toyfriends.png"

@@ -59,7 +59,7 @@ const SignUp = () => {
   return (
     <>
       <div className="flex flex-col items-center">
-        <Header title="회원가입" isBack="true" />
+        <Header title="회원가입" isBack={true} />
         <form
           onSubmit={handleSignUp}
           className="mt-40 flex flex-col items-center"

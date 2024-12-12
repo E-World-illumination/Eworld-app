@@ -18,7 +18,7 @@ const MyPage = () => {
   const { logout } = useAuth();
   return (
     <>
-      <Header title="MY PAGE" isBack="false" />
+      <Header title="MY PAGE" isBack={false} />
       <div className="mt-50 flex h-5/6 flex-col items-center">
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
         <Info social={social} name={userName} />
