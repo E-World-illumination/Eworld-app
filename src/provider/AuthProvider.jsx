@@ -9,7 +9,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     if (storedToken) {
-      setToken(JSON.parse(storedToken).token);
+      setToken(storedToken);
     }
     setIsLoading(false); // 초기 로딩 완료
   }, []);

@@ -1,35 +1,36 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../provider/AuthProvider";
 import { get } from "../api/apiClient";
 
 const RedirectHandler = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); // AuthProvider의 login 함수
 
   useEffect(() => {
     const fetchToken = async () => {
       try {
-        const response = await get("/auth/google");
-        const result = await response.data;
+        const response = await get("/auth/google/callback");
 
-        if (result.status === "success" && result.token) {
-          // AuthProvider의 login 함수 호출
-          login(result);
-          navigate("/"); // 성공 시 메인 페이지로 이동
+        if (response.status === "success" && response.data.token) {
+          // 토큰을 localStorage에 저장
+          localStorage.setItem("token", response.data.token);
+          console.log("토큰 저장 성공:", response.data.token);
+
+          // 성공 후 메인 페이지로 이동
+          navigate("/");
         } else {
-          throw new Error(result.message || "로그인 실패");
+          console.error("로그인 실패:", response.message);
+          navigate("/login");
         }
       } catch (error) {
         console.error("소셜 로그인 처리 중 오류:", error);
-        navigate("/login"); // 실패 시 로그인 페이지로 이동
+        navigate("/login");
       }
     };
 
     fetchToken();
-  }, [login, navigate]);
+  }, [navigate]);
 
-  return null; // UI 없이 동작만 수행
+  return null; // UI 없음
 };
 
 export default RedirectHandler;
