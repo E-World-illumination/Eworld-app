@@ -66,7 +66,7 @@ const kakaoMap = () => {
   return (
     <>
       <Header title="Map" isBack={false} />
-      <div className="flex h-full flex-col items-center border-t border-neutral-300">
+      <div className="flex h-full flex-col items-center">
         <div className="h-full w-full">
           {
             <Map

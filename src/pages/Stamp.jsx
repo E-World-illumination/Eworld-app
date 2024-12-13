@@ -28,7 +28,7 @@ const Stamp = () => {
   return (
     <>
       <Header title="STAMP" isBack={false} />
-      <div className="flex flex-col items-center border-t border-neutral-300">
+      <div className="flex flex-col items-center">
         {console.log(stampCount)}
         <StampList stampCount={stampCount} />
         <div

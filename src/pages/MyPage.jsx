@@ -43,7 +43,7 @@ const MyPage = () => {
   return (
     <>
       <Header title="MY PAGE" isBack={false} />
-      <div className="flex h-5/6 flex-col items-center border-t border-neutral-300 pt-50">
+      <div className="flex h-5/6 flex-col items-center pt-50">
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
         <Info social={social} name={name} profile_img={profile_img} />
         <Coupon data={couponData} />
