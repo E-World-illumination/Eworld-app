@@ -10,12 +10,12 @@ const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login, setIsLoading, isLoading } = useAuth();
+  const { login, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
+
     setError("");
     try {
       const response = await userLogin(userId, password);
@@ -23,8 +23,6 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       setError(err.message || "로그인 실패");
-    } finally {
-      setIsLoading(false);
     }
   };
 

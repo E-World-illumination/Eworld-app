@@ -6,8 +6,10 @@ import Info from "../components/Info";
 import Coupon from "../components/Coupon";
 import Apply from "../components/Apply";
 import { useAuth } from "../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const [social, setSocial] = useState(null); // api 연동 후 social 받아오기
   const [couponData, setCouponData] = useState({
     content: "쿠폰",
@@ -45,6 +47,7 @@ const MyPage = () => {
             className={`mt-50 w-330 rounded-[10px] border border-neutral-300 p-10 text-center text-eworldRed`}
             onClick={() => {
               logout();
+              navigate("/");
             }}
           >
             로그아웃
