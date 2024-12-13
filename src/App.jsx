@@ -13,6 +13,7 @@ import Stamp from "./pages/Stamp";
 import MyPage from "./pages/MyPage";
 import Modify from "./pages/Modify";
 import ModifyPw from "./pages/ModifyPw";
+import SocialLoginRedirect from "./pages/SocialLoginRedirect";
 
 import { AuthProvider } from "./provider/AuthProvider";
 import Qr from "./pages/Qr";
@@ -53,6 +54,18 @@ const App = () => {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/modify" element={<Modify />} />
           <Route path="/modify/password" element={<ModifyPw />} />
+          <Route
+            path="/auth/google/callback"
+            element={<SocialLoginRedirect />}
+          />
+          <Route
+            path="/auth/kakao/callback"
+            element={<SocialLoginRedirect />}
+          />
+          <Route
+            path="/auth/naver/callback"
+            element={<SocialLoginRedirect />}
+          />
         </Routes>
       </Router>
     </AuthProvider>

@@ -22,7 +22,7 @@ const SignUp = () => {
     phone: "",
   });
 
-  const { setIsLoading, isLoading } = useAuth();
+  const { isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -68,7 +68,6 @@ const SignUp = () => {
       return;
     }
 
-    setIsLoading(true);
     try {
       const response = await post("/auth/signup", userData);
       console.log(response);
@@ -77,8 +76,6 @@ const SignUp = () => {
     } catch (err) {
       console.error("회원가입 오류:", err);
       setError("회원가입 중 오류가 발생했습니다.");
-    } finally {
-      setIsLoading(false);
     }
   };
 

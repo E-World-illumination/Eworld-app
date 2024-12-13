@@ -138,7 +138,7 @@ const Qr = () => {
         </div>
         <div className="mt-20 text-center">QR코드를 인식해 주세요.</div>
       </div>
-      <MenuBar color="eworld" menu="qr" />
+      <MenuBar color="home" menu="qr" />
     </>
   );
 };
