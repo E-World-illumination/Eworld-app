@@ -10,28 +10,33 @@ const ModifyPw = () => {
 
   const buttonClass = "border-none bg-home text-white";
 
-  const [password, setPassword] = useState("");
-  const [passwordCheck, setPasswordCheck] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [newPasswordCheck, setNewPasswordCheck] = useState("");
   const [error, setError] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
-  const { login, setIsLoading, isLoading } = useAuth();
+  const { token, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       const response = await userModify(token, {
-        password,
-        passwordCheck,
-        currentPassword,
+        currentPassword: currentPassword,
+        changePassword: newPassword,
       });
-      if (response.status === 200) {
+      if (response.data.status === "success") {
+        alert("비밀번호 변경 완료");
         navigate("/mypage");
+      } else {
+        setError(response.data.message);
       }
     } catch (err) {
-      console.log(err);
+      if (err.response && err.response.data) {
+        setError(err.response.data.message);
+      } else {
+        setError("비밀번호 변경 중 문제가 발생했습니다.");
+      }
+      console.error("비밀번호 변경 오류:", err);
     }
   };
 
@@ -60,8 +65,8 @@ const ModifyPw = () => {
             <div className="flex">
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
                 placeholder="8자리 이상의 영문자, 숫자 조합"
                 className={`h-36 w-300 ${inputBaseClass}`}
                 required
@@ -73,8 +78,8 @@ const ModifyPw = () => {
             <p className="m-0 text-14">변경할 비밀번호 확인</p>
             <input
               type="passwordCheck"
-              value={passwordCheck}
-              onChange={(e) => setPasswordCheck(e.target.value)}
+              value={newPasswordCheck}
+              onChange={(e) => setNewPasswordCheck(e.target.value)}
               placeholder="변경할 비밀번호와 동일하게 입력해주세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required

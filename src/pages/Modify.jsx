@@ -35,7 +35,7 @@ const Modify = () => {
         email: newEmail,
         phone: newPhone,
       });
-      console.log(response);
+      console.log(response.message);
       alert("수정 완료");
       navigate("/mypage");
     } catch (err) {

@@ -5,6 +5,9 @@ const fetchStampData = async (token) => {
   try {
     const response = await get("/user/stamp", token);
     const data = response.data.data;
+    if (data === undefined) {
+      return 0;
+    }
     return data;
   } catch (error) {
     console.error("스탬프 조회 오류:", error);

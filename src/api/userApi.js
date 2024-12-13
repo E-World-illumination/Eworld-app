@@ -14,8 +14,8 @@ const userInfo = async (token) => {
 const userModify = async (token, data) => {
   try {
     const response = await post(`/user/modify`, data, token);
-    console.log(response.message);
-    return response.message;
+    console.log(response);
+    return response;
   } catch (error) {
     console.error("회원 정보 수정 에러 : ", error);
     return false;
