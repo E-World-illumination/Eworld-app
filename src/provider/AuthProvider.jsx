@@ -25,10 +25,7 @@ export function AuthProvider({ children }) {
     setToken(tokenValue);
 
     try {
-      localStorage.setItem(
-        "token",
-        JSON.stringify({ token: tokenValue, social: false }),
-      );
+      localStorage.setItem("token", tokenValue);
     } catch (error) {
       console.error("로컬 스토리지 저장 중 오류 발생:", error);
     }
@@ -63,10 +60,7 @@ export function socialLogin({ socialUserData }) {
 
   try {
     // 로컬 스토리지에 저장
-    localStorage.setItem(
-      "token",
-      JSON.stringify({ token: tokenValue, social: true }),
-    );
+    localStorage.setItem("token", tokenValue);
   } catch (error) {
     console.error("로컬 스토리지 저장 중 오류 발생:", error);
   }
