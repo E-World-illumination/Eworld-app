@@ -59,7 +59,7 @@ const Qr = () => {
       });
 
       // 데이터베이스에서 보내는 작업
-      // alert(`${qrData} 성공`);
+      alert(`${qrData} 성공`);
     }
   }, [qrData]);
 
@@ -121,24 +121,37 @@ const Qr = () => {
   return (
     <>
       <Header title="QR" isBack={false} />
-      <div className="border-t border-neutral-300">
-        <div className="h-450 w-full bg-[url('/qr_bg.png')] bg-cover bg-center bg-no-repeat">
-          <div className="relative flex h-240 w-240 items-center border">
+      <div className="h-full border-t border-neutral-300 bg-neutral-900">
+        <div className="h-full w-full">
+          {/* 중앙 정렬을 위한 flex 컨테이너 */}
+          <div
+            className="relative flex h-full w-full items-end justify-center"
+            style={{ aspectRatio: "0.3 / 0.3" }}
+          >
             <video
-              className="absolute left-0 top-0 h-full w-full"
+              className="absolute inset-auto h-full w-full object-cover"
               id="videoElement"
               ref={videoRef}
               autoPlay={true}
               playsInline
             ></video>
             <canvas
-              className="absolute left-0 top-0 h-full w-full"
+              className="absolute inset-auto h-full w-full object-cover"
               id="canvasElement"
               ref={canvasRef}
             ></canvas>
+            {/* 카메라 화면 위에 이미지 추가 */}
+            <img
+              src="/qr_line.png"
+              alt="Overlay Image"
+              className="absolute inset-y-1/4 h-200 w-200 object-contain"
+            />
+            {/* 카메라 화면 위에 텍스트 추가 */}
+            <div className="absolute inset-y-2/3 flex items-end justify-center text-lg font-bold text-white">
+              QR 코드를 인식해주세요
+            </div>
           </div>
         </div>
-        <div className="mt-20 text-center">QR코드를 인식해 주세요.</div>
       </div>
       <MenuBar color="home" menu="qr" />
     </>
