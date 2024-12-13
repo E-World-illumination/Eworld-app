@@ -1,17 +1,35 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 import StampList from "../components/StampList";
+import { fetchStampData } from "../api/stampApi";
+import { useAuth } from "../provider/AuthProvider";
 
 const Stamp = () => {
-  const [stampCount, setStampCount] = useState(5); // api 연동후 stampCount 받아오기
-
+  const [stampCount, setStampCount] = useState(0); // api 연동후 stampCount 받아오기
+  const { token } = useAuth();
+  console.log(token);
   const textClass = "w-280 text-16 font-bold text-neutral-500";
+
+  useEffect(() => {
+    if (token) {
+      const fetchCount = async () => {
+        const stampData = await fetchStampData(token);
+        console.log(stampData);
+        setStampCount(stampData.length);
+      };
+      fetchCount();
+
+      console.log(stampCount);
+    }
+    console.log(stampCount);
+  }, [token]);
 
   return (
     <>
       <Header title="STAMP" isBack={false} />
       <div className="flex flex-col items-center border-t border-neutral-300">
+        {console.log(stampCount)}
         <StampList stampCount={stampCount} />
         <div
           className={`${stampCount > 2 ? "opacity-100" : "opacity-50"} ${textClass} mt-30`}

@@ -43,4 +43,14 @@ const userInfo = async (token) => {
   }
 };
 
+const googleLogin = async () => {
+  try {
+    const response = await get("/auth/google");
+    return response.data;
+  } catch (error) {
+    console.error("구글 로그인 에러 : ", error);
+    return false;
+  }
+};
+
 export { fetchAllIds, checkDuplicate, userLogin, userInfo };

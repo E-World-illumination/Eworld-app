@@ -51,11 +51,6 @@ const SignUp = () => {
       setError("이름은 2자리 이상이어야 합니다.");
       return false;
     }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (userData.email && !emailRegex.test(userData.email)) {
-      setError("이메일 형식이 올바르지 않습니다.");
-      return false;
-    }
     setError("");
     return true;
   };
