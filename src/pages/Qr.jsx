@@ -122,19 +122,21 @@ const Qr = () => {
     <>
       <Header title="QR" isBack={false} />
       <div className="border-t border-neutral-300">
-        <div className="relative h-450 w-full bg-[url('/qr_bg.png')] bg-cover bg-center bg-no-repeat">
-          <video
-            className="absolute left-0 top-0 h-full w-full"
-            id="videoElement"
-            ref={videoRef}
-            autoPlay={true}
-            playsInline
-          ></video>
-          <canvas
-            className="absolute left-0 top-0 h-full w-full"
-            id="canvasElement"
-            ref={canvasRef}
-          ></canvas>
+        <div className="h-450 w-full bg-[url('/qr_bg.png')] bg-cover bg-center bg-no-repeat">
+          <div className="relative flex h-240 w-240 items-center border">
+            <video
+              className="absolute left-0 top-0 h-full w-full"
+              id="videoElement"
+              ref={videoRef}
+              autoPlay={true}
+              playsInline
+            ></video>
+            <canvas
+              className="absolute left-0 top-0 h-full w-full"
+              id="canvasElement"
+              ref={canvasRef}
+            ></canvas>
+          </div>
         </div>
         <div className="mt-20 text-center">QR코드를 인식해 주세요.</div>
       </div>

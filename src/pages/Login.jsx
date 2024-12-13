@@ -81,7 +81,7 @@ const Login = () => {
               }}
             >
               <img
-                src="/login/login_kakao.png"
+                src="/login/login_KAKAO.png"
                 alt="카카오 로그인"
                 width="46"
               />
@@ -93,7 +93,7 @@ const Login = () => {
               }}
             >
               <img
-                src="/login/login_naver.png"
+                src="/login/login_NAVER.png"
                 alt="네이버 로그인"
                 width="46"
               />
@@ -104,7 +104,7 @@ const Login = () => {
                 window.location.href = loginUrl.google;
               }}
             >
-              <img src="/login/login_google.png" alt="구글 로그인" width="46" />
+              <img src="/login/login_GOOGLE.png" alt="구글 로그인" width="46" />
             </button>
           </div>
         </div>

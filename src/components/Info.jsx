@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
-const Info = ({ social, name }) => {
+const Info = ({ social, name, profile_img }) => {
   const isActive = !!social;
 
   return (
@@ -15,7 +15,11 @@ const Info = ({ social, name }) => {
     >
       <div className="flex w-330 items-center justify-between rounded-[10px] border border-neutral-300 px-20 py-25">
         <div className="w-90">
-          <img src="/login/profile.png" alt="프로필사진" width="74" />
+          <img
+            src={`${profile_img ? profile_img : "/login/profile.png"}`}
+            alt="프로필사진"
+            width="74"
+          />
         </div>
         <div className="flex w-200 flex-col">
           <div className="font-bol mb-3 pl-8 text-20">어서오세요!</div>

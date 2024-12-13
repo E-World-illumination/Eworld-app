@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 
@@ -7,38 +7,55 @@ import Coupon from "../components/Coupon";
 import Apply from "../components/Apply";
 import { useAuth } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { userInfo } from "../api/authApi";
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const [social, setSocial] = useState(null); // api 연동 후 social 받아오기
+  const [userData, setUserData] = useState({
+    name: "",
+    phone: "",
+    profile_img: "",
+    email: "",
+    social: "",
+  });
   const [couponData, setCouponData] = useState({
     content: "쿠폰",
     is_used: false,
-  }); // coupon data는 content, is_used 필요함.
+  });
+  // coupon data는 content, is_used 필요함.
   const [applyData, setApplyData] = useState(null); // api 연동후 coupon applyData 받아오기
-  const [userName, setUserName] = useState("손근영"); // api 연동후 username 받아오기
   const [error, setError] = useState("");
   const { logout } = useAuth();
 
   const getUserInfo = async (e) => {
-    setError("");
     try {
-      const response = await userLogin(userId, password);
-      login(response);
-      navigate("/");
+      const token = JSON.parse(localStorage.getItem("token"));
+
+      if (!token) {
+        alert("로그인이 필요합니다.");
+        navigate("/login");
+        window.location.reload();
+      }
+
+      const response = await userInfo(token.token);
+      setUserData(response.data);
     } catch (err) {
-      setError(err.message || "로그인 실패");
-    } finally {
-      setIsLoading(false);
+      setError(err.message || "회원 정보 요청 실패");
     }
   };
+
+  useEffect(() => getUserInfo, []);
 
   return (
     <>
       <Header title="MY PAGE" isBack={false} />
       <div className="flex h-5/6 flex-col items-center border-t border-neutral-300 pt-50">
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
-        <Info social={social} name={userName} />
+        <Info
+          social={userData.social}
+          name={userData.name}
+          profile_img={userData.profile_img}
+        />
         <Coupon data={couponData} />
         <Apply data={applyData} />
         {/* 로그아웃 버튼 div */}

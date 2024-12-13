@@ -31,4 +31,16 @@ const userLogin = async (id, password) => {
   }
 };
 
-export { fetchAllIds, checkDuplicate, userLogin };
+const userInfo = async (token) => {
+  try {
+    console.log(token);
+    const response = await get(`/user/data`, token);
+
+    return response.data;
+  } catch (error) {
+    console.error("회원 정보 요청 에러 : ", error);
+    return false;
+  }
+};
+
+export { fetchAllIds, checkDuplicate, userLogin, userInfo };
