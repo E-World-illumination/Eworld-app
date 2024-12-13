@@ -121,7 +121,7 @@ const Qr = () => {
   return (
     <>
       <Header title="QR" isBack={false} />
-      <div className="h-full border-t border-neutral-300 bg-neutral-900">
+      <div className="h-full bg-neutral-900">
         <div className="h-full w-full">
           {/* 중앙 정렬을 위한 flex 컨테이너 */}
           <div
