@@ -61,4 +61,15 @@ const getToken = (data) => {
   return token;
 };
 
-export { db, DBsocialSignin, getToken, DBfindUser };
+const verifyToken = (token) => {
+  let decoded;
+  try {
+    decoded = JWT.verify(token.split(" ")[1], process.env.JWT_SECRET);
+  } catch (e) {
+    console.log(e);
+    decoded = "error";
+  }
+  return decoded;
+};
+
+export { db, getDate, DBsocialSignin, getToken, DBfindUser, verifyToken };

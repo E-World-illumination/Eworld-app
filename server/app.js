@@ -5,13 +5,21 @@ import { db } from "./db.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import { router as authRouter } from "./routes/auth.js";
+import { router as userRouter } from "./routes/user.js";
 
-app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 dotenv.config();
 
 app.get("/", (req, res) => {
   res.send("Node.js server is running!");
+});
+
+app.post("/", (req, res) => {
+  console.log(req.body);
+  console.log(req.headers);
+  res.send("");
 });
 
 app.get("/query", (req, res) => {
@@ -27,23 +35,10 @@ app.get("/query", (req, res) => {
   });
 });
 
-//로그인, 소셜 로그인
-app.post("/login", (req, res) => {
-  const { id, password } = req.body;
-  const query = "SELECT * FROM user WHERE id = ? AND password = ?";
-
-  db.query(query, [id, password], (err, results) => {
-    if (err) {
-      console.error("Error running query:", err);
-      res.status(500).send("Error running query");
-    } else {
-      res.json(results);
-    }
-  });
-});
-
 // 소셜 로그인 인증
 app.use("/auth", authRouter);
+
+app.use("/user", userRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);

@@ -44,7 +44,7 @@ router.get("/callback", async (req, res) => {
 
   const response_ = await fetch(baseUri_, requestOptions_);
   const data_ = await response_.json();
-  return res.json(data_);
+  //return res.json(data_);
 
   const result = await DBfindUser(data_.id, "KAKAO");
 
