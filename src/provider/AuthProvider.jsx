@@ -14,13 +14,13 @@ export function AuthProvider({ children }) {
     setIsLoading(false); // 초기 로딩 완료
   }, []);
 
-  const login = (tokenData) => {
-    if (!tokenData || typeof tokenData !== "object" || !tokenData.token) {
-      console.error("유효하지 않은 토큰 데이터:", tokenData);
+  const login = (userData) => {
+    if (!userData.data.token) {
+      console.error("유효하지 않은 토큰 데이터:", userData);
       return;
     }
 
-    const tokenValue = tokenData.token;
+    const tokenValue = userData.data.token;
 
     setToken(tokenValue);
 
