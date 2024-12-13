@@ -17,7 +17,22 @@ const MyPage = () => {
   }); // coupon data는 content, is_used 필요함.
   const [applyData, setApplyData] = useState(null); // api 연동후 coupon applyData 받아오기
   const [userName, setUserName] = useState("손근영"); // api 연동후 username 받아오기
+  const [error, setError] = useState("");
   const { logout } = useAuth();
+
+  const getUserInfo = async (e) => {
+    setError("");
+    try {
+      const response = await userLogin(userId, password);
+      login(response);
+      navigate("/");
+    } catch (err) {
+      setError(err.message || "로그인 실패");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <Header title="MY PAGE" isBack={false} />
