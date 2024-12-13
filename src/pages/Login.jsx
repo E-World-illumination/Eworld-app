@@ -60,7 +60,7 @@ const Login = () => {
             </div>
           ) : (
             <button
-              className="h-50 w-300 bg-eworldRed px-0 py-5 text-18 text-white"
+              className="h-50 w-300 bg-home px-0 py-5 text-18 text-white"
               type="submit"
               disabled={isLoading} // 로딩 중 비활성화
             >
@@ -111,7 +111,7 @@ const Login = () => {
 
         <p className="pt-40 text-14">
           아직 회원이 아니신가요?{" "}
-          <a href="/signup" className="text-eworldRed">
+          <a href="/signup" className="text-bgRed">
             회원가입
           </a>
         </p>

@@ -30,7 +30,7 @@ const MenuBar = (props) => {
         </a>
         <a href="/map">
           <div
-            className={`${menu === "map" ? "text-[#7A4F0B]" : "text-white"} ${menuClass}`}
+            className={`${menu === "map" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faLocationDot} className={iconClass} />
             <span className={labelClass}>MAP</span>
@@ -45,7 +45,7 @@ const MenuBar = (props) => {
 
         <a href="/stamp">
           <div
-            className={`${menu === "stamp" ? "text-[#7A4F0B]" : "text-white"} ${menuClass}`}
+            className={`${menu === "stamp" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faStamp} className={iconClass} />
             <span className={labelClass}>STAMP</span>
@@ -53,7 +53,7 @@ const MenuBar = (props) => {
         </a>
         <a href="/mypage">
           <div
-            className={`${menu === "mypage" ? "text-[#7A4F0B]" : "text-white"} ${menuClass}`}
+            className={`${menu === "mypage" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faUser} className={iconClass} />
             <span className={labelClass}>MY</span>

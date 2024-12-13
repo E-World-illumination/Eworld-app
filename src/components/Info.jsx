@@ -20,9 +20,7 @@ const Info = ({ social, name }) => {
         <div className="flex w-200 flex-col">
           <div className="font-bol mb-3 pl-8 text-20">어서오세요!</div>
           <div className="flex items-center">
-            <div className={`pl-8 text-20 font-bold text-eworldRed`}>
-              {name} 님
-            </div>
+            <div className={`pl-8 text-20 font-bold text-home`}>{name} 님</div>
             <img
               src={`/login/login_${social}.png`}
               alt="유저 이미지"

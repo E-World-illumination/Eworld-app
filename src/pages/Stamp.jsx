@@ -11,21 +11,21 @@ const Stamp = () => {
   return (
     <>
       <Header title="STAMP" isBack={false} />
-      <div className="mt-30 flex flex-col items-center border-t border-neutral-300">
+      <div className="flex flex-col items-center border-t border-neutral-300">
         <StampList stampCount={stampCount} />
         <div
           className={`${stampCount > 2 ? "opacity-100" : "opacity-50"} ${textClass} mt-30`}
         >
-          <span className="text-eworldRed">STAMP 3개</span> - 음료수 교환권
+          <span className="text-bgRed">STAMP 3개</span> - 음료수 교환권
         </div>
         <div
           className={`${stampCount > 5 ? "opacity-100" : "opacity-50"} mt-5 ${textClass}`}
         >
-          <span className="text-eworldRed">STAMP 6개</span> - 이월드 자유이용권
-          응모 가능
+          <span className="text-bgRed">STAMP 6개</span> - 이월드 자유이용권 응모
+          가능
         </div>
       </div>
-      <MenuBar color="eworld" menu="stamp" />
+      <MenuBar color="home" menu="stamp" />
     </>
   );
 };

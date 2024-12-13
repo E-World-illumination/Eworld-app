@@ -11,6 +11,7 @@ export default {
         naver: "#03c759",
         google: "#4285f4",
         home: "#0E4D3C",
+        bgRed: "#A02523",
       },
       fontFamily: {
         pretendard: ["Pretendard-Regular", "sans-serif"],

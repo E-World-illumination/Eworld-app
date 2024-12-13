@@ -15,8 +15,8 @@ export default function Header(props) {
 
   return (
     <>
-      <div className="mt-40 flex w-full items-center justify-between">
-        <div className="ml-15 mt-10 h-20 w-20">
+      <div className="flex w-full items-center justify-between bg-[url('/home/main_bg.png')] bg-cover bg-center py-10">
+        <div className="ml-15 h-20 w-20 text-white">
           {isBack && (
             <FontAwesomeIcon
               icon={faArrowLeft}
@@ -26,11 +26,9 @@ export default function Header(props) {
           )}
         </div>
         <div>
-          <h2 className="text-26 font-bold">{title}</h2>
+          <h2 className="text-26 font-bold text-white">{title}</h2>
         </div>
-        <div className="invisible ml-10 w-30">
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </div>
+        <div className="invisible ml-10 w-30"></div>
       </div>
     </>
   );

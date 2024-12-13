@@ -9,7 +9,7 @@ import { post } from "../api/apiClient";
 const SignUp = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-200 p-10 focus:outline-none";
-  const buttonClass = "border-none border-neutral-500 bg-eworldRed text-white";
+  const buttonClass = "border-none border-neutral-500 bg-home text-white";
 
   const [duplicateStatus, setDuplicateStatus] = useState("error");
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -22,7 +22,7 @@ const SignUp = () => {
     phone: "",
   });
 
-  const { setIsLoading, isLoading } = useAuth();
+  const { isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -40,7 +40,7 @@ const SignUp = () => {
       return false;
     }
     if (userData.password !== passwordCheck) {
-      setError("비밀번호와 확인란이 다릅니다.");
+      setError("비밀번호가 일치하지 않습니다.");
       return false;
     }
     if (userData.phone.length < 10) {
@@ -68,7 +68,6 @@ const SignUp = () => {
       return;
     }
 
-    setIsLoading(true);
     try {
       const response = await post("/auth/signup", userData);
       console.log(response);
@@ -77,8 +76,6 @@ const SignUp = () => {
     } catch (err) {
       console.error("회원가입 오류:", err);
       setError("회원가입 중 오류가 발생했습니다.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -114,6 +111,7 @@ const SignUp = () => {
               required
             />
             <button
+              type="button"
               onClick={async (e) => {
                 if (userData.id.length >= 5) {
                   const isDuplicate = await checkDuplicate(userData.id); // 중복 확인 결과 대기

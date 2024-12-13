@@ -71,7 +71,7 @@ const kakaoMap = () => {
   return (
     <>
       <Header title="Map" isBack={false} />
-      <div className="mt-30 flex h-full flex-col items-center">
+      <div className="flex h-full flex-col items-center border-t border-neutral-300">
         <div className="h-full w-full">
           {
             <Map
@@ -126,7 +126,7 @@ const kakaoMap = () => {
           </div>
         )}
       </div>
-      <MenuBar color="eworld" menu="map" />
+      <MenuBar color="home" menu="map" />
     </>
   );
 };

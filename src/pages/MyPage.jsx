@@ -36,7 +36,7 @@ const MyPage = () => {
   return (
     <>
       <Header title="MY PAGE" isBack={false} />
-      <div className="mt-50 flex h-5/6 flex-col items-center">
+      <div className="flex h-5/6 flex-col items-center border-t border-neutral-300 pt-50">
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
         <Info social={social} name={userName} />
         <Coupon data={couponData} />
@@ -44,7 +44,7 @@ const MyPage = () => {
         {/* 로그아웃 버튼 div */}
         <div className="flex h-full items-end pb-50">
           <div
-            className={`mt-50 w-330 rounded-[10px] border border-neutral-300 p-10 text-center text-eworldRed`}
+            className={`mt-50 w-330 rounded-[10px] border border-neutral-300 p-10 text-center text-home`}
             onClick={() => {
               logout();
               navigate("/");
@@ -54,7 +54,7 @@ const MyPage = () => {
           </div>
         </div>
       </div>
-      <MenuBar color="eworld" menu="mypage" />
+      <MenuBar color="home" menu="mypage" />
     </>
   );
 };

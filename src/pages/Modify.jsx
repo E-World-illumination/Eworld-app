@@ -9,7 +9,7 @@ const Modify = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-250 p-10 focus:outline-none text-neutral-500";
 
-  const buttonClass = "border-none bg-eworldRed text-white";
+  const buttonClass = "border-none bg-home text-white";
 
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
@@ -102,7 +102,7 @@ const Modify = () => {
               required
             />
           </div>
-          <div className="mb-40 w-full px-15 text-right text-14 font-bold text-eworldRed underline underline-offset-2">
+          <div className="text-bgRed mb-40 w-full px-15 text-right text-14 font-bold underline underline-offset-2">
             <a href="/modify/password">비밀번호 변경</a>
           </div>
 

@@ -121,7 +121,7 @@ const Qr = () => {
   return (
     <>
       <Header title="QR" isBack={false} />
-      <div className="mt-30 border-t border-neutral-300">
+      <div className="border-t border-neutral-300">
         <div className="relative h-450 w-full bg-[url('/qr_bg.png')] bg-cover bg-center bg-no-repeat">
           <video
             className="absolute left-0 top-0 h-full w-full"
@@ -138,7 +138,7 @@ const Qr = () => {
         </div>
         <div className="mt-20 text-center">QR코드를 인식해 주세요.</div>
       </div>
-      <MenuBar color="eworld" menu="qr" />
+      <MenuBar color="home" menu="qr" />
     </>
   );
 };

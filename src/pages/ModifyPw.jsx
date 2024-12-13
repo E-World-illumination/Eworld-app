@@ -7,7 +7,7 @@ const ModifyPw = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-250 p-10 focus:outline-none text-neutral-500";
 
-  const buttonClass = "border-none bg-eworldRed text-white";
+  const buttonClass = "border-none bg-home text-white";
 
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
