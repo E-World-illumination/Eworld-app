@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { userInfo } from "../api/userApi";
 
 const AuthContext = createContext();
 
@@ -13,6 +14,7 @@ export function AuthProvider({ children }) {
     }
     setIsLoading(false); // 초기 로딩 완료
   }, []);
+  const [userData, setUserData] = useState({});
 
   const login = (userData) => {
     if (!userData.data.token) {
@@ -38,32 +40,36 @@ export function AuthProvider({ children }) {
 
   const isAuthenticated = () => !!token;
 
+  const fetchUserData = async () => {
+    if (token) {
+      try {
+        const userResponse = await userInfo(token);
+        setUserData(userResponse.data);
+      } catch (error) {
+        console.error("회원 정보 요청 실패:", error);
+        setUserData(null);
+      }
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, [token]);
+
   return (
     <AuthContext.Provider
-      value={{ token, login, logout, isLoading, isAuthenticated }}
+      value={{
+        token,
+        login,
+        logout,
+        isLoading,
+        isAuthenticated,
+        userData,
+      }}
     >
       {children}
     </AuthContext.Provider>
   );
-}
-
-export function socialLogin({ socialUserData }) {
-  if (!socialUserData.data.token) {
-    console.error("소셜 로그인에서 유효하지 않은 토큰 데이터:", socialUserData);
-    return;
-  }
-
-  const tokenValue = socialUserData.data.token;
-
-  // 상태 업데이트
-  setToken(tokenValue);
-
-  try {
-    // 로컬 스토리지에 저장
-    localStorage.setItem("token", tokenValue);
-  } catch (error) {
-    console.error("로컬 스토리지 저장 중 오류 발생:", error);
-  }
 }
 
 export function useAuth() {

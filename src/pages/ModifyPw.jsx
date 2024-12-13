@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
+import { userModify } from "../api/userApi";
 const ModifyPw = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-250 p-10 focus:outline-none text-neutral-500";
@@ -14,33 +15,23 @@ const ModifyPw = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
+  const [currentPassword, setCurrentPassword] = useState("");
   const { login, setIsLoading, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/api/modify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password, email, phone }),
+      const response = await userModify(token, {
+        password,
+        passwordCheck,
+        currentPassword,
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        login(data); // Update context with user data
-        navigate("/"); // Navigate to map page
-      } else {
-        const errorData = await response.json();
-        setError(errorData.message || "정보수정 에러");
+      if (response.status === 200) {
+        navigate("/mypage");
       }
     } catch (err) {
       console.log(err);
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -56,8 +47,8 @@ const ModifyPw = () => {
             <p className="m-0 text-14">현재 비밀번호</p>
             <input
               type="password"
-              value=""
-              // onChange={(e) => setPassword(e.target.value)}
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
               placeholder="현재 비밀번호를 입력하세요"
               className={`h-36 w-300 ${inputBaseClass}`}
               required

@@ -31,18 +31,6 @@ const userLogin = async (id, password) => {
   }
 };
 
-const userInfo = async (token) => {
-  try {
-    console.log(token);
-    const response = await get(`/user/data`, token);
-
-    return response.data;
-  } catch (error) {
-    console.error("회원 정보 요청 에러 : ", error);
-    return false;
-  }
-};
-
 const googleLogin = async () => {
   try {
     const response = await get("/auth/google");
@@ -53,4 +41,4 @@ const googleLogin = async () => {
   }
 };
 
-export { fetchAllIds, checkDuplicate, userLogin, userInfo };
+export { fetchAllIds, checkDuplicate, userLogin };
