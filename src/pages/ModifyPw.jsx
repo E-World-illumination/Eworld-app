@@ -19,6 +19,17 @@ const ModifyPw = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+
+    if (newPassword.length < 8) {
+      setError("비밀번호는 8자리 이상이어야 합니다.");
+      return false;
+    }
+
+    if (newPassword !== newPasswordCheck) {
+      setError("비밀번호가 일치하지 않습니다.");
+      return false;
+    }
+
     try {
       const response = await userModify(token, {
         currentPassword: currentPassword,
@@ -34,7 +45,7 @@ const ModifyPw = () => {
       if (err.response && err.response.data) {
         setError(err.response.data.message);
       } else {
-        setError("비밀번호 변경 중 문제가 발생했습니다.");
+        setError("기존 비밀번호가 일치하지 않습니다.");
       }
       console.error("비밀번호 변경 오류:", err);
     }
@@ -77,7 +88,7 @@ const ModifyPw = () => {
           <div className="mb-50">
             <p className="m-0 text-14">변경할 비밀번호 확인</p>
             <input
-              type="passwordCheck"
+              type="password"
               value={newPasswordCheck}
               onChange={(e) => setNewPasswordCheck(e.target.value)}
               placeholder="변경할 비밀번호와 동일하게 입력해주세요"
