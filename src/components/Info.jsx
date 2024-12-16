@@ -19,6 +19,7 @@ const Info = ({ social, name, profile_img }) => {
             src={`${profile_img ? profile_img : "/login/profile.png"}`}
             alt="프로필사진"
             width="74"
+            className="rounded-full"
           />
         </div>
         <div className="flex w-200 flex-col">
