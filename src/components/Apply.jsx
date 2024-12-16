@@ -4,7 +4,7 @@ const Apply = ({ data }) => {
       {data ? (
         <>
           <div className="titleClass">응모 내역</div>
-          <div className="listRedClass">ㆍ응모 내역이 있습니다.</div>
+          <div className="text-home">ㆍ자유이용권 응모 완료되었습니다.</div>
         </>
       ) : (
         <>

@@ -39,7 +39,8 @@ const MyPage = () => {
     if (token) {
       getUserCoupon();
     }
-  }, [token]);
+  }, []); // reload 되면서 couponData가 undefined가 되어서 []에 token을 삭제했으나 페이지 로딩은 되는데 파일을 다시 save하면 또 undefined가 됨
+  // save할때마다 couponData가 계속 바뀜
 
   return (
     <>
