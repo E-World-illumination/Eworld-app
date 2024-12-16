@@ -54,6 +54,11 @@ const App = () => {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/modify" element={<Modify />} />
           <Route path="/modify/password" element={<ModifyPw />} />
+          <Route path="/soaiclLogin" element={<ModifyPw />} />
+          <Route
+            path="/SocialLoginRedirect"
+            element={<SocialLoginRedirect />}
+          />
           <Route
             path="/auth/google/callback"
             element={<SocialLoginRedirect />}

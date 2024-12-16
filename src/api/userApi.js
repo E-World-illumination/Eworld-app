@@ -2,7 +2,6 @@ import { get, post } from "./apiClient";
 
 const userInfo = async (token) => {
   try {
-    console.log(token);
     const response = await get(`/user/data`, token);
     return response.data;
   } catch (error) {

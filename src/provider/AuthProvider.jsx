@@ -23,7 +23,6 @@ export function AuthProvider({ children }) {
     }
 
     const tokenValue = userData.data.token;
-
     setToken(tokenValue);
 
     try {
