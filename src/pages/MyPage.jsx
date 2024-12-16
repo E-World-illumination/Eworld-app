@@ -28,6 +28,7 @@ const MyPage = () => {
   const getUserCoupon = async () => {
     try {
       const couponResponse = await userCoupon(token);
+      console.log(couponResponse);
       setCouponData(couponResponse.data[0]);
     } catch (err) {
       setError(err.message || "쿠폰 요청 실패");

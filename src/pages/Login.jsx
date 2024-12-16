@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
@@ -12,6 +12,12 @@ const Login = () => {
   const [error, setError] = useState("");
   const { login, isLoading } = useAuth();
   const navigate = useNavigate();
+
+  const context = useAuth();
+  useEffect(() => {
+    // Log the entire context object
+    console.log(context);
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

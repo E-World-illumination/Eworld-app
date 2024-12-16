@@ -1,4 +1,13 @@
 const Coupon = ({ data }) => {
+  console.log(data);
+
+  if (!data) {
+    data = {
+      data: 1,
+      is_used: 1,
+    };
+  }
+
   return (
     <div className="mt-40">
       <div className="titleClass">쿠폰 내역</div>
