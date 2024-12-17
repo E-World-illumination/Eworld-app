@@ -11,7 +11,7 @@ const kakaoMap = () => {
   const stampInfoRef = useRef(null); // stamp_info div에 대한 참조
   const [courseData, setCourseData] = useState([]);
   const [stamp, setStamp] = useState([]);
-  const stampedIndexes = new Set(stamp.map((item) => item.stamp.toString()));
+  const stampedIndexes = new Set(stamp.map((item) => item.stamp));
   const { token } = useAuth();
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const kakaoMap = () => {
                     lng: position.longitude,
                   }} // 마커를 표시할 위치
                   image={{
-                    src: stampedIndexes.has(position.qr)
+                    src: stampedIndexes.has(position.key)
                       ? "/map/pin_on.png"
                       : "/map/pin_off.png", // 마커이미지의 주소
                     size: { width: 40, height: 36 }, // 마커이미지의 크기
@@ -121,7 +121,7 @@ const kakaoMap = () => {
                 <div className="pr-5 pt-10">
                   <img
                     src={
-                      stampedIndexes.has(selectedInfo.qr)
+                      stampedIndexes.has(selectedInfo.key)
                         ? "/stamp/stamp_on.png"
                         : "/stamp/stamp_off.png"
                     }
