@@ -29,10 +29,18 @@ router.get("/callback", async (req, res) => {
       "X-Naver-Client-Secret": process.env.NAVER_CLIENT_SECRET,
     },
   };
+
   const response = await fetch(baseUri, requestOptions);
   const data = await response.json();
 
   const token = data.access_token;
+
+  /*return res.json({
+    uri: baseUri,
+    result: response,
+    token: data.access_token,
+  });*/
+
   //받은 토큰으로 유저정보 받기
   const baseUri_ = "https://openapi.naver.com/v1/nid/me";
   const requestOptions_ = {
@@ -44,9 +52,11 @@ router.get("/callback", async (req, res) => {
 
   const response_ = await fetch(baseUri_, requestOptions_);
   const data_ = await response_.json();
+
+  console.log(data_);
   //return res.json(data_);
 
-  const result = await DBfindUser(data_.id, "KAKAO");
+  const result = await DBfindUser(data_.response.id, "NAVER");
 
   let jwtToken;
   if (!result[0]) {
@@ -55,9 +65,11 @@ router.get("/callback", async (req, res) => {
         data_.response.name,
         data_.response.id,
         data_.response.email,
+        data_.response.profile_image,
         "NAVER"
       );
       jwtToken = await getToken({
+        key: results.insertId,
         id: data_.response.id,
         name: data_.response.name,
         social: "NAVER",
@@ -71,16 +83,22 @@ router.get("/callback", async (req, res) => {
     }
   } else {
     jwtToken = await getToken({
+      key: result[0].key,
       id: result[0].id,
       name: result[0].name,
       social: "NAVER",
     });
   }
+  /*
   return res.status(200).json({
     status: "success",
     message: "로그인 성공.",
     data: { token: jwtToken },
   });
+  */
+  return res.redirect(
+    `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+  );
 });
 
 export { router };

@@ -9,7 +9,7 @@ import { router as userRouter } from "./routes/user.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors());
+app.use(cors({ credentials: true }));
 dotenv.config();
 
 app.get("/", (req, res) => {

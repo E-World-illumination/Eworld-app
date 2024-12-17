@@ -88,6 +88,7 @@ router.post("/duplicate", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("login");
   const { id, password } = req.body;
   if (!id || !password) {
     return res.status(400).json({
@@ -99,8 +100,10 @@ router.post("/login", async (req, res) => {
     "SELECT * FROM user WHERE id = ? AND password = ?;",
     [id, password]
   );
+  console.log(result[0]);
+  console.log(!result[0][0]);
 
-  if (!result[0]) {
+  if (!result[0][0]) {
     return res.status(400).json({
       status: "error",
       message: "회원 정보가 존재하지 않습니다.",

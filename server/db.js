@@ -27,10 +27,10 @@ const getDate = () => {
 };
 
 // DB에 회원 정보 넣기
-const DBsocialSignin = async (name, id, email = null, social) => {
+const DBsocialSignin = async (name, id, email = null, photo, social) => {
   const [results, fields] = await db.execute(
-    "INSERT INTO `user`(`name`, `id`, `email`, `social`, `created_at`) VALUES (?,?,?,?,?)",
-    [name, id, email, social, getDate()]
+    "INSERT INTO `user`(`name`, `id`, `email`, `profile_img`,`social`, `created_at`) VALUES (?,?,?,?,?,?)",
+    [name, id, email, photo, social, getDate()]
   );
   return [results, fields];
 };
@@ -55,6 +55,8 @@ db.connect((err) => {
 */
 
 const getToken = (data) => {
+  console.log("getToken");
+  console.log(data);
   const token = JWT.sign(data, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
@@ -69,6 +71,7 @@ const verifyToken = (token) => {
     console.log(e);
     decoded = "error";
   }
+  console.log(decoded);
   return decoded;
 };
 

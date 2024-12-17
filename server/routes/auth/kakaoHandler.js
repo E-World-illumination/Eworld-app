@@ -52,6 +52,7 @@ router.get("/callback", async (req, res) => {
   const response_ = await fetch(baseUri_, requestOptions_);
   const data_ = await response_.json();
 
+  //유저 데이터 습득
   //return res.json(data_);
 
   const result = await DBfindUser(data_.id, "KAKAO");
@@ -65,9 +66,11 @@ router.get("/callback", async (req, res) => {
         data_.properties.nickname,
         data_.id,
         null,
+        data_.properties.profile_image,
         "KAKAO"
       );
       jwtToken = await getToken({
+        key: results.insertId,
         id: data_.id,
         name: data_.properties.nickname,
         social: "KAKAO",
@@ -81,16 +84,21 @@ router.get("/callback", async (req, res) => {
     }
   } else {
     jwtToken = await getToken({
+      key: result[0].key,
       id: result[0].id,
       name: result[0].name,
       social: "KAKAO",
     });
   }
-  return res.status(200).json({
+  /*return res.status(200).json({
     status: "success",
     message: "로그인 성공.",
     data: { token: jwtToken },
-  });
+  });*/
+
+  return res.redirect(
+    `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+  );
 });
 
 export { router };
