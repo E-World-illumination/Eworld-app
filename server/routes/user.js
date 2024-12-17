@@ -82,8 +82,8 @@ router.post("/modify", async (req, res) => {
   query += " WHERE `key` = ?;";
   arr.push(userData.key);
 
-  console.log(query);
-  console.log(arr);
+  //console.log(query);
+  //console.log(arr);
 
   try {
     const result = await db.execute(query, arr);
@@ -98,6 +98,7 @@ router.post("/modify", async (req, res) => {
 
 // 회원정보
 router.get("/data", async (req, res) => {
+  console.log("dataRequested");
   const token = req.get("Authorization");
   const userData = await verifyToken(token);
   if (userData === "error") {
@@ -106,7 +107,7 @@ router.get("/data", async (req, res) => {
 
   try {
     const result = await db.execute(
-      "SELECT `name`, `profile_img`, `phone`, `email`, `social` FROM `user` WHERE `key` = ?;",
+      "SELECT `name`, `profile_img`, `phone`, `email`, `social`, `id` FROM `user` WHERE `key` = ?;",
       [userData.key]
     );
 
@@ -117,6 +118,7 @@ router.get("/data", async (req, res) => {
     });
   } catch (e) {
     console.log(e);
+    console.log(userData);
     return sendError(500, res, "오류가 발생하였습니다.");
   }
 });

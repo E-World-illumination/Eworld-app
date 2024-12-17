@@ -58,9 +58,17 @@ router.get("/callback", async (req, res) => {
               response.data.name,
               response.data.id,
               response.data.email,
+              response.data.picture,
               "GOOGLE"
             );
+
+            /*return res.json({
+              results: results,
+              fields: fields,
+            });*/
+
             jwtToken = await getToken({
+              key: results.insertId,
               id: response.data.id,
               name: response.data.name,
               social: "GOOGLE",
@@ -72,23 +80,23 @@ router.get("/callback", async (req, res) => {
               message: "회원 등록중에 오류가 발생했습니다.",
             });
           }
-          /*res.json({
-          result: results,
-          fields: fields,
-        });
-        */
         } else {
           jwtToken = await getToken({
+            key: result[0].key,
             id: result[0].id,
             name: result[0].name,
             social: "GOOGLE",
           });
         }
-        return res.status(200).json({
+        /*res.status(200).json({
           status: "success",
           message: "로그인 성공.",
           data: { token: jwtToken },
-        });
+        });*/
+
+        return res.redirect(
+          `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+        );
       }
     );
   } catch (error) {
