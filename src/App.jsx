@@ -8,7 +8,7 @@ import {
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
-import Map from "./pages/Map";
+import MapPage from "./pages/MapPage";
 import Stamp from "./pages/Stamp";
 import MyPage from "./pages/MyPage";
 import Modify from "./pages/Modify";
@@ -49,7 +49,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/qr" element={<Qr />} />
-          <Route path="/map" element={<Map />} />
+          <Route path="/map" element={<MapPage />} />
           <Route path="/stamp" element={<Stamp />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/modify" element={<Modify />} />

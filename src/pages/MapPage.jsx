@@ -6,7 +6,7 @@ import { fetchCourse } from "../api/courseApi";
 import { useAuth } from "../provider/AuthProvider";
 import { fetchStampData } from "../api/stampApi";
 
-const Map = () => {
+const MapPage = () => {
   const [selectedInfo, setSelectedInfo] = useState(null); // 클릭한 마커 정보를 저장할 상태
   const stampInfoRef = useRef(null); // stamp_info div에 대한 참조
   const [courseData, setCourseData] = useState([]);
@@ -139,4 +139,4 @@ const Map = () => {
   );
 };
 
-export default Map;
+export default MapPage;
