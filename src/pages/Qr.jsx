@@ -10,9 +10,12 @@ import { useAuth } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const Qr = () => {
-  const [userLocation, setUserLocation] = useState({});
+  const [userLocation, setUserLocation] = useState({
+    latitude: 35.853415286993176,
+    longitude: 128.56431610662824,
+  });
   const [videoStream, setVideoStream] = useState(null);
-  const [permissionGranted, setPermissionGranted] = useState(false);
+  const [permissionGranted, setPermissionGranted] = useState(null);
   const [qrData, setQrData] = useState(null);
   const [courseData, setCourseData] = useState([]);
   const { token } = useAuth();
@@ -56,13 +59,8 @@ const Qr = () => {
     // 거리 비교 (50m 이내)
     if (distance <= 50) {
       toast.success(`${name_kr} 위치와 일치합니다! (${distance.toFixed(2)}m)`);
-      const result = await addStampData(qrData, token);
-      if (result) {
-        toast.success("스탬프 추가 성공");
-        navigate("/stamp");
-      } else {
-        toast.error("스탬프 추가 실패");
-      }
+      addStampData(qrData, token);
+      alert(`${name_kr} 추가 성공!`);
     } else {
       toast.error(
         `${name_kr} 위치와 일치하지 않습니다. (${distance.toFixed(2)}m)`,
@@ -113,8 +111,9 @@ const Qr = () => {
         theme: "light",
         transition: Bounce,
       });
-
       handleQrCode();
+
+      console.log(qrData);
     }
   }, [qrData]);
 
@@ -155,21 +154,21 @@ const Qr = () => {
   }, [permissionGranted, videoStream]);
 
   // 위도, 경도 가져오기
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
-        },
-        (error) => {
-          console.log(error);
-        },
-      );
-    } else {
-      console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const { latitude, longitude } = position.coords;
+  //         setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //     );
+  //   } else {
+  //     console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
+  //   }
+  // }, []);
 
   console.log(userLocation);
 
