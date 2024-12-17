@@ -42,4 +42,14 @@ const userDelete = async (token) => {
   }
 };
 
-export { userInfo, userModify, userCoupon, userDelete };
+const userEvent = async (token) => {
+  try {
+    const response = await get(`/user/event_entry_check`, token);
+    return response.data;
+  } catch (error) {
+    console.error("이벤트 조회 에러 : ", error);
+    return false;
+  }
+};
+
+export { userInfo, userModify, userCoupon, userDelete, userEvent };

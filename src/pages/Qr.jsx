@@ -61,10 +61,12 @@ const Qr = () => {
       toast.success(`${name_kr} 위치와 일치합니다! (${distance.toFixed(2)}m)`);
       addStampData(qrData, token);
       alert(`${name_kr} 추가 성공!`);
+      navigate("/stamp");
     } else {
       toast.error(
         `${name_kr} 위치와 일치하지 않습니다. (${distance.toFixed(2)}m)`,
       );
+      alert("지정된 범위를 벗어났습니다.");
     }
   };
 

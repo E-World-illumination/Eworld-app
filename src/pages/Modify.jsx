@@ -96,7 +96,10 @@ const Modify = () => {
             required
           />
         </div>
-        <div className="mb-40 w-full px-15 text-right text-14 font-bold text-bgRed underline underline-offset-2">
+        <div className="mb-40 flex w-full flex-row justify-between text-right text-14 font-bold text-bgRed underline underline-offset-2">
+          <a href="/modify/delete" className="font-thin text-neutral-400">
+            회원탈퇴
+          </a>
           <a href="/modify/password">비밀번호 변경</a>
         </div>
 
