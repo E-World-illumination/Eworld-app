@@ -18,12 +18,19 @@ const MapPage = () => {
 
   useEffect(() => {
     const fetchCourseData = async () => {
-      console.log(`222222`, courseData);
-      const response = await fetchCourse();
-      setCourseData(response);
-      console.log(`333333`, courseData);
+      try {
+        const response = await fetchCourse();
+        if (Array.isArray(response)) {
+          setCourseData(response);
+        } else {
+          console.error("Invalid course data format:", response);
+          setCourseData([]); // 유효하지 않은 경우 빈 배열로 초기화
+        }
+      } catch (error) {
+        console.error("Error fetching course data:", error);
+        setCourseData([]); // 에러 발생 시 빈 배열로 초기화
+      }
     };
-    console.log(`444444`, courseData);
     fetchCourseData();
   }, []);
 
