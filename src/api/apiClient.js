@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const BASE_URL = import.meta.env.PROD
-  ? "/api" // 프로덕션 환경
-  : " http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com"; // 개발 환경
+  ? "http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com"
+  : "http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com";
 
 export const get = async (path, token = null) => {
   const response = await axios({
