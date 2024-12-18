@@ -12,7 +12,7 @@ const db = mysql.createPool({
 });
 
 // 현재 일자 반환
-const getDate = () => {
+const getDate = (daysToAdd = 0) => {
   const options = {
     timeZone: "Asia/Seoul",
     year: "numeric",
@@ -21,8 +21,13 @@ const getDate = () => {
   };
 
   const now = new Date();
-  const koreanDate = now.toLocaleString("en-CA", options); // en-CA ensures the format is YYYY-MM-DD
 
+  if (typeof daysToAdd === "number" && !isNaN(daysToAdd)) {
+    now.setDate(now.getDate() + daysToAdd);
+  }
+
+  const koreanDate = now.toLocaleString("en-CA", options); // en-CA ensures the format is YYYY-MM-DD
+  console.log(koreanDate);
   return koreanDate;
 };
 

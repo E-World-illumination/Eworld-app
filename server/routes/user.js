@@ -1,5 +1,5 @@
 import express from "express";
-import { db, verifyToken } from "../db.js";
+import { db, verifyToken, getDate } from "../db.js";
 import JWT from "jsonwebtoken";
 
 const router = express.Router();
@@ -123,7 +123,7 @@ router.get("/data", async (req, res) => {
   }
 });
 
-// 쿠폰 리스트
+// 쿠폰 리스트 확인
 router.get("/coupon", async (req, res) => {
   const token = req.get("Authorization");
   const userData = await verifyToken(token);
@@ -133,7 +133,7 @@ router.get("/coupon", async (req, res) => {
 
   try {
     const result = await db.execute(
-      "SELECT `name`, `content`, `created_at`, `expired_at`, `is_used` FROM `user_coupon` WHERE `user` = ?;",
+      "SELECT * FROM `user_coupon` WHERE `user` = ?;",
       [userData.key]
     );
 
@@ -148,6 +148,7 @@ router.get("/coupon", async (req, res) => {
   }
 });
 
+//스탬프 장소 리스트
 router.get("/stamp_course", async (req, res) => {
   try {
     const result = await db.execute(
@@ -165,6 +166,7 @@ router.get("/stamp_course", async (req, res) => {
   }
 });
 
+//스탬프 찍기
 router.get("/add_stamp", async (req, res) => {
   const token = req.get("Authorization");
   const userData = await verifyToken(token);
@@ -180,10 +182,13 @@ router.get("/add_stamp", async (req, res) => {
   } catch (e) {
     console.log(e);
     console.log("쿼리 추출 오류");
+    return sendError(400, res, "쿼리가 잘못되었습니다.");
   }
   console.log(stamp);
 
+  // 스탬프 이름이 db에 있는지 확인
   let result;
+  let stamps;
   try {
     result = await db.execute(
       "SELECT `key` FROM `stamp_place` WHERE `name` = ?;",
@@ -192,36 +197,84 @@ router.get("/add_stamp", async (req, res) => {
     //console.log(result[0][0]);
   } catch (e) {
     console.log(e);
-    console.log("add_stamp 쿼리 에러 1");
+    console.log("add_stamp 스탬프 확인 에러 1");
+    return sendError(500, res, "오류가 발생하였습니다.");
   }
 
   if (result === undefined) {
     return sendError(400, res, "올바른 QR이 아닙니다.");
   }
 
+  // 이미 찍힌 스탬프인지 확인
   try {
     const check = await db.execute(
-      "SELECT 1 FROM `user_stamp` WHERE `user` = ? AND `stamp` = ? LIMIT 1;",
-      [userData.key, result[0][0].key]
+      //"SELECT 1 FROM `user_stamp` WHERE `user` = ? AND `stamp` = ? LIMIT 1;"
+      //[userData.key, result[0][0].key],
+      "SELECT * FROM `user_stamp` WHERE `user` = ?;",
+      [userData.key]
     );
-    if (check[0][0] != undefined) {
+    stamps = check[0].map((item) => item.stamp);
+    console.log(stamps);
+    console.log(result[0][0].key);
+
+    if (stamps.includes(result[0][0].key)) {
       return sendError(400, res, "이미 등록된 QR입니다.");
     }
+  } catch (e) {
+    console.log(e);
+    console.log("add_stamp 스탬프 확인 에러 2");
+    return sendError(500, res, "오류가 발생하였습니다.");
+  }
 
-    console.log(result);
-
+  try {
+    // QR 추가 (DB 등록)
     result = await db.execute(
       "INSERT INTO `user_stamp`(`user`, `stamp`) VALUES (?,?)",
       [userData.key, result[0][0].key]
     );
   } catch (e) {
     console.log(e);
-    console.log("add_stamp 쿼리 에러 2");
+    console.log("add_stamp 스탬프 등록 에러");
+    return sendError(500, res, "QR 등록중 오류가 발생하였습니다.");
   }
 
+  let text = null;
+  // 쿠폰 추가 / 이벤트 응모
+  if (stamps.length === 2) {
+    try {
+      result = await db.execute(
+        "INSERT INTO `user_coupon`(`user`, `name`, `content`, `created_at`, `expired_at`) VALUES (?,?,?,?,?)",
+        [
+          userData.key,
+          "음료수 쿠폰",
+          "이월드 이벤트로 지급된 음료수 쿠폰입니다.",
+          await getDate(),
+          await getDate(7),
+        ]
+      );
+      text = "음료수 쿠폰 발급 완료";
+    } catch (e) {
+      console.log(e);
+      console.log("쿠폰 추가 에러");
+      return sendError(500, res, "쿠폰 발급중에 오류가 발생하였습니다.");
+    }
+  } else if (stamps.length === 5) {
+    result = await db.execute(
+      "INSERT INTO `event_entry`(`user`, `content`) VALUES (?,?);",
+      [userData.key, "자유이용권"]
+    );
+    text = "이벤트 응모 완료";
+    try {
+    } catch (e) {
+      console.log(e);
+      console.log("쿠폰 추가 에러");
+      return sendError(500, res, "이벤트 응모중에 오류가 발생하였습니다.");
+    }
+  }
   return res.status(200).json({
     status: "success",
     message: "등록 완료.",
+    data: text,
   });
 });
 
@@ -312,7 +365,5 @@ router.get("/event_entry_check", async (req, res) => {
 });
 
 // QR등록에서 스탬프 추가하고, 갯수가 3/6개면 각각 음료수 쿠폰, 자유이용권 응모가 되도록 코드 수정
-
-router.get("/insert_coupon", async (req, res) => {});
 
 export { router };
