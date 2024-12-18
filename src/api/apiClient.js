@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = import.meta.env.PROD
-  ? "http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com"
+  ? "/api"
   : "http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com";
 
 export const get = async (path, token = null) => {
