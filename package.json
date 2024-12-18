@@ -24,6 +24,7 @@
     "react-spinners": "^0.14.1",
     "react-toastify": "^10.0.6",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.15.2",
     "tailwindcss-preset-px-to-rem": "^1.2.1"
   },
   "devDependencies": {
