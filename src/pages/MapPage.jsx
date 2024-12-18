@@ -14,11 +14,16 @@ const MapPage = () => {
   const stampedIndexes = new Set(stamp.map((item) => item.stamp));
   const { token } = useAuth();
 
+  console.log(`111111`, courseData);
+
   useEffect(() => {
     const fetchCourseData = async () => {
+      console.log(`222222`, courseData);
       const response = await fetchCourse();
       setCourseData(response);
+      console.log(`333333`, courseData);
     };
+    console.log(`444444`, courseData);
     fetchCourseData();
   }, []);
 
@@ -33,7 +38,7 @@ const MapPage = () => {
   }, [token]);
 
   useEffect(() => {
-    console.log(courseData);
+    console.log("555555", courseData);
     console.log(stamp);
     console.log(stampedIndexes);
   }, [courseData, stamp]);
