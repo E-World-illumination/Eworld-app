@@ -55,22 +55,6 @@ const App = () => {
           <Route path="/modify" element={<Modify />} />
           <Route path="/modify/password" element={<ModifyPw />} />
           <Route path="/soaiclLogin" element={<ModifyPw />} />
-          <Route
-            path="/SocialLoginRedirect"
-            element={<SocialLoginRedirect />}
-          />
-          <Route
-            path="/auth/google/callback"
-            element={<SocialLoginRedirect />}
-          />
-          <Route
-            path="/auth/kakao/callback"
-            element={<SocialLoginRedirect />}
-          />
-          <Route
-            path="/auth/naver/callback"
-            element={<SocialLoginRedirect />}
-          />
         </Routes>
       </Router>
     </AuthProvider>

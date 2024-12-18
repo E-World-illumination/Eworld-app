@@ -44,19 +44,10 @@ const DBfindUser = async (id, social) => {
 };
 
 //DB API
-/*
-db.connect((err) => {
-  if (err) {
-    console.error("Error connecting to MySQL:", err);
-  } else {
-    console.log("Connected to MySQL database");
-  }
-});
-*/
 
 const getToken = (data) => {
-  console.log("getToken");
-  console.log(data);
+  //console.log("getToken");
+  //console.log(data);
   const token = JWT.sign(data, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
@@ -71,7 +62,7 @@ const verifyToken = (token) => {
     console.log(e);
     decoded = "error";
   }
-  console.log(decoded);
+  //console.log(decoded);
   return decoded;
 };
 
