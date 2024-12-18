@@ -9,7 +9,16 @@ import { router as userRouter } from "./routes/user.js";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "https://eworld-illumination.netlify.app",
+      "http://localhost:5173",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 dotenv.config();
 
 app.get("/", (req, res) => {
