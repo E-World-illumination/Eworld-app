@@ -58,11 +58,17 @@ const Qr = () => {
     );
 
     // 거리 비교 (50m 이내)
-    if (distance <= 50) {
+    if (distance <= 5000) {
       toast.success(`${name_kr} 위치와 일치합니다! (${distance.toFixed(2)}m)`);
-      addStampData(qrData, token);
-      await ShowAlert("info", "", `${name_kr} 추가 성공!`);
-      navigate("/stamp");
+      const response = await addStampData(qrData, token);
+      if (response.data === null) {
+        await ShowAlert("info", "", `${name_kr} 추가 성공!`, false);
+        navigate("/stamp");
+      } else {
+        await ShowAlert("info", "", `${name_kr} 추가 성공!`, false);
+        await ShowAlert("info", "", `${response.data}`, false);
+        navigate("/stamp");
+      }
     } else {
       toast.error(
         `${name_kr} 위치와 일치하지 않습니다. (${distance.toFixed(2)}m)`,

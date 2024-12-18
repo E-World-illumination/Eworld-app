@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { userInfo } from "../api/userApi";
 import { useNavigate } from "react-router-dom";
+import { ShowAlert } from "../utils/AlertUtils";
 
 const AuthContext = createContext();
 
@@ -44,7 +45,6 @@ export function AuthProvider({ children }) {
   const logout = async () => {
     setToken(null);
     await ShowAlert("info", "", "로그아웃 되었습니다");
-
     localStorage.removeItem("token");
     navigate("/", { replace: true });
   };

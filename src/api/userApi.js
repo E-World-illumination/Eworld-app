@@ -25,7 +25,8 @@ const userModify = async (token, data) => {
 const userCoupon = async (token) => {
   try {
     const response = await get(`/user/coupon`, token);
-    return response.data;
+    console.log(response.data.data[0]);
+    return response.data.data[0];
   } catch (error) {
     console.error("회원 쿠폰 요청 에러 : ", error);
     return false;
@@ -45,7 +46,8 @@ const userDelete = async (token) => {
 const userEvent = async (token) => {
   try {
     const response = await get(`/user/event_entry_check`, token);
-    return response.data;
+    console.log(response.data);
+    return response.data.data;
   } catch (error) {
     console.error("이벤트 조회 에러 : ", error);
     return false;

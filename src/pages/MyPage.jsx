@@ -7,19 +7,14 @@ import Coupon from "../components/Coupon";
 import Apply from "../components/Apply";
 import { useAuth } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { userCoupon } from "../api/userApi";
+import { userCoupon, userEvent } from "../api/userApi";
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const [couponData, setCouponData] = useState({
-    content: "",
-    created_at: "",
-    expired_at: "",
-    is_used: 0,
-    name: "",
-  });
+  const [couponData, setCouponData] = useState(null);
+  const [eventData, setEventData] = useState(false);
   // coupon data는 content, is_used 필요함.
-  const [applyData, setApplyData] = useState(null); // api 연동후 coupon applyData 받아오기
+
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const { logout, token, userData } = useAuth();
@@ -29,18 +24,35 @@ const MyPage = () => {
     try {
       const couponResponse = await userCoupon(token);
       console.log(couponResponse);
-      setCouponData(couponResponse.data[0]);
+      if (couponResponse) {
+        setCouponData(couponResponse);
+      } else {
+        setCouponData(null);
+      }
     } catch (err) {
       setError(err.message || "쿠폰 요청 실패");
+    }
+  };
+
+  const getUserEvent = async () => {
+    try {
+      const eventResponse = await userEvent(token);
+      if (eventResponse) {
+        setEventData(eventResponse);
+      } else {
+        setEventData(null);
+      }
+    } catch (err) {
+      setError(err.message || "이벤트 요청 실패");
     }
   };
 
   useEffect(() => {
     if (token) {
       getUserCoupon();
+      getUserEvent();
     }
-  }, [token]); // reload 되면서 couponData가 undefined가 되어서 []에 token을 삭제했으나 페이지 로딩은 되는데 파일을 다시 save하면 또 undefined가 됨
-  // save할때마다 couponData가 계속 바뀜
+  }, [token]);
 
   return (
     <>
@@ -49,7 +61,7 @@ const MyPage = () => {
         {/* 아래 div 클릭시 회원정보 수정 페이지로 이동 */}
         <Info social={social} name={name} profile_img={profile_img} />
         <Coupon data={couponData} />
-        <Apply data={applyData} />
+        <Apply data={eventData} />
         {/* 로그아웃 버튼 div */}
         <div className="flex h-full items-end pb-50">
           <div
