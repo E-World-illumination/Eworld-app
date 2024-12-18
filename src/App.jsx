@@ -78,24 +78,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-<<<<<<< HEAD
-        </Routes>
-      </Router>
-      */}
-
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/qr" element={<Qr />} />
-          <Route path="/map" element={<Map />} />
-          <Route path="/stamp" element={<Stamp />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/modify" element={<Modify />} />
-          <Route path="/modify/password" element={<ModifyPw />} />
-          <Route path="/soaiclLogin" element={<ModifyPw />} />
-=======
           <Route
             path="/SocialLoginRedirect"
             element={<SocialLoginRedirect />}
@@ -112,7 +94,6 @@ const App = () => {
             path="/auth/naver/callback"
             element={<SocialLoginRedirect />}
           />
->>>>>>> ab7ee8db79213e3ec66282009f3c4c928d80acf4
         </Routes>
       </AuthProvider>
     </Router>

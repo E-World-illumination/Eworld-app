@@ -5,7 +5,14 @@ import { useNavigate } from "react-router-dom";
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(() => {
+    try {
+      return localStorage.getItem("token") || null;
+    } catch (error) {
+      console.error("로컬 스토리지 접근 실패:", error);
+      return null;
+    }
+  });
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
