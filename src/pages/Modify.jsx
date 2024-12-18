@@ -4,6 +4,7 @@ import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { userModify } from "../api/userApi";
+import { ShowAlert } from "../utils/AlertUtils.js";
 
 const Modify = () => {
   const inputBaseClass =
@@ -36,7 +37,7 @@ const Modify = () => {
         phone: newPhone,
       });
       console.log(response.message);
-      alert("수정 완료");
+      await ShowAlert("success", "", "수정 완료");
       navigate("/mypage");
     } catch (err) {
       setError("수정 중 오류 발생");

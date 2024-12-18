@@ -4,6 +4,8 @@ import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { userModify } from "../api/userApi";
+import { ShowAlert } from "../utils/AlertUtils.js";
+
 const ModifyPw = () => {
   const inputBaseClass =
     "mb-18 border-b border-neutral-250 p-10 focus:outline-none text-neutral-500";
@@ -36,7 +38,7 @@ const ModifyPw = () => {
         changePassword: newPassword,
       });
       if (response.data.status === "success") {
-        alert("비밀번호 변경 완료");
+        await ShowAlert("success", "", "비밀번호 변경 완료");
         navigate("/mypage");
       } else {
         setError(response.data.message);

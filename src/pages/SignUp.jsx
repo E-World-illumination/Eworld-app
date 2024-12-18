@@ -5,6 +5,7 @@ import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { checkDuplicate } from "../api/authApi";
 import { post } from "../api/apiClient";
+import { ShowAlert } from "../utils/AlertUtils.js";
 
 const SignUp = () => {
   const inputBaseClass =
@@ -66,7 +67,7 @@ const SignUp = () => {
     try {
       const response = await post("/auth/signup", userData);
       console.log(response);
-      alert("회원가입 성공!");
+      await ShowAlert("success", "", "회원가입을 성공하였습니다");
       navigate("/login"); // 회원가입 후 로그인 페이지로 이동
     } catch (err) {
       console.error("회원가입 오류:", err);
@@ -113,15 +114,17 @@ const SignUp = () => {
                   if (!isDuplicate) {
                     setDuplicateStatus("error");
                     console.log(isDuplicate);
-                    alert("이미 존재하는 ID입니다.");
+                    await ShowAlert("info", "", "이미 존재하는 ID입니다");
+
                     return;
                   } else {
                     setDuplicateStatus("success");
-                    alert("사용 가능한 ID입니다.");
+                    await ShowAlert("info", "", "사용 가능한 ID입니다");
+
                     return;
                   }
                 } else {
-                  alert("아이디는 5자 이상 입력해주세요 .");
+                  await ShowAlert("info", "", "아이디는 5자 이상 입력해주세요");
                 }
               }}
               className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
