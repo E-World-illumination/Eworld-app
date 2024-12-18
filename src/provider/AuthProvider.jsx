@@ -41,9 +41,10 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     setToken(null);
-    alert("로그아웃 되었습니다.");
+    await ShowAlert("info", "", "로그아웃 되었습니다");
+
     localStorage.removeItem("token");
     navigate("/", { replace: true });
   };
