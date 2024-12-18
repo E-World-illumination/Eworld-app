@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 import StampList from "../components/StampList";
-import { fetchStampData } from "../api/stampApi";
+import { fetchStampCount } from "../api/stampApi";
 import { useAuth } from "../provider/AuthProvider";
 
 const Stamp = () => {
@@ -14,15 +14,12 @@ const Stamp = () => {
   useEffect(() => {
     if (token) {
       const fetchCount = async () => {
-        const stampData = await fetchStampData(token);
+        const stampData = await fetchStampCount(token);
         console.log(stampData);
-        setStampCount(stampData.length);
+        setStampCount(stampData);
       };
       fetchCount();
-
-      console.log(stampCount);
     }
-    console.log(stampCount);
   }, [token]);
 
   return (

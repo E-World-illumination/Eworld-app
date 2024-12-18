@@ -1,4 +1,4 @@
-import { get, post } from "./apiClient";
+import { get, post, del } from "./apiClient";
 
 const userInfo = async (token) => {
   try {
@@ -32,4 +32,24 @@ const userCoupon = async (token) => {
   }
 };
 
-export { userInfo, userModify, userCoupon };
+const userDelete = async (token) => {
+  try {
+    const response = await get(`/user/delete`, token);
+    return response.data;
+  } catch (error) {
+    console.error("회원 삭제 에러 : ", error);
+    return false;
+  }
+};
+
+const userEvent = async (token) => {
+  try {
+    const response = await get(`/user/event_entry_check`, token);
+    return response.data;
+  } catch (error) {
+    console.error("이벤트 조회 에러 : ", error);
+    return false;
+  }
+};
+
+export { userInfo, userModify, userCoupon, userDelete, userEvent };

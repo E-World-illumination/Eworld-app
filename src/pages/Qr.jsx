@@ -3,17 +3,73 @@ import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 import { toast, Bounce } from "react-toastify";
 import jsQR from "jsqr";
+import { fetchCourse } from "../api/courseApi";
+import { addStampData } from "../api/stampApi";
+import calculateDistance from "../utils/calculateDistance";
+import { useAuth } from "../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Qr = () => {
-  const [userLocation, setUserLocation] = useState({});
+  const [userLocation, setUserLocation] = useState({
+    latitude: 35.853415286993176,
+    longitude: 128.56431610662824,
+  });
   const [videoStream, setVideoStream] = useState(null);
   const [permissionGranted, setPermissionGranted] = useState(null);
   const [qrData, setQrData] = useState(null);
+  const [courseData, setCourseData] = useState([]);
+  const { token } = useAuth();
+  const navigate = useNavigate();
 
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
 
-  //
+  useEffect(() => {
+    const fetchCourseData = async () => {
+      const data = await fetchCourse();
+      setCourseData(data);
+    };
+
+    fetchCourseData();
+  }, []);
+
+  const handleQrCode = async () => {
+    if (!qrData) {
+      toast.error("QR 코드 데이터가 없습니다.");
+      return;
+    }
+
+    // QR 데이터와 매칭되는 코스 데이터 찾기
+    const locationData = courseData.find((item) => item.name === qrData);
+    if (!locationData) {
+      toast.error("코스 데이터와 매칭되지 않습니다.");
+      return;
+    }
+
+    const { latitude, longitude, name_kr } = locationData;
+
+    // 거리 계산
+    const distance = calculateDistance(
+      userLocation.latitude,
+      userLocation.longitude,
+      parseFloat(latitude),
+      parseFloat(longitude),
+    );
+
+    // 거리 비교 (50m 이내)
+    if (distance <= 50) {
+      toast.success(`${name_kr} 위치와 일치합니다! (${distance.toFixed(2)}m)`);
+      addStampData(qrData, token);
+      alert(`${name_kr} 추가 성공!`);
+      navigate("/stamp");
+    } else {
+      toast.error(
+        `${name_kr} 위치와 일치하지 않습니다. (${distance.toFixed(2)}m)`,
+      );
+      alert("지정된 범위를 벗어났습니다.");
+    }
+  };
+
   useEffect(() => {
     const requestCameraPermission = async () => {
       try {
@@ -57,9 +113,9 @@ const Qr = () => {
         theme: "light",
         transition: Bounce,
       });
+      handleQrCode();
 
-      // 데이터베이스에서 보내는 작업
-      alert(`${qrData} 성공`);
+      console.log(qrData);
     }
   }, [qrData]);
 
@@ -100,21 +156,21 @@ const Qr = () => {
   }, [permissionGranted, videoStream]);
 
   // 위도, 경도 가져오기
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
-        },
-        (error) => {
-          console.log(error);
-        },
-      );
-    } else {
-      console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const { latitude, longitude } = position.coords;
+  //         setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //     );
+  //   } else {
+  //     console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
+  //   }
+  // }, []);
 
   console.log(userLocation);
 

@@ -15,4 +15,24 @@ const fetchStampData = async (token) => {
   }
 };
 
-export { fetchStampData };
+const addStampData = async (qrData, token) => {
+  try {
+    const response = await get(`/user/add_stamp?stamp=${qrData}`, token);
+    return response.data;
+  } catch (error) {
+    console.error("스탬프 추가 오류:", error);
+    return 0;
+  }
+};
+
+const fetchStampCount = async (token) => {
+  try {
+    const response = await get("/user/stamp", token);
+    return response.data.data.length;
+  } catch (error) {
+    console.error("스탬프 조회 오류:", error);
+    return 0;
+  }
+};
+
+export { fetchStampData, addStampData, fetchStampCount };
