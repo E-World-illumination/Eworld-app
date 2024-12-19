@@ -67,7 +67,7 @@ router.get("/callback", async (req, res) => {
         data_.id,
         null,
         data_.properties.profile_image,
-        "KAKAO"
+        "KAKAO",
       );
       jwtToken = await getToken({
         key: results.insertId,
@@ -97,7 +97,7 @@ router.get("/callback", async (req, res) => {
   });*/
 
   return res.redirect(
-    `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+    `http://eworld-illumination.netlify.app/SocialLoginRedirect?token=${jwtToken}`,
   );
 });
 

@@ -17,7 +17,7 @@ router.post("/signup", async (req, res) => {
       .status(400)
       .json({ status: "error", message: "채워지지 않은 항목이 있습니다." });
   }
-  if (!email) {
+  if (!email || email.trim() === "") {
     email = null;
   }
 
@@ -44,7 +44,7 @@ router.post("/signup", async (req, res) => {
     const [results, fields] = await db.execute(
       /*"INSERT INTO `user`(`name`, `password`, `id`, `email`, `created_at`) VALUES (?,?,?,?,?)",
       [name, password, id, email, phone, getDate()]*/
-      `INSERT INTO user (name, id, password, phone, email, profile_img, social, created_at) VALUES ('${name}', '${id}', '${password}', '${phone}', '${email}', NULL, NULL, '${getDate()}')`
+      `INSERT INTO user (name, id, password, phone, email, profile_img, social, created_at) VALUES ('${name}', '${id}', '${password}', '${phone}', '${email}', NULL, NULL, '${getDate()}')`,
     );
     const jwtToken = getToken({ id: id, name: name, social: null });
     res.status(200).json({
@@ -72,7 +72,7 @@ router.post("/duplicate", async (req, res) => {
   }
   const duplication = await db.execute(
     "SELECT * FROM user WHERE id = ? AND social IS NULL;",
-    [id]
+    [id],
   );
   if (duplication[0][0] === undefined) {
     res.status(200).json({
@@ -98,7 +98,7 @@ router.post("/login", async (req, res) => {
   }
   const result = await db.execute(
     "SELECT * FROM user WHERE id = ? AND password = ?;",
-    [id, password]
+    [id, password],
   );
   console.log(result[0]);
   console.log(!result[0][0]);

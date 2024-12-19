@@ -9,7 +9,7 @@ const router = express.Router();
 const oauth2Client = new google.auth.OAuth2(
   process.env.GOOGLE_CLIENT_ID,
   process.env.GOOGLE_CLIENT_SECRET,
-  `http://${process.env.SERVER_URI}/auth/google/callback`
+  `http://${process.env.SERVER_URI}/auth/google/callback`,
 );
 
 // 구글 로그인 시작. 구글의 2.0 authorization으로 리다이렉트
@@ -59,7 +59,7 @@ router.get("/callback", async (req, res) => {
               response.data.id,
               response.data.email,
               response.data.picture,
-              "GOOGLE"
+              "GOOGLE",
             );
 
             /*return res.json({
@@ -95,9 +95,9 @@ router.get("/callback", async (req, res) => {
         });*/
 
         return res.redirect(
-          `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+          `http://eworld-illumination.netlify.app/SocialLoginRedirect?token=${jwtToken}`,
         );
-      }
+      },
     );
   } catch (error) {
     console.error("Error during OAuth process: ", error);

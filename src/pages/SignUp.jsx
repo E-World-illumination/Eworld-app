@@ -19,8 +19,8 @@ const SignUp = () => {
     id: "",
     password: "",
     name: "",
-    email: "",
     phone: "",
+    email: "",
   });
 
   const { isLoading } = useAuth();
@@ -58,6 +58,7 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    console.log(userData);
     if (!validateInputs()) return;
     if (duplicateStatus === "error") {
       setError("ID 중복확인을 다시 한 번 해주세요.");

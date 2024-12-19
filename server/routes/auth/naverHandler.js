@@ -66,7 +66,7 @@ router.get("/callback", async (req, res) => {
         data_.response.id,
         data_.response.email,
         data_.response.profile_image,
-        "NAVER"
+        "NAVER",
       );
       jwtToken = await getToken({
         key: results.insertId,
@@ -97,7 +97,7 @@ router.get("/callback", async (req, res) => {
   });
   */
   return res.redirect(
-    `http://localhost:5173/SocialLoginRedirect?token=${jwtToken}`
+    `http://eworld-illumination.netlify.app/SocialLoginRedirect?token=${jwtToken}`,
   );
 });
 
