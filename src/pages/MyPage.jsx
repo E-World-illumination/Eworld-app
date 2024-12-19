@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 
@@ -13,10 +13,9 @@ const MyPage = () => {
   const navigate = useNavigate();
   const [couponData, setCouponData] = useState(null);
   const [eventData, setEventData] = useState(false);
-  // coupon data는 content, is_used 필요함.
-
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
   const { logout, token, userData } = useAuth();
   const { name, profile_img, social } = userData;
 

@@ -15,6 +15,9 @@ const SignUp = () => {
   const [duplicateStatus, setDuplicateStatus] = useState("error");
   const [passwordCheck, setPasswordCheck] = useState("");
   const [error, setError] = useState("");
+  const [idError, setIdError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [userData, setUserData] = useState({
     id: "",
     password: "",
@@ -27,31 +30,70 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
+    const idRegex = /^(?=.*[A-Za-z])[A-Za-z0-9]{5,}$/;
+    const phoneRegex = /^[0-9]{10,}$/;
+
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "id") {
+      if (!idRegex.test(value)) {
+        setIdError(
+          "아이디는 영문자와 숫자로만 5자 이상 입력하세요. (영문자 필수)",
+        );
+        setButtonDisabled(true);
+        if (value.length === 0) {
+          setIdError("");
+          setButtonDisabled(true);
+        }
+      } else {
+        setIdError("");
+        setButtonDisabled(false);
+      }
+    }
+
+    if (name === "phone") {
+      if (!phoneRegex.test(value)) {
+        setPhoneError("휴대전화는 숫자만 10자리 이상 입력해주세요.");
+        if (value.length === 0) {
+          setPhoneError("");
+        }
+      } else {
+        setPhoneError("");
+      }
+    }
   };
 
   const validateInputs = () => {
-    if (userData.id.length < 5) {
-      setError("아이디는 5자리 이상이어야 합니다.");
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+    if (idError) {
+      setError("아이디는 5자 이상 입력해주세요.");
       return false;
     }
+
     if (userData.password.length < 8) {
       setError("비밀번호는 8자리 이상이어야 합니다.");
+      return false;
+    }
+    if (!passwordRegex.test(userData.password)) {
+      setError("비밀번호는 영문자와 숫자 조합으로 8자리 이상이어야 합니다.");
       return false;
     }
     if (userData.password !== passwordCheck) {
       setError("비밀번호가 일치하지 않습니다.");
       return false;
     }
-    if (userData.phone.length < 10) {
-      setError("휴대전화는 10자리 이상 이어야 합니다.");
-      return false;
-    }
     if (userData.name.length < 2) {
       setError("이름은 2자리 이상이어야 합니다.");
       return false;
     }
+
+    if (phoneError) {
+      setError("휴대전화는 숫자만 10자리 이상 입력해주세요.");
+      return false;
+    }
+
     setError("");
     return true;
   };
@@ -72,7 +114,7 @@ const SignUp = () => {
       navigate("/login"); // 회원가입 후 로그인 페이지로 이동
     } catch (err) {
       console.error("회원가입 오류:", err);
-      setError("회원가입 중 오류가 발생했습니다.");
+      ShowAlert("error", "", `${err.response.data.message}`);
     }
   };
 
@@ -104,39 +146,40 @@ const SignUp = () => {
               value={userData.id}
               onChange={handleChange}
               placeholder="5자리 이상의 영문자, 숫자 조합"
-              className={`mr-8 h-36 w-205 ${inputBaseClass}`}
+              className={`mr-8 h-36 w-205 ${inputBaseClass} ${idError ? "mb-0" : ""}`}
               required
             />
+
             <button
               type="button"
+              disabled={buttonDisabled}
               onClick={async (e) => {
                 if (userData.id.length >= 5) {
                   const isDuplicate = await checkDuplicate(userData.id); // 중복 확인 결과 대기
                   if (!isDuplicate) {
                     setDuplicateStatus("error");
                     console.log(isDuplicate);
-                    await ShowAlert("error", "", "이미 존재하는 ID입니다");
+                    await ShowAlert("info", "", "이미 존재하는 ID입니다");
 
                     return;
                   } else {
                     setDuplicateStatus("success");
-                    await ShowAlert("success", "", "사용 가능한 ID입니다");
+                    await ShowAlert("info", "", "사용 가능한 ID입니다");
 
                     return;
                   }
                 } else {
-                  await ShowAlert(
-                    "error",
-                    "",
-                    "아이디는 5자 이상 입력해주세요",
-                  );
+                  await ShowAlert("info", "", "아이디는 5자 이상 입력해주세요");
                 }
               }}
-              className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
+              className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass} disabled:cursor-not-allowed disabled:opacity-50`}
             >
               중복 확인
             </button>
           </div>
+          {idError && (
+            <p className="mb-0 mt-0 text-12 text-red-500">{idError}</p>
+          )}
         </div>
         <div className="mb-5">
           <p className="m-0 text-14">비밀번호 *</p>
@@ -183,6 +226,9 @@ const SignUp = () => {
             className={`h-36 w-300 ${inputBaseClass}`}
             required
           />
+          {phoneError && (
+            <p className="mb-0 mt-0 text-12 text-red-500">{phoneError}</p>
+          )}
         </div>
         {error && <p className="text-red-500">{error}</p>}
         {isLoading ? (
