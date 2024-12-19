@@ -23,7 +23,7 @@ const Home = () => {
           <img src="/home/tour_event.png" alt="스탬프투어 경품" width="95%" />
         </div>
       </div>
-      <MenuBar color="home" />
+      <MenuBar color="home" menu="home" />
     </>
   );
 };

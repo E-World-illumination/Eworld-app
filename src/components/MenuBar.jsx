@@ -23,7 +23,9 @@ const MenuBar = (props) => {
         className={`bg-${color} fixed bottom-0 z-50 flex h-71 w-full items-center justify-around`}
       >
         <a href="/">
-          <div className={`text-[#8BA59E] ${menuClass}`}>
+          <div
+            className={`${menu === "home" ? "text-white" : "text-[#8BA59E]"} ${menuClass}`}
+          >
             <FontAwesomeIcon icon={faHome} className={iconClass} />
             <span className={labelClass}>HOME</span>
           </div>
