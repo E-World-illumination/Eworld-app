@@ -23,14 +23,14 @@ const MenuBar = (props) => {
         className={`bg-${color} fixed bottom-0 z-50 flex h-71 w-full items-center justify-around`}
       >
         <a href="/">
-          <div className={`text-white ${menuClass}`}>
+          <div className={`text-[#8BA59E] ${menuClass}`}>
             <FontAwesomeIcon icon={faHome} className={iconClass} />
             <span className={labelClass}>HOME</span>
           </div>
         </a>
         <a href="/map">
           <div
-            className={`${menu === "map" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
+            className={`${menu === "map" ? "text-white" : "text-[#8BA59E]"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faLocationDot} className={iconClass} />
             <span className={labelClass}>MAP</span>
@@ -45,7 +45,7 @@ const MenuBar = (props) => {
 
         <a href="/stamp">
           <div
-            className={`${menu === "stamp" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
+            className={`${menu === "stamp" ? "text-white" : "text-[#8BA59E]"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faStamp} className={iconClass} />
             <span className={labelClass}>STAMP</span>
@@ -53,7 +53,7 @@ const MenuBar = (props) => {
         </a>
         <a href="/mypage">
           <div
-            className={`${menu === "mypage" ? "text-[#64A593]" : "text-white"} ${menuClass}`}
+            className={`${menu === "mypage" ? "text-white" : "text-[#8BA59E]"} ${menuClass}`}
           >
             <FontAwesomeIcon icon={faUser} className={iconClass} />
             <span className={labelClass}>MY</span>
