@@ -22,7 +22,7 @@ router.get("/stamp", async (req, res) => {
 
   const result = await db.execute(
     "SELECT stamp FROM user_stamp WHERE user = ?;",
-    [userData.key]
+    [userData.key],
   );
   return res.status(200).json({
     status: "success",
@@ -65,7 +65,7 @@ router.post("/modify", async (req, res) => {
 
     const result = await db.execute(
       "SELECT `password` FROM `user` WHERE `key` = ?;",
-      [userData.key]
+      [userData.key],
     );
 
     if (result[0][0].password != currentPassword) {
@@ -108,7 +108,7 @@ router.get("/data", async (req, res) => {
   try {
     const result = await db.execute(
       "SELECT `name`, `profile_img`, `phone`, `email`, `social`, `id` FROM `user` WHERE `key` = ?;",
-      [userData.key]
+      [userData.key],
     );
 
     return res.status(200).json({
@@ -134,7 +134,7 @@ router.get("/coupon", async (req, res) => {
   try {
     const result = await db.execute(
       "SELECT * FROM `user_coupon` WHERE `user` = ?;",
-      [userData.key]
+      [userData.key],
     );
 
     return res.status(200).json({
@@ -152,7 +152,7 @@ router.get("/coupon", async (req, res) => {
 router.get("/stamp_course", async (req, res) => {
   try {
     const result = await db.execute(
-      "SELECT `key`, `latitude`, `longitude`, `name`, `name_kr`, `description`, `qr` FROM `stamp_place`;"
+      "SELECT `key`, `latitude`, `longitude`, `name`, `name_kr`, `description`, `qr` FROM `stamp_place`;",
     );
 
     return res.status(200).json({
@@ -192,7 +192,7 @@ router.get("/add_stamp", async (req, res) => {
   try {
     result = await db.execute(
       "SELECT `key` FROM `stamp_place` WHERE `name` = ?;",
-      [stamp]
+      [stamp],
     );
     //console.log(result[0][0]);
   } catch (e) {
@@ -211,7 +211,7 @@ router.get("/add_stamp", async (req, res) => {
       //"SELECT 1 FROM `user_stamp` WHERE `user` = ? AND `stamp` = ? LIMIT 1;"
       //[userData.key, result[0][0].key],
       "SELECT * FROM `user_stamp` WHERE `user` = ?;",
-      [userData.key]
+      [userData.key],
     );
     stamps = check[0].map((item) => item.stamp);
     console.log(stamps);
@@ -230,7 +230,7 @@ router.get("/add_stamp", async (req, res) => {
     // QR 추가 (DB 등록)
     result = await db.execute(
       "INSERT INTO `user_stamp`(`user`, `stamp`) VALUES (?,?)",
-      [userData.key, result[0][0].key]
+      [userData.key, result[0][0].key],
     );
   } catch (e) {
     console.log(e);
@@ -247,10 +247,10 @@ router.get("/add_stamp", async (req, res) => {
         [
           userData.key,
           "음료수 쿠폰",
-          "이월드 이벤트로 지급된 음료수 쿠폰입니다.",
+          "이월드 일루미네이션 축제 이벤트로 지급된 쿠폰입니다.",
           await getDate(),
           await getDate(7),
-        ]
+        ],
       );
       text = "음료수 쿠폰 발급 완료";
     } catch (e) {
@@ -261,7 +261,7 @@ router.get("/add_stamp", async (req, res) => {
   } else if (stamps.length === 5) {
     result = await db.execute(
       "INSERT INTO `event_entry`(`user`, `content`) VALUES (?,?);",
-      [userData.key, "자유이용권"]
+      [userData.key, "자유이용권"],
     );
     text = "이벤트 응모 완료";
     try {
@@ -309,7 +309,7 @@ router.get("/event_entry", async (req, res) => {
   try {
     result = await db.execute(
       "SELECT `stamp` FROM `user_stamp` WHERE `user` = ?;",
-      [userData.key]
+      [userData.key],
     );
   } catch (e) {
     console.log(e);
@@ -320,7 +320,7 @@ router.get("/event_entry", async (req, res) => {
     if (result[0].length === 6) {
       const result = await db.execute(
         "INSERT INTO `event_entry`(`user`, `content`) VALUES (?,?);",
-        [userData.key, "자유이용권"]
+        [userData.key, "자유이용권"],
       );
       return res.status(200).json({
         status: "success",
@@ -344,7 +344,7 @@ router.get("/event_entry_check", async (req, res) => {
   try {
     const result = await db.execute(
       "SELECT 1 FROM `event_entry` WHERE `user` = ? LIMIT 1;",
-      [userData.key]
+      [userData.key],
     );
 
     let data = null;

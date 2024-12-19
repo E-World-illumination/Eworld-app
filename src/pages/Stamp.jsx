@@ -31,7 +31,7 @@ const Stamp = () => {
         <div
           className={`${stampCount > 2 ? "opacity-100" : "opacity-50"} ${textClass} mt-30`}
         >
-          <span className="text-bgRed">STAMP 3개</span> - 음료수 교환권
+          <span className="text-bgRed">STAMP 3개</span> - 음료수 쿠폰
         </div>
         <div
           className={`${stampCount > 5 ? "opacity-100" : "opacity-50"} mt-5 ${textClass}`}

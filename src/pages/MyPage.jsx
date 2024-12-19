@@ -37,6 +37,7 @@ const MyPage = () => {
   const getUserEvent = async () => {
     try {
       const eventResponse = await userEvent(token);
+      console.log(eventResponse);
       if (eventResponse) {
         setEventData(eventResponse);
       } else {

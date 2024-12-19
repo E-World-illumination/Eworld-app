@@ -10,7 +10,7 @@ const router = express.Router();
 
 // 일반 회원가입
 router.post("/signup", async (req, res) => {
-  const { id, password, name, email, phone } = req.body;
+  let { id, password, name, email, phone } = req.body;
 
   if (!id || !password || !name) {
     return res
