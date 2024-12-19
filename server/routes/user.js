@@ -356,7 +356,7 @@ router.get("/event_entry_check", async (req, res) => {
     return res.status(200).send({
       status: "success",
       message: "확인 완료",
-      data: true,
+      data: data,
     });
   } catch (e) {
     console.log(e);
