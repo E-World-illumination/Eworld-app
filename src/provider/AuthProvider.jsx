@@ -42,11 +42,14 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logout = async () => {
-    setToken(null);
-    await ShowAlert("info", "", "로그아웃 되었습니다");
+  const logout = () => {
+    console.log("로그아웃11111");
+    ShowAlert("info", "", "로그아웃 되었습니다", false); // Alert 먼저 실행
     localStorage.removeItem("token");
-    navigate("/", { replace: true });
+    setTimeout(() => {
+      setToken(null); // Token 제거를 딜레이
+      navigate("/", { replace: true });
+    }, 100); // 약간의 지연 시간을 둠
   };
 
   const isAuthenticated = () => !!token;

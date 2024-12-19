@@ -15,6 +15,7 @@ import Modify from "./pages/Modify";
 import ModifyPw from "./pages/ModifyPw";
 import SocialLoginRedirect from "./pages/SocialLoginRedirect";
 import ModifyDelete from "./pages/ModifyDelete";
+import { useAuth } from "./provider/AuthProvider";
 
 import { AuthProvider } from "./provider/AuthProvider";
 import Qr from "./pages/Qr";
