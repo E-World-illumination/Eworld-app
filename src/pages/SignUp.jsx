@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
-import { checkDuplicate } from "../api/authApi";
+import { checkDuplicate, userLogin } from "../api/authApi";
 import { post } from "../api/apiClient";
 import { ShowAlert } from "../utils/AlertUtils.js";
 
@@ -26,7 +26,7 @@ const SignUp = () => {
     email: "",
   });
 
-  const { isLoading } = useAuth();
+  const { isLoading, login } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -107,7 +107,9 @@ const SignUp = () => {
       const response = await post("/auth/signup", userData);
       console.log(response);
       await ShowAlert("success", "", "회원가입을 성공하였습니다");
-      navigate("/login"); // 회원가입 후 로그인 페이지로 이동
+      const logindata = await userLogin(userData.id, userData.password);
+      login(logindata);
+      navigate("/"); // 회원가입 후 로그인 페이지로 이동
     } catch (err) {
       console.error("회원가입 오류:", err);
       ShowAlert("error", "", `${err.response.data.message}`);
