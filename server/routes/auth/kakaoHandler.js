@@ -51,6 +51,8 @@ router.get("/callback", async (req, res) => {
 
   const response_ = await fetch(baseUri_, requestOptions_);
   const data_ = await response_.json();
+  const httpUrl = data_.properties.profile_image;
+  const url_http_to_https = httpUrl.replace("http", "https");
 
   //유저 데이터 습득
   //return res.json(data_);
@@ -66,9 +68,10 @@ router.get("/callback", async (req, res) => {
         data_.properties.nickname,
         data_.id,
         null,
-        data_.properties.profile_image,
+        url_http_to_https,
         "KAKAO",
       );
+
       jwtToken = await getToken({
         key: results.insertId,
         id: data_.id,
