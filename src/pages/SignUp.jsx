@@ -72,10 +72,6 @@ const SignUp = () => {
       return false;
     }
 
-    if (userData.password.length < 8) {
-      setError("비밀번호는 8자리 이상이어야 합니다.");
-      return false;
-    }
     if (!passwordRegex.test(userData.password)) {
       setError("비밀번호는 영문자와 숫자 조합으로 8자리 이상이어야 합니다.");
       return false;
