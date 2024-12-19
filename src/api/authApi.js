@@ -27,7 +27,7 @@ const userLogin = async (id, password) => {
     return response.data;
   } catch (error) {
     console.error("로그인 에러 : ", error);
-    return false;
+    return error;
   }
 };
 

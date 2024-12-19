@@ -5,11 +5,13 @@ import { MoonLoader } from "react-spinners";
 import Header from "../components/Header";
 import { loginUrl } from "../api/apiClient";
 import { userLogin } from "../api/authApi";
+import { ShowAlert } from "../utils/AlertUtils";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const { login, isLoading } = useAuth();
   const navigate = useNavigate();
 
@@ -23,12 +25,15 @@ const Login = () => {
     e.preventDefault();
 
     setError("");
-    try {
-      const response = await userLogin(userId, password);
+    const response = await userLogin(userId, password);
+
+    if (response.status === "success") {
+      await ShowAlert("success", "", "로그인 성공");
       login(response);
       navigate("/");
-    } catch (err) {
-      setError(err.message || "로그인 실패");
+    } else {
+      const errorMessage = response.response.data.message;
+      await ShowAlert("error", "", `${errorMessage}`);
     }
   };
 
@@ -59,7 +64,7 @@ const Login = () => {
               required
             />
           </div>
-          {error && <p className="text-red-500">{error}</p>}
+
           {isLoading ? (
             <div className="spinner mb-10">
               <MoonLoader size={15}></MoonLoader>
