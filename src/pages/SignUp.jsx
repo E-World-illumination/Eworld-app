@@ -114,17 +114,21 @@ const SignUp = () => {
                   if (!isDuplicate) {
                     setDuplicateStatus("error");
                     console.log(isDuplicate);
-                    await ShowAlert("info", "", "이미 존재하는 ID입니다");
+                    await ShowAlert("error", "", "이미 존재하는 ID입니다");
 
                     return;
                   } else {
                     setDuplicateStatus("success");
-                    await ShowAlert("info", "", "사용 가능한 ID입니다");
+                    await ShowAlert("success", "", "사용 가능한 ID입니다");
 
                     return;
                   }
                 } else {
-                  await ShowAlert("info", "", "아이디는 5자 이상 입력해주세요");
+                  await ShowAlert(
+                    "error",
+                    "",
+                    "아이디는 5자 이상 입력해주세요",
+                  );
                 }
               }}
               className={`h-45 w-87 -translate-y-8 p-0 text-14 font-medium focus:outline-none ${buttonClass}`}
