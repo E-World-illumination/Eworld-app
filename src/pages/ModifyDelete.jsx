@@ -28,7 +28,7 @@ const ModifyDelete = () => {
   return (
     <>
       <Header title="회원탈퇴" isBack={true} />
-      <div className="mx-auto w-200 p-30 text-center text-home">
+      <div className="mx-auto p-30 text-center text-home">
         정말 탈퇴 하시겠습니까?
       </div>
       <div className="mx-auto flex w-200 flex-row justify-between">
