@@ -11,7 +11,7 @@ const Home = () => {
         <div className="flex justify-center">
           <img src="/home/tour_info.png" alt="스탬프투어 안내" width="95%" />
         </div>
-        <div className="pb-40 pt-30 font-pretendard text-20 font-bold text-white">
+        <div className="pb-40 pt-30 text-20 font-bold text-white">
           이월드에서 <span className="text-eworld">스탬프 존</span>을 찾아
           <br />
           스탬프를 모두 찍으면 끝!
