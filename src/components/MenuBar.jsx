@@ -20,7 +20,7 @@ const MenuBar = (props) => {
   return (
     <>
       <div
-        className={`bg-${color} fixed bottom-0 z-50 flex h-71 w-full items-center justify-around`}
+        className={`bg-${color} fixed bottom-0 z-50 flex h-71 w-full max-w-500 items-center justify-around`}
       >
         <a href="/">
           <div
