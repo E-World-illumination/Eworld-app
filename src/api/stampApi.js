@@ -1,4 +1,4 @@
-import { get, post, put, del } from "./apiClient";
+import { get} from "./apiClient";
 
 // 스탬프 개수 조회 (함수 자체에서 개수를 반환함. 오류시 0 반환)
 const fetchStampData = async (token) => {
