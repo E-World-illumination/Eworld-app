@@ -114,23 +114,23 @@ const MapPage = () => {
             ref={stampInfoRef}
           >
             <div
-              className={`h-260 w-350 rounded-t-[10px] bg-white p-15 shadow-customShadow`}
+              className={`h-260 w-340 rounded-t-[10px] bg-white p-15 shadow-customShadow`}
             >
               <img
                 src={`/map/${selectedInfo.name}.png`}
                 alt={selectedInfo.name_kr}
-                width="290"
+                width="100%"
                 className="rounded-[10px]"
               />
               <div className="flex justify-between">
-                <div className="px-10 pt-20 text-20 font-bold leading-5">
+                <div className="px-10 pt-15 text-20 font-bold leading-5">
                   {selectedInfo.name_kr}
                   <br />
                   <span className="text-14 font-medium text-neutral-500">
                     {selectedInfo.description}
                   </span>
                 </div>
-                <div className="pr-5 pt-10">
+                <div className="pr-5 pt-7">
                   <img
                     src={
                       stampedIndexes.has(selectedInfo.key)
