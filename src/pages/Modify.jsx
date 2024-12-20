@@ -19,7 +19,6 @@ const Modify = () => {
 
   const { token, login, setIsLoading, isLoading, userData } = useAuth();
   const { name, id, email, phone } = userData;
-  console.log(token);
 
   const navigate = useNavigate();
 
@@ -36,7 +35,7 @@ const Modify = () => {
         email: newEmail,
         phone: newPhone,
       });
-      console.log(response.message);
+
       await ShowAlert("success", "", "수정 완료");
       navigate("/mypage");
     } catch (err) {

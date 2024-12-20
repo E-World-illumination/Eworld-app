@@ -8,14 +8,12 @@ import { useAuth } from "../provider/AuthProvider";
 const Stamp = () => {
   const [stampCount, setStampCount] = useState(0); // api 연동후 stampCount 받아오기
   const { token } = useAuth();
-  console.log(token);
   const textClass = "w-280 text-16 font-bold text-neutral-500";
 
   useEffect(() => {
     if (token) {
       const fetchCount = async () => {
         const stampData = await fetchStampCount(token);
-        console.log(stampData);
         setStampCount(stampData);
       };
       fetchCount();
@@ -26,7 +24,6 @@ const Stamp = () => {
     <>
       <Header title="STAMP" isBack={false} />
       <div className="flex flex-col items-center">
-        {console.log(stampCount)}
         <StampList stampCount={stampCount} />
         <div
           className={`${stampCount > 2 ? "opacity-100" : "opacity-50"} ${textClass} mt-30`}

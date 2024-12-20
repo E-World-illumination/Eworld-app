@@ -22,7 +22,7 @@ const MyPage = () => {
   const getUserCoupon = async () => {
     try {
       const couponResponse = await userCoupon(token);
-      console.log(couponResponse);
+
       if (couponResponse) {
         setCouponData(couponResponse);
       } else {
@@ -36,7 +36,7 @@ const MyPage = () => {
   const getUserEvent = async () => {
     try {
       const eventResponse = await userEvent(token);
-      console.log(eventResponse);
+
       if (eventResponse) {
         setEventData(eventResponse);
       } else {

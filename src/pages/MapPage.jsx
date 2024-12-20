@@ -52,9 +52,7 @@ const MapPage = () => {
           const { latitude, longitude } = position.coords;
           setCurrentPosition({ latitude, longitude });
         },
-        (error) => {
-          console.log(error);
-        },
+        (error) => {},
       );
     } else {
       console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
@@ -89,17 +87,12 @@ const MapPage = () => {
     }
   }, [token]);
 
-  useEffect(() => {
-    console.log("555555", courseData);
-    console.log(stamp);
-    console.log(stampedIndexes);
-  }, [courseData, stamp]);
+  useEffect(() => {}, [courseData, stamp]);
 
   // 마커 클릭 핸들러
   const markerClick = (info) => {
     setSelectedInfo(info); // 클릭한 마커 정보 저장
     {
-      console.log(selectedInfo);
     }
   };
 

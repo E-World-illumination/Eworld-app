@@ -28,8 +28,7 @@ router.post("/signup", async (req, res) => {
 
   if (duplication[0].length > 0) {
     let text = "";
-    console.log(duplication[0][0].social);
-    console.log(duplication[0][0].social === null);
+
     if (duplication[0][0].social != null) {
       text = `${duplication[0].social}을 통해 로그인하여 주시길 바랍니다.`;
     }
@@ -53,7 +52,6 @@ router.post("/signup", async (req, res) => {
       data: { token: jwtToken },
     });
   } catch (e) {
-    console.log(e);
     res.status(500).json({
       status: "fail",
       message: "회원가입 실패",
@@ -88,7 +86,6 @@ router.post("/duplicate", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log("login");
   const { id, password } = req.body;
   if (!id || !password) {
     return res.status(400).json({
@@ -100,8 +97,6 @@ router.post("/login", async (req, res) => {
     "SELECT * FROM user WHERE id = ? AND password = ?;",
     [id, password],
   );
-  console.log(result[0]);
-  console.log(!result[0][0]);
 
   if (!result[0][0]) {
     return res.status(400).json({

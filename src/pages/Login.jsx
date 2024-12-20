@@ -16,10 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const context = useAuth();
-  useEffect(() => {
-    // Log the entire context object
-    console.log(context);
-  }, []);
+  useEffect(() => {}, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

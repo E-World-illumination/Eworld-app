@@ -61,8 +61,6 @@ const Qr = () => {
     if (distance <= 5000) {
       const response = await addStampData(qrData, token);
 
-      console.log(response);
-
       if (response.status === "success") {
         await ShowAlert("success", "", `${name_kr} 추가 성공!`, false);
 
@@ -76,10 +74,12 @@ const Qr = () => {
         await ShowAlert("error", "", `${response.message}`, false);
       }
     } else {
-      toast.error(
-        `${name_kr} 위치와 일치하지 않습니다. (${distance.toFixed(2)}m)`,
+      await ShowAlert(
+        "error",
+        "",
+        `${name_kr} 위치와 일치하지 않습니다.`,
+        false,
       );
-      await ShowAlert("info", "", "지정된 범위를 벗어났습니다.");
     }
   };
 
@@ -96,9 +96,7 @@ const Qr = () => {
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
         }
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (error) {}
     };
     if (permissionGranted === null) {
       requestCameraPermission();
@@ -127,8 +125,6 @@ const Qr = () => {
         transition: Bounce,
       });
       handleQrCode();
-
-      console.log(qrData);
     }
   }, [qrData]);
 
@@ -184,8 +180,6 @@ const Qr = () => {
   //     console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
   //   }
   // }, []);
-
-  console.log(userLocation);
 
   return (
     <>

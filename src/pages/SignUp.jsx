@@ -96,7 +96,6 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log(userData);
     if (!validateInputs()) return;
     if (duplicateStatus === "error") {
       setError("ID 중복확인을 다시 한 번 해주세요.");
@@ -105,7 +104,6 @@ const SignUp = () => {
 
     try {
       const response = await post("/auth/signup", userData);
-      console.log(response);
       await ShowAlert("success", "", "회원가입을 성공하였습니다");
       const logindata = await userLogin(userData.id, userData.password);
       login(logindata);
@@ -156,7 +154,6 @@ const SignUp = () => {
                   const isDuplicate = await checkDuplicate(userData.id); // 중복 확인 결과 대기
                   if (!isDuplicate) {
                     setDuplicateStatus("error");
-                    console.log(isDuplicate);
                     await ShowAlert("info", "", "이미 존재하는 ID입니다");
 
                     return;

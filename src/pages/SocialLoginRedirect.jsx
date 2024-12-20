@@ -11,9 +11,6 @@ const SocialLoginRedirect = () => {
     const queryParams = new URLSearchParams(window.location.search);
     const token = queryParams.get("token");
 
-    console.log(queryParams);
-    console.log(token);
-
     if (token) {
       // Store the token in localStorage (or sessionStorage)
       const response = {
