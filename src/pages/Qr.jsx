@@ -64,7 +64,7 @@ const Qr = () => {
       console.log(response);
 
       if (response.status === "success") {
-        await ShowAlert("info", "", `${name_kr} 추가 성공!`, false);
+        await ShowAlert("success", "", `${name_kr} 추가 성공!`, false);
 
         if (response.data !== null) {
           await ShowAlert("info", "", `${response.data}`, false);

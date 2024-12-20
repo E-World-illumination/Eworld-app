@@ -162,7 +162,7 @@ const SignUp = () => {
                     return;
                   } else {
                     setDuplicateStatus("success");
-                    await ShowAlert("info", "", "사용 가능한 ID입니다");
+                    await ShowAlert("success", "", "사용 가능한 ID입니다");
 
                     return;
                   }
