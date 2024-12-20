@@ -21,6 +21,7 @@ import { AuthProvider } from "./provider/AuthProvider";
 import Qr from "./pages/Qr";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForceLogout from "./pages/ForceLogout";
 
 const App = () => {
   return (
@@ -95,6 +96,7 @@ const App = () => {
             path="/auth/naver/callback"
             element={<SocialLoginRedirect />}
           />
+          <Route path="/forcelogout" element={<ForceLogout />}></Route>
         </Routes>
       </AuthProvider>
     </Router>

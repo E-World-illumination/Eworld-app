@@ -43,7 +43,6 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    console.log("로그아웃11111");
     ShowAlert("info", "", "로그아웃 되었습니다", false); // Alert 먼저 실행
     localStorage.removeItem("token");
     setTimeout(() => {
