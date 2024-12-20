@@ -1,4 +1,6 @@
+import React from "react";
 import { userDelete } from "../api/userApi";
+import Header from "../components/Header";
 import { useAuth } from "../provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
@@ -25,9 +27,11 @@ const ModifyDelete = () => {
 
   return (
     <>
-      <div className="titleClass">회원탈퇴</div>
-      <div className="text-home">회원탈퇴 하시겠습니까?</div>
-      <div className="flex flex-row justify-between">
+      <Header title="회원탈퇴" isBack={true} />
+      <div className="mx-auto w-200 p-30 text-center text-home">
+        탈퇴 하시겠습니까?
+      </div>
+      <div className="mx-auto flex w-200 flex-row justify-between">
         <button className="btnClass" onClick={() => navigate(-1)}>
           취소
         </button>
