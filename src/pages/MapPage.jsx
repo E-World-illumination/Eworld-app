@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
+import { Map, MapMarker, CustomOverlayMap } from "react-kakao-maps-sdk";
 import Header from "../components/Header";
 import MenuBar from "../components/MenuBar";
 import { fetchCourse } from "../api/courseApi";
@@ -13,6 +13,38 @@ const MapPage = () => {
   const [stamp, setStamp] = useState([]);
   const stampedIndexes = new Set(stamp.map((item) => item.stamp));
   const { token } = useAuth();
+
+  const [currentPosition, setCurrentPosition] = useState({
+    lat: 35.855,
+    lng: 128.56431610662824,
+  });
+
+  const [mapCenterPosition, setMapCenterPosition] = useState({
+    lat: 35.851481636139084,
+    lng: 128.56333034063334,
+  });
+
+  const startTracking = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setCurrentPosition({ lat: latitude, lng: longitude });
+          setMapCenterPosition({ lat: latitude, lng: longitude });
+        },
+        (error) => {
+          alert("위치를 가져올 수 없습니다: " + error.message);
+        },
+        {
+          enableHighAccuracy: true,
+          maximumAge: 0,
+          timeout: 5000,
+        },
+      );
+    } else {
+      alert("브라우저가 Geolocation을 지원하지 않습니다.");
+    }
+  };
 
   console.log(`111111`, courseData);
 
@@ -82,10 +114,22 @@ const MapPage = () => {
         <div className="h-full w-full">
           {
             <Map
-              center={{ lat: 35.851481636139084, lng: 128.56333034063334 }}
+              center={mapCenterPosition}
               style={{ width: "100%", height: "100%", flex: "1 0 auto" }}
               level={4}
             >
+              <CustomOverlayMap position={currentPosition}>
+                <div
+                  style={{
+                    width: "12px",
+                    height: "12px",
+                    backgroundColor: "red",
+                    borderRadius: "50%",
+                    border: "2px solid white",
+                    boxShadow: "0px 2px 4px rgba(0,0,0,0.2)",
+                  }}
+                ></div>
+              </CustomOverlayMap>
               {courseData.map((position, index) => (
                 <MapMarker
                   key={position.name}
@@ -105,6 +149,10 @@ const MapPage = () => {
               ))}
             </Map>
           }
+          <button
+            onClick={startTracking}
+            className="absolute bottom-80 right-10 z-50 h-42 w-42 rounded-full border-neutral-300 bg-[url('/map/location.png')] focus:outline-none"
+          ></button>
         </div>
 
         {/* stamp_info div가 선택된 마커 정보가 있을 때만 보이도록 조건부 렌더링 */}
