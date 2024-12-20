@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CouponModal from "./CouponModal";
 
 const Coupon = ({ data }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const modalRef = useRef();
+  const couponContent = data?.content || null;
 
   const handleClickOutside = (e) => {
     if (modalRef.current && !modalRef.current.contains(e.target)) {
@@ -30,10 +31,10 @@ const Coupon = ({ data }) => {
           onClick={handleClickOutside}
         >
           <div
-            className="w-96 rounded-lg bg-white p-6 shadow-lg"
+            className="w-300 rounded-lg bg-white p-6 shadow-lg"
             ref={modalRef}
           >
-            <CouponModal />
+            <CouponModal content={couponContent} />
           </div>
         </div>
       )}

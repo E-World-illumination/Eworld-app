@@ -106,7 +106,7 @@ router.post("/login", async (req, res) => {
   if (!result[0][0]) {
     return res.status(400).json({
       status: "error",
-      message: "회원 정보가 존재하지 않습니다.",
+      message: "아이디 또는 비밀번호를 확인해주세요.",
     });
   }
 
