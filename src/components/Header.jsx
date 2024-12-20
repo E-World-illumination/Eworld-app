@@ -15,7 +15,7 @@ export default function Header(props) {
 
   return (
     <>
-      <div className="flex w-full items-center justify-between bg-[url('/home/main_bg.png')] bg-cover bg-center py-10">
+      <div className="flex w-full items-center justify-between bg-[url('/title_bg.png')] bg-cover bg-center py-10">
         <div className="ml-15 h-20 w-20 text-white">
           {isBack && (
             <FontAwesomeIcon
