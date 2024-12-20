@@ -14,10 +14,9 @@ const MapPage = () => {
   const stampedIndexes = new Set(stamp.map((item) => item.stamp));
   const { token } = useAuth();
 
-  const [currentPosition, setCurrentPosition] = useState({
-    lat: 35.855,
-    lng: 128.56431610662824,
-  });
+  // 위도, 경도 가져오기
+
+  const [currentPosition, setCurrentPosition] = useState({});
 
   const [mapCenterPosition, setMapCenterPosition] = useState({
     lat: 35.851481636139084,
@@ -46,7 +45,21 @@ const MapPage = () => {
     }
   };
 
-  console.log(`111111`, courseData);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setCurrentPosition({ latitude, longitude });
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    } else {
+      console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
+    }
+  }, []);
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -119,16 +132,7 @@ const MapPage = () => {
               level={4}
             >
               <CustomOverlayMap position={currentPosition}>
-                <div
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    backgroundColor: "red",
-                    borderRadius: "50%",
-                    border: "2px solid white",
-                    boxShadow: "0px 2px 4px rgba(0,0,0,0.2)",
-                  }}
-                ></div>
+                <div className="h-16 w-16 rounded-full border-2 border-white bg-red-500 shadow-md"></div>
               </CustomOverlayMap>
               {courseData.map((position, index) => (
                 <MapMarker
