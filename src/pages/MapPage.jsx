@@ -114,7 +114,7 @@ const MapPage = () => {
             ref={stampInfoRef}
           >
             <div
-              className={`h-260 w-330 rounded-t-[10px] bg-white p-20 shadow-customShadow`}
+              className={`h-260 w-350 rounded-t-[10px] bg-white p-15 shadow-customShadow`}
             >
               <img
                 src={`/map/${selectedInfo.name}.png`}
