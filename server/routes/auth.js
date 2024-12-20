@@ -18,7 +18,7 @@ router.post("/signup", async (req, res) => {
       .json({ status: "error", message: "채워지지 않은 항목이 있습니다." });
   }
   if (!email || email.trim() === "") {
-    email = null;
+    email = "";
   }
 
   // 중복확인
