@@ -50,7 +50,11 @@ const MapPage = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setCurrentPosition({ latitude, longitude });
+          // setCurrentPosition({ latitude, longitude });
+          setCurrentPosition({
+            lat: 35.854724506405404,
+            lng: 128.56065573148246,
+          });
         },
         (error) => {},
       );
