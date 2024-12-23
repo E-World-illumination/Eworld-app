@@ -21,9 +21,10 @@ const ModifyPw = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
-    if (newPassword.length < 8) {
-      setError("비밀번호는 8자리 이상이어야 합니다.");
+    if (!passwordRegex.test(newPassword)) {
+      setError("비밀번호는 영문자와 숫자 조합으로 8자리 이상이어야 합니다.");
       return false;
     }
 
