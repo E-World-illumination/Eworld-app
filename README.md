@@ -34,9 +34,9 @@
 
 ## 설치 및 실행 방법
 
-- **웹사이트 URL**: [배포 주소](https://yourprojecturl.com)
+- **웹사이트 URL**: [배포 주소](https://eworld-illumination.netlify.app/)
 - **API 엔드포인트** : `http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com/`
-- **apk 다운로드** : [구글 드라이브](https://play.google.com/apps/internaltest/4701578376265412125)
+- **apk 다운로드** : [구글 드라이브](https://drive.google.com/file/d/1xBuAAoPRxq81n1gziDNJxnDib_XMnWDu/view)
 
 ---
 
