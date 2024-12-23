@@ -58,7 +58,7 @@ const Qr = () => {
     );
 
     // 거리 비교 (50m 이내)
-    if (distance <= 5000) {
+    if (distance <= 50) {
       const response = await addStampData(qrData, token);
 
       if (response.status === "success") {
@@ -171,6 +171,7 @@ const Qr = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
+          console.log(userLocation);
         },
         (error) => {
           console.log(error);
