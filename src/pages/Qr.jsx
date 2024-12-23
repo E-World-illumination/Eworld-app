@@ -165,21 +165,21 @@ const Qr = () => {
   }, [permissionGranted, videoStream]);
 
   // 위도, 경도 가져오기
-  // useEffect(() => {
-  //   if (navigator.geolocation) {
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         const { latitude, longitude } = position.coords;
-  //         setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
-  //       },
-  //       (error) => {
-  //         console.log(error);
-  //       },
-  //     );
-  //   } else {
-  //     console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
+        },
+        (error) => {
+          console.log(error);
+        },
+      );
+    } else {
+      console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
+    }
+  }, []);
 
   return (
     <>
