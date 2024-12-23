@@ -145,6 +145,6 @@
 ### 2. 로그인 여부에 따른 페이지 접근 관리
 
 - **문제**: 인증되지 않은 사용자가 보호된 페이지에 접근하는 경우를 제어해야 함
-- **해결**: [블로그 참조]()
+- **해결**: [블로그 참조](https://velog.io/@llllll18/React-Protected-Router%EB%A1%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%97%AC%EB%B6%80%EC%97%90-%EB%94%B0%EB%A5%B8-%ED%8E%98%EC%9D%B4%EC%A7%80-%EC%A0%91%EA%B7%BC-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0)
 
 ---
