@@ -131,7 +131,8 @@
 
 ![wrongPosition](https://github.com/user-attachments/assets/fecc7c22-dd94-4add-9c27-0705101f43f1)
 
-![GIF 2024-12-23 오후 4-02-20](https://github.com/user-attachments/assets/a05cdc05-a838-469a-96cf-2ada2122e295)
+![GIF 2024-12-24 오전 11-32-19](https://github.com/user-attachments/assets/fc227403-0e4d-4b0e-baab-57168209e325)
+
 
 ---
 
