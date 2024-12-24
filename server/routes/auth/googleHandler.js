@@ -74,6 +74,7 @@ router.get("/callback", async (req, res) => {
               social: "GOOGLE",
             });
           } catch (e) {
+            console.log(e);
             return res.status(500).json({
               status: "error",
               message: "회원 등록중에 오류가 발생했습니다.",

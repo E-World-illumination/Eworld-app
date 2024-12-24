@@ -17,7 +17,7 @@ app.use(
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-  }),
+  })
 );
 dotenv.config();
 
@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
+  console.log(req.body);
+  console.log(req.headers);
   res.send("");
 });
 

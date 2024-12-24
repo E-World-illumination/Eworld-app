@@ -27,7 +27,7 @@ const getDate = (daysToAdd = 0) => {
   }
 
   const koreanDate = now.toLocaleString("en-CA", options); // en-CA ensures the format is YYYY-MM-DD
-
+  console.log(koreanDate);
   return koreanDate;
 };
 
@@ -35,7 +35,7 @@ const getDate = (daysToAdd = 0) => {
 const DBsocialSignin = async (name, id, email = null, photo, social) => {
   const [results, fields] = await db.execute(
     "INSERT INTO `user`(`name`, `id`, `email`, `profile_img`,`social`, `created_at`) VALUES (?,?,?,?,?,?)",
-    [name, id, email, photo, social, getDate()],
+    [name, id, email, photo, social, getDate()]
   );
   return [results, fields];
 };
@@ -43,7 +43,7 @@ const DBsocialSignin = async (name, id, email = null, photo, social) => {
 const DBfindUser = async (id, social) => {
   const result = await db.execute(
     "SELECT * FROM user WHERE id = ? AND social = ?;",
-    [id, social],
+    [id, social]
   );
   return result[0];
 };
@@ -51,6 +51,8 @@ const DBfindUser = async (id, social) => {
 //DB API
 
 const getToken = (data) => {
+  //console.log("getToken");
+  //console.log(data);
   const token = JWT.sign(data, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
@@ -62,8 +64,10 @@ const verifyToken = (token) => {
   try {
     decoded = JWT.verify(token.split(" ")[1], process.env.JWT_SECRET);
   } catch (e) {
+    console.log(e);
     decoded = "error";
   }
+  //console.log(decoded);
   return decoded;
 };
 

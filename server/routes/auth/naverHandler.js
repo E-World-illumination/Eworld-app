@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
     res.redirect(naverAuth);
   } catch (e) {
     res.json(e);
+    console.log(e);
   }
 });
 
@@ -52,6 +53,9 @@ router.get("/callback", async (req, res) => {
   const response_ = await fetch(baseUri_, requestOptions_);
   const data_ = await response_.json();
 
+  console.log(data_);
+  //return res.json(data_);
+
   const result = await DBfindUser(data_.response.id, "NAVER");
 
   let jwtToken;
@@ -71,6 +75,7 @@ router.get("/callback", async (req, res) => {
         social: "NAVER",
       });
     } catch (e) {
+      console.log(e);
       return res.status(500).json({
         status: "error",
         message: "회원 등록중에 오류가 발생했습니다.",

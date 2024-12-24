@@ -12,6 +12,7 @@ router.get("/", async (req, res) => {
     res.redirect(kakaoAuth);
   } catch (e) {
     res.json(e);
+    console.log(e);
   }
 });
 
@@ -70,7 +71,8 @@ router.get("/callback", async (req, res) => {
         url_http_to_https,
         "KAKAO",
       );
-
+      console.log(data_.properties.profile_image);
+      console.log(url_http_to_https);
       jwtToken = await getToken({
         key: results.insertId,
         id: data_.id,
@@ -78,6 +80,7 @@ router.get("/callback", async (req, res) => {
         social: "KAKAO",
       });
     } catch (e) {
+      console.log(e);
       return res.status(500).json({
         status: "error",
         message: "회원 등록중에 오류가 발생했습니다.",
