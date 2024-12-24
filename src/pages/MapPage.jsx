@@ -14,8 +14,6 @@ const MapPage = () => {
   const stampedIndexes = new Set(stamp.map((item) => item.stamp));
   const { token } = useAuth();
 
-  // 위도, 경도 가져오기
-
   const [currentPosition, setCurrentPosition] = useState({});
 
   const [mapCenterPosition, setMapCenterPosition] = useState({
@@ -98,8 +96,6 @@ const MapPage = () => {
   // 마커 클릭 핸들러
   const markerClick = (info) => {
     setSelectedInfo(info); // 클릭한 마커 정보 저장
-    {
-    }
   };
 
   // 외부 클릭 시 stamp_info 숨기기
