@@ -12,8 +12,8 @@ import { ShowAlert } from "../utils/AlertUtils.js";
 
 const Qr = () => {
   const [userLocation, setUserLocation] = useState({
-    latitude: 35.853415286993176,
-    longitude: 128.56431610662824,
+    latitude: 35.853788772691104,
+    longitude: 128.56469979882883,
   });
   const [videoStream, setVideoStream] = useState(null);
   const [permissionGranted, setPermissionGranted] = useState(null);
@@ -58,7 +58,7 @@ const Qr = () => {
     );
 
     // 거리 비교 (50m 이내)
-    if (distance <= 500) {
+    if (distance <= 50) {
       const response = await addStampData(qrData, token);
 
       if (response.status === "success") {
@@ -165,22 +165,22 @@ const Qr = () => {
   }, [permissionGranted, videoStream]);
 
   // 위도, 경도 가져오기
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
-          console.log(userLocation);
-        },
-        (error) => {
-          console.log(error);
-        },
-      );
-    } else {
-      console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (navigator.geolocation) {
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         const { latitude, longitude } = position.coords;
+  //         setUserLocation({ latitude, longitude }); //latitude: latitude, longitude: longitude 가 생략된 것
+  //         console.log(userLocation);
+  //       },
+  //       (error) => {
+  //         console.log(error);
+  //       },
+  //     );
+  //   } else {
+  //     console.error("브라우저가 Geolocation API를 지원하지 않습니다.");
+  //   }
+  // }, []);
 
   return (
     <>
