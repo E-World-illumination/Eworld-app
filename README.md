@@ -131,7 +131,7 @@
 
 ![wrongPosition](https://github.com/user-attachments/assets/fecc7c22-dd94-4add-9c27-0705101f43f1)
 
-![](https://velog.velcdn.com/images/llllll18/post/62058a23-fbf7-45a2-b9ab-794a7f542803/image.gif)
+![GIF 2024-12-23 오후 4-02-20](https://github.com/user-attachments/assets/a05cdc05-a838-469a-96cf-2ada2122e295)
 
 ---
 
