@@ -29,12 +29,12 @@ const MapPage = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setCurrentPosition({
-            lat: 35.853788772691104,
-            lng: 128.56469979882883,
+            lat: latitude,
+            lng: longitude,
           });
           setMapCenterPosition({
-            lat: 35.853788772691104,
-            lng: 128.56469979882883,
+            lat: latitude,
+            lng: longitude,
           });
         },
         (error) => {
