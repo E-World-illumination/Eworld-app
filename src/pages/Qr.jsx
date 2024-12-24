@@ -12,8 +12,8 @@ import { ShowAlert } from "../utils/AlertUtils.js";
 
 const Qr = () => {
   const [userLocation, setUserLocation] = useState({
-    latitude: 35.853415286993176,
-    longitude: 128.56431610662824,
+    latitude: 35.853788772691104,
+    longitude: 128.56469979882883,
   });
   const [videoStream, setVideoStream] = useState(null);
   const [permissionGranted, setPermissionGranted] = useState(null);
@@ -58,7 +58,7 @@ const Qr = () => {
     );
 
     // 거리 비교 (50m 이내)
-    if (distance <= 500000) {
+    if (distance <= 50) {
       const response = await addStampData(qrData, token);
 
       if (response.status === "success") {

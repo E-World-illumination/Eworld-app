@@ -28,8 +28,14 @@ const MapPage = () => {
       navigator.geolocation.watchPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setCurrentPosition({ lat: latitude, lng: longitude });
-          setMapCenterPosition({ lat: latitude, lng: longitude });
+          setCurrentPosition({
+            lat: 35.853788772691104,
+            lng: 128.56469979882883,
+          });
+          setMapCenterPosition({
+            lat: 35.853788772691104,
+            lng: 128.56469979882883,
+          });
         },
         (error) => {
           alert("위치를 가져올 수 없습니다: " + error.message);
