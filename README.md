@@ -34,9 +34,9 @@
 
 ## 설치 및 실행 방법
 
+- **앱 다운로드** : [구글 플레이](https://play.google.com/store/apps/details?id=com.luminote.eworld)
 - **웹사이트 URL**: [배포 주소](https://eworld-illumination.netlify.app/)
 - **API 엔드포인트** : `http://ec2-3-27-186-168.ap-southeast-2.compute.amazonaws.com/`
-- **앱 다운로드** : [구글 플레이](https://play.google.com/store/apps/details?id=com.luminote.eworld)
 
 ---
 
